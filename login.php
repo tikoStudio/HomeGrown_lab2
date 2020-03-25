@@ -1,4 +1,26 @@
-<!DOCTYPE html>
+<?php  
+	include_once(__DIR__ . "/classes/User.php");
+	$user = new User();
+
+    if(!empty($_POST)) {
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+        
+        if(!empty($email) && !empty($password)){
+            if($user->checkLogin($email, $password)){
+                session_start();
+                $_SESSION["user"] = $email; // later aanpassen -> if checkbox is ticked use cookie 
+                
+                //redirect to index.php
+                header("Location: index.php");
+            }else{
+                $error = "Wachtwoord en email komen niet overeen";
+            }
+        }else {
+            $error = "email en wachtwoord zijn verplicht";
+        }
+    }
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

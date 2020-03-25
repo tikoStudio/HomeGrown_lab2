@@ -1,4 +1,45 @@
-<!DOCTYPE html>
+<?php
+    include_once(__DIR__ . "/classes/User.php");
+
+    if(!empty($_POST)) {
+
+        try {
+            $user = new User();
+            $user->setName(htmlspecialchars($_POST['name']));
+            $user->setEmail(htmlspecialchars($_POST['email']));
+            $user->setPassword($_POST['password']);
+
+            if($_POST['password'] != $_POST['passwordconfirmation']) {
+                $error = "Password and confirmation do not match!";
+            }
+
+            if ( $user->availableEmail($user->getEmail()) ) {
+                // Email ready to use
+                if ( $user->validEmail($_POST['email']) === true ){
+                    // valid email
+                } else {
+                    $error = "Ongeldig email!";
+                }
+            } 
+            else {
+                $error = "Email is al in gebruik!";
+            }
+
+        } catch (\Throwable $th) {
+            $error = $th->getMessage();
+        }
+
+
+        if(!isset($error)) {
+            // methode
+            $user->save();
+
+            //$succes = "user saved";
+            header('Location: login.php');
+        }
+
+    }
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
