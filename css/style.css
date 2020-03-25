@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    
+    color: #fff;
+}
+
+.gradient {
+    /*  TEMP UNTILL I HAVE PICTURES and gradient  */ background-color: #42B267;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.login {
+    text-align: center;
+}
+
+.form__image {
+    margin-top: 2em;
+}
+
+.form__field input {
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1.1em;
+}
+
+.form__field input[type=text],
+.form__field input[type=password] {
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(218, 204, 204, 0.5);
+}
+
+::placeholder {
+    color: #fff;
+}
+
+.form__field__container {
+    width: 230px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form__link {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.form__change {
+    text-decoration: underline;
+}
+
+.form__field .btn {
+    margin-top: 2em;
+}
+
+.btn--primary {
+    background-color: #fff;
+    border: none;
+    color: green; /*change */
+    width: 220px;
+    border-radius: 10px;
+}
+
+header, footer {
+    position: fixed;
+    background-color: green; /* change */
+    width: 100%;
+    height: 12vh;
+}
+
+header {
+    border-radius: 0 0 15% 15%;
+}
+
+footer {
+    border-radius: 15% 15% 0 0;
+    bottom: 0px;
+}
+
+header .form__field {
+    text-align: center;
+    margin-top: 20px;
+}
+
+header .form__field input[type=text] {
+    background-color: #fff;
+}
+
+header .form__field input[type=text]::placeholder {
+    color: #000;
+}

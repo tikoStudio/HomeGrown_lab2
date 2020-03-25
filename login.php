@@ -9,15 +9,15 @@
         if(!empty($email) && !empty($password)){
             if($user->checkLogin($email, $password)){
                 session_start();
-                $_SESSION["user"] = $email; // later aanpassen -> if checkbox is ticked use cookie 
+                $_SESSION["user"] = $email;
                 
                 //redirect to index.php
                 header("Location: index.php");
             }else{
-                $error = "Wachtwoord en email komen niet overeen";
+                $error = "Password and email are not correct";
             }
         }else {
-            $error = "email en wachtwoord zijn verplicht";
+            $error = "email and password are required";
         }
     }
 ?><!DOCTYPE html>
@@ -25,13 +25,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeGrown-Login</title>
+	<title>HomeGrown-Login</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="gradient">
     <div class="login">
 		<div class="form form--login">
 			<form action="" method="post">
-				<h2 form__title>HomeGrown</h2>
+				<img class="form__image" src="https://via.placeholder.com/200x250" alt="HomeGrown logo">
+				<h1 form__title>HomeGrown</h1>
 
 				<?php if(isset($error)) : ?>
 				<div class="form__error">
@@ -41,23 +44,27 @@
 				</div>
 				<?php endif; ?>
 
-                <div class="form__field">
-                    <input type="text" id="email" name="email" placeholder="Email">
+				<div class="form__field__container">
+
+					<div class="form__field">
+						<input type="text" id="email" name="email" placeholder="Email">
+					</div>
+
+					<div class="form__field">
+						<input type="password" id="password" name="password" placeholder="Password">
+					</div>
+
+					<div class="form__field form__link">
+						<a href="#">Forgot password?</a>
+					</div>
+
+					<div class="form__field">
+						<input type="submit" value="Login" class="btn btn--primary">	
+					</div>
+
 				</div>
 
-                <div class="form__field">
-                    <input type="password" id="password" name="password" placeholder="Password">
-				</div>
-
-				<div class="form__field">
-                    <a href="#">Forgot password?</a>
-				</div>
-
-				<div class="form__field">
-					<input type="submit" value="Login" class="btn btn--primary">	
-				</div>
-
-				<div class="form__field">
+				<div class="form__field form__change">
 					<a href="register.php">Create new account</a>
 				</div>
 			</form>
