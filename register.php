@@ -47,8 +47,9 @@
     <title>HomeGrown-Register</title>
     <link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="gradient">
     <div class="login">
         <div class="form form--login">
                 <form action="" method="POST" enctype="multipart/form-data">
@@ -58,31 +59,35 @@
                     <?php endif; ?>
 
                     <div class="form__field">
-                        <input type="file" class="form-control" name="avatar" id="avatar">
+                        <input type="file" class="form-control white" name="avatar" id="avatar">
+                    </div>
+
+                    <div class="form__field form__field__input">
+                        <img src="images/name.svg" alt="mail icon" class="form__icon">
+                        <input type="text" class="form-control white" name="name" id="name" placeholder="Name">
+                    </div>
+
+                    <div class="form__field form__field__input">
+                        <img src="images/mail.svg" alt="mail icon" class="form__icon">
+                        <input type="text" class="form-control white" name="email" id="email" placeholder="Email">
+                    </div>
+
+                    <div class="form__field form__field__input">
+                        <img src="images/password.svg" alt="mail icon" class="form__icon">
+                        <input type="password" class="form-control white" name="password" id="password" placeholder="Password">
+                    </div>
+
+                    <div class="form__field form__field__input">
+                        <img src="images/password.svg" alt="mail icon" class="form__icon">
+                        <input type="password" class="form-control white" name="passwordconfirmation" id="passwordconfirmation" placeholder="Confirm password">
                     </div>
 
                     <div class="form__field">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                        <input type="submit" value="Login" class="btn btn--primary">    	
                     </div>
 
                     <div class="form__field">
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Email">
-                    </div>
-
-                    <div class="form__field">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                    </div>
-
-                    <div class="form__field">
-                        <input type="password" class="form-control" name="passwordconfirmation" id="passwordconfirmation" placeholder="Password Confirmation">
-                    </div>
-
-                    <div class="form__field">
-                        <input type="submit" value="Register" class="btn btn--primary">	
-                    </div>
-
-                    <div class="form__field">
-                        <p>Already have an account?<a href="login.php">Login</a></p>
+                        <p>Already have an account?<a href="login.php" class="blue">Login</a></p>
                     </div>
                 </form>
         </div>

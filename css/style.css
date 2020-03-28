@@ -2,26 +2,54 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    
     color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .gradient {
-    /*  TEMP UNTILL I HAVE PICTURES and gradient  */ background-color: #42B267;
+    background: linear-gradient(to bottom, rgba(45, 45, 45, 0.2), #46cb72), url("../images/bg.jpg") fixed;
+    background-size: cover;
+    background-position: -300px 0px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 2.1em;
+    margin: 0.4em 0;
 }
 
 a {
     color: #fff;
     text-decoration: none;
+    font-weight: 300;
 }
 
 .login {
     text-align: center;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.form__field {
+    display: inline-flex;
+    margin: 5px;
+    font-weight: 500;
+}
+
+.form__field__input {
+    border-radius: 10px;
+    background-color: rgba(218, 204, 204, 0.5);
 }
 
 .form__image {
-    margin-top: 2em;
+    margin-top: 1.5em;
+    width: 180px;
+    height: 190px;
 }
 
 .form__field input {
@@ -30,11 +58,19 @@ a {
     font-size: 1.1em;
 }
 
+.white {
+    color: #fff;
+}
+
+.blue {
+    color: rgb(61, 75, 231);
+    font-weight: 700;
+}
+
 .form__field input[type=text],
 .form__field input[type=password] {
     border: none;
-    border-radius: 10px;
-    background-color: rgba(218, 204, 204, 0.5);
+    background-color: transparent;
 }
 
 ::placeholder {
@@ -52,12 +88,22 @@ a {
     margin-top: 15px;
 }
 
+.form__biglink {
+    font-weight: 500;
+}
+
 .form__change {
     text-decoration: underline;
 }
 
+.form__icon {
+    height: 20px;
+    width: 20px;
+    align-self: center;
+}
+
 .form__field .btn {
-    margin-top: 2em;
+    margin-top: 1.5em;
 }
 
 .btn--primary {

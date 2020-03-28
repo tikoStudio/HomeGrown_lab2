@@ -28,12 +28,13 @@
 	<title>HomeGrown-Login</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,700&display=swap" rel="stylesheet">
 </head>
 <body class="gradient">
     <div class="login">
 		<div class="form form--login">
 			<form action="" method="post">
-				<img class="form__image" src="https://via.placeholder.com/200x250" alt="HomeGrown logo">
+				<img class="form__image" src="images/logo.svg" alt="HomeGrown logo">
 				<h1 form__title>HomeGrown</h1>
 
 				<?php if(isset($error)) : ?>
@@ -46,16 +47,18 @@
 
 				<div class="form__field__container">
 
-					<div class="form__field">
-						<input type="text" id="email" name="email" placeholder="Email">
+					<div class="form__field form__field__input">
+						<img src="images/mail.svg" alt="mail icon" class="form__icon">
+						<input type="text" id="email" name="email" placeholder="Email" class="white">
 					</div>
 
-					<div class="form__field">
-						<input type="password" id="password" name="password" placeholder="Password">
+					<div class="form__field form__field__input">
+						<img src="images/password.svg" alt="mail icon" class="form__icon">
+						<input type="password" id="password" name="password" placeholder="Password" class="white">
 					</div>
 
 					<div class="form__field form__link">
-						<a href="#">Forgot password?</a>
+						<a href="#" class="form__biglink">Forgot password?</a>
 					</div>
 
 					<div class="form__field">

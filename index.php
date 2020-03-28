@@ -6,12 +6,13 @@
     <title>HomeGrown</title>
     <link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
     <form action="" method="POST">
             <div class="form__field">
-                <input type="text" id="email" name="email" placeholder="Look for specific farms">
+                <input type="text" id="search" name="search" placeholder="Look for specific farms">
             </div>
         </form>
     </header>
