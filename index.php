@@ -11,14 +11,16 @@
 <body>
     <header>
     <form action="" method="POST">
-            <div class="form__field">
+            <div class="form__field form__field__search">
+                <img src="images/search.svg" alt="mail icon" class="form__icon">
                 <input type="text" id="search" name="search" placeholder="Look for specific farms">
             </div>
         </form>
     </header>
 
     <footer>
-        
+        <img src="images/map.svg" alt="map button" class="mapbtn">
+        <div class="line"></div>
     </footer>
 </body>
 </html>
