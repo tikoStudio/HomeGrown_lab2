@@ -18,6 +18,27 @@
         </form>
     </header>
 
+    <div class="community__container">
+        <div class="community__title__container">
+            <h2>Current Communities</h2>
+            <p>See All (2)</p>
+        </div>
+        <div class="community__data__container">
+        
+        </div>
+    </div>
+
+    <div class="community__container community__nearby">
+        <div class="community__title__container">
+            <h2>Communities around you</h2>
+            <p>See All (7)</p>
+        </div>
+        <div class="community__data__container">
+        
+        </div>
+    </div>
+
+
     <footer>
         <img src="images/map.svg" alt="map button" class="mapbtn">
         <div class="line"></div>
