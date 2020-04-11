@@ -58,36 +58,39 @@
                         <div class="form__error"><?php echo $error; ?></div>
                     <?php endif; ?>
 
-                    <div class="form__field">
-                        <input type="file" class="form-control white" name="avatar" id="avatar">
-                    </div>
+                    <div class="form__field__container">
 
-                    <div class="form__field form__field__input">
-                        <img src="images/name.svg" alt="mail icon" class="form__icon">
-                        <input type="text" class="form-control white" name="name" id="name" placeholder="Name">
-                    </div>
+                        <div class="form__field">
+                            <input type="file" class="form-control white" name="avatar" id="avatar">
+                        </div>
 
-                    <div class="form__field form__field__input">
-                        <img src="images/mail.svg" alt="mail icon" class="form__icon">
-                        <input type="text" class="form-control white" name="email" id="email" placeholder="Email">
-                    </div>
+                        <div class="form__field form__field__input">
+                            <img src="images/name.svg" alt="mail icon" class="form__icon">
+                            <input type="text" class="form-control white" name="name" id="name" placeholder="Name">
+                        </div>
 
-                    <div class="form__field form__field__input">
-                        <img src="images/password.svg" alt="mail icon" class="form__icon">
-                        <input type="password" class="form-control white" name="password" id="password" placeholder="Password">
-                    </div>
+                        <div class="form__field form__field__input">
+                            <img src="images/mail.svg" alt="mail icon" class="form__icon">
+                            <input type="text" class="form-control white" name="email" id="email" placeholder="Email">
+                        </div>
 
-                    <div class="form__field form__field__input">
-                        <img src="images/password.svg" alt="mail icon" class="form__icon">
-                        <input type="password" class="form-control white" name="passwordconfirmation" id="passwordconfirmation" placeholder="Confirm password">
-                    </div>
+                        <div class="form__field form__field__input">
+                            <img src="images/password.svg" alt="mail icon" class="form__icon">
+                            <input type="password" class="form-control white" name="password" id="password" placeholder="Password">
+                        </div>
 
-                    <div class="form__field">
-                        <input type="submit" value="Login" class="btn btn--primary">    	
-                    </div>
+                        <div class="form__field form__field__input">
+                            <img src="images/password.svg" alt="mail icon" class="form__icon">
+                            <input type="password" class="form-control white" name="passwordconfirmation" id="passwordconfirmation" placeholder="Confirm password">
+                        </div>
 
-                    <div class="form__field">
-                        <p>Already have an account?<a href="login.php" class="blue">Login</a></p>
+                        <div class="form__field">
+                            <input type="submit" value="Login" class="btn btn--primary">    	
+                        </div>
+
+                        <div class="form__field">
+                            <p>Already have an account?<a href="login.php" class="blue">Login</a></p>
+                        </div>
                     </div>
                 </form>
         </div>

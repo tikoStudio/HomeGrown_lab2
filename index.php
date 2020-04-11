@@ -24,7 +24,16 @@
             <p>See All (2)</p>
         </div>
         <div class="community__data__container">
-        
+        <div class="label"><p>Member</p></div>
+            <div class="community__img">
+                <img src="images/cucumber.png" alt="farming resource picture">
+            </div>
+            <div class="community__info">
+            <h3>Luis Coosmans, Vi...</h3>
+                <div class="farming"><p>tomatoes</p></div>
+                <div class="farming"><p>cucumbers</p></div>
+            </div>
+            <p class=community__adress>28 verbleekstraat, Rijmenam 2820</p>
         </div>
     </div>
 
