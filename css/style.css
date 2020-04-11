@@ -170,7 +170,7 @@ header .form__field input[type=text]::placeholder {
 }
 
 .line {
-    width: 25%;
+    width: 100%;
     height: 5px;
     background-color: #F2F2F2;
     border-radius: 100px;
@@ -179,10 +179,11 @@ header .form__field input[type=text]::placeholder {
 
 .mapbtn {
     height: 20vw;
+    margin-bottom: 4vh;
 }
 
 .community__container {
-    margin-top: 15vh;
+    margin-top: 12vh;
     color: #222455;
     display: flex;
     flex-direction: column;
@@ -269,4 +270,17 @@ header .form__field input[type=text]::placeholder {
     color: #fff;
     margin: 0;
     padding: 0;
+}
+
+nav {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    bottom: 4vh;
+}
+
+nav img {
+    height: 4vh;
 }

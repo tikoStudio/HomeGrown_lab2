@@ -43,14 +43,31 @@
             <p>See All (7)</p>
         </div>
         <div class="community__data__container">
-        
+        <div class="label"><p>Looking for members</p></div>
+            <div class="community__img">
+                <img src="images/tomatoes.jpg" alt="farming resource picture">
+            </div>
+            <div class="community__info">
+            <h3>Veeman, Dré en Co.</h3>
+                <div class="farming"><p>tomatoes</p></div>
+                <div class="farming"><p>tangerine</p></div>
+            </div>
+            <p class=community__adress>17 Ravendreef, Bonheiden 2820</p>
         </div>
     </div>
 
 
     <footer>
-        <img src="images/map.svg" alt="map button" class="mapbtn">
-        <div class="line"></div>
+        <div class="middle">
+            <img src="images/map.svg" alt="map button" class="mapbtn">
+            <div class="line"></div>
+        </div>
+        <nav>
+            <a href="index.php"><img src="images/home.svg" alt="home icon"></a>
+            <a href="#"><img src="images/list.svg" alt="list icon"></a>
+            <a href="#"><img src="images/notification.svg" alt="notification icon"></a>
+            <a href="#"><img src="images/name.svg" alt="profile icon"></a>
+        </nav>
     </footer>
 </body>
 </html>
