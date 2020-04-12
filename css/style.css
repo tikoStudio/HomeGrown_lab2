@@ -17,10 +17,31 @@ body {
     background-position: -300px 0px;
 }
 
+.gps {
+    background: linear-gradient(to bottom, rgba(45, 45, 45, 0.4), rgba(45,45,45,1)), url("../images/gpslocation.jpg") fixed;
+    background-size: cover;
+    background-position: -300px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.gps__container {
+    margin-top: 40vh;
+    width: 90%;
+}
+
+.gps div p {
+    padding: 2em 2em 0 2em;
+}
+
 h1 {
     font-weight: bold;
     font-size: 2.1em;
     margin: 0.4em 0;
+}
+
+.h1__xl {
+    font-size: 2.5em;
 }
 
 h2 {
@@ -50,6 +71,11 @@ a {
     font-weight: 500;
 }
 
+.gps div.form__field {
+    display: flex;
+    justify-content: center;
+}
+
 .form__field__input {
     border-radius: 10px;
     background-color: rgba(218, 204, 204, 0.5);
@@ -70,6 +96,10 @@ a {
 
 .white {
     color: #fff;
+}
+
+.green {
+    color: #25A032;
 }
 
 .blue {
@@ -254,7 +284,7 @@ header .form__field input[type=text]::placeholder {
     padding: 0;
     margin: 0;
     font-weight: bold;
-    color: #222455;
+    color: #4CD964;
 }
 
 .farming {

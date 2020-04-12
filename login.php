@@ -12,7 +12,7 @@
                 $_SESSION["user"] = $email;
                 
                 //redirect to index.php
-                header("Location: index.php");
+                header("Location: gpsLocation.php");
             }else{
                 $error = "Password and email are not correct";
             }
