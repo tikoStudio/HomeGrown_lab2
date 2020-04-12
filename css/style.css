@@ -76,6 +76,20 @@ a {
     justify-content: center;
 }
 
+.community__data__container div.form__field {
+    display: flex;
+    justify-content: center;
+    margin: 0.3em;
+}
+
+.community__data__container div.top__container {
+    margin-top: 2em;
+}
+
+.community__data__container .form__field .btn {
+    margin: 0em;
+}
+
 .form__field__input {
     border-radius: 10px;
     background-color: rgba(218, 204, 204, 0.5);
@@ -153,6 +167,11 @@ a {
     color: #248823;
     width: 220px;
     border-radius: 10px;
+}
+
+.btn--reverse {
+    background-color: #45CB71;
+    color: #fff;
 }
 
 header, footer {
@@ -271,6 +290,30 @@ header .form__field input[type=text]::placeholder {
     align-items: center;
 }
 
+.community__container--top {
+    margin-top: 5vh;
+}
+
+.community__data__container--xl {
+    height: 75vh;
+}
+
+.community__data__container--xl img {
+    width: 320%;
+}
+
+.community__data__container--xl div.community__img {
+    height: 55%;
+}
+
+.farm__container {
+    display: flex;
+}
+
+.community__info__col {
+    flex-direction: column;
+}
+
 .label {
     position: absolute;
     margin: 0.5em 0 0 0.5em;
@@ -284,6 +327,10 @@ header .form__field input[type=text]::placeholder {
     padding: 0;
     margin: 0;
     font-weight: bold;
+    color: #222455;
+}
+
+.label--green p {
     color: #4CD964;
 }
 
@@ -302,6 +349,10 @@ header .form__field input[type=text]::placeholder {
     padding: 0;
 }
 
+.farming--xl p {
+    font-size: 1em;
+}
+
 nav {
     width: 100%;
     position: absolute;
@@ -313,4 +364,8 @@ nav {
 
 nav img {
     height: 4vh;
+}
+
+.center {
+    text-align: center;
 }

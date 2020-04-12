@@ -19,7 +19,7 @@
         <p>Please allow GPS Functions for Homegrown to find community and farms suggestions near you.</p>
 
         <div class="form__field">
-          <a href="index.php"> <input type="submit" value="Turn on" class="btn btn--primary btn--center"></a> 
+          <a href="index.php"> <input type="submit" value="Turn on" class="btn btn--primary"></a> 
         </div>
     </div>
 
