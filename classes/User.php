@@ -9,22 +9,21 @@
         protected $password;
 
         public function setName($name) {
+			if(empty($name)) {
+					throw new Exception("Name cannot be empty!");
+			}
 
-                if(empty($name)) {
-                        throw new Exception("Name cannot be empty!");
-                }
+			if(!preg_match("/^[a-zA-Z ]*$/", $_POST['name'])) {
+					throw new Exception("Name contains invalid characters!");
+			}
 
-                if(!preg_match("/^[a-zA-Z ]*$/", $_POST['name'])) {
-                        throw new Exception("Name contains invalid characters!");
-                }
+			$this->name = $name;
 
-                $this->name = $name;
-
-                return $this;
+			return $this;
         }
 
         public function getName() {
-                return $this->name;
+			return $this->name;
         }
 
         public function getNameFromDatabase() {
@@ -40,56 +39,55 @@
 
         public function setEmail($email) {
 
-                if(empty($email)) {
-                        throw new Exception("Email cannot be empty!");
-                }
+			if(empty($email)) {
+				throw new Exception("Email cannot be empty!");
+			}
 
-                $this->email = $email;
+			$this->email = $email;
 
-                return $this;
+			return $this;
         }
 
         public function getEmail() {
-                return $this->email;
+			return $this->email;
         }
 
         public function validEmail($email) {
-                $email = $_POST['email'];
-                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+			$email = $_POST['email'];
+			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				return true;
+			} else {
+				return false;
+			}
         }
 
         public function availableEmail($email) {
-                $conn = Db::getConnection();
-                $statement = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
-                $statement->bindParam(":email", $email);
-                $statement->execute();
-                $result = $statement->fetch(PDO::FETCH_ASSOC);
+			$conn = Db::getConnection();
+			$statement = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+			$statement->bindParam(":email", $email);
+			$statement->execute();
+			$result = $statement->fetch(PDO::FETCH_ASSOC);
 
-                if ($result == false) {
-                        // Email available
-                        return true;
-                } else {
-                        // Email not available
-                        return false;
-                }
+			if ($result == false) {
+				// Email available
+				return true;
+			} else {
+				// Email not available
+				return false;
+			}
         }
 
         public function setPassword($password) {
+			if(empty($password)) {
+				throw new Exception("Password cannot be empty");
+			}
 
-                if(empty($password)) {
-                        throw new Exception("Password cannot be empty");
-                }
+			$options = ['cost' => 12];
+			$password = password_hash($password, PASSWORD_DEFAULT, $options);
 
-                $options = ['cost' => 12];
-                $password = password_hash($password, PASSWORD_DEFAULT, $options);
+			$this->password = $password;
 
-                $this->password = $password;
-
-                return $this;
+			return $this;
         }
 
         public function getPassword() {
@@ -97,38 +95,38 @@
         }
 
         public function save() {
-                // connectie
-                $conn = Db::getConnection();
+			// connectie
+			$conn = Db::getConnection();
 
-                // query
-                $statement = $conn->prepare("insert into users (name, email, password) values (:name, :email, :password)");
-                
-                // variabelen klaarzetten om te binden
-                $name = $this->getName();
-                $email = $this->getEmail();
-                $password = $this->getPassword();
-                
-                // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
-                $statement->bindParam(":name", $name);
-                $statement->bindParam(":email", $email);
-                $statement->bindParam(":password", $password);
+			// query
+			$statement = $conn->prepare("insert into users (name, email, password) values (:name, :email, :password)");
+			
+			// variabelen klaarzetten om te binden
+			$name = $this->getName();
+			$email = $this->getEmail();
+			$password = $this->getPassword();
+			
+			// uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
+			$statement->bindParam(":name", $name);
+			$statement->bindParam(":email", $email);
+			$statement->bindParam(":password", $password);
 
-                // als je geen execute doet dan wordt die query niet uitgevoerd
-                $result = $statement->execute();
+			// als je geen execute doet dan wordt die query niet uitgevoerd
+			$result = $statement->execute();
 
-                return $result;
+			return $result;
         }
 
         public function getId()
         {
-                return $this->id;
+			return $this->id;
         }
 
         public function setId($id)
         {
-                $this->id = $id;
+			$this->id = $id;
 
-                return $this;
+			return $this;
         }
 
         public function getAvatar()

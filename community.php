@@ -33,7 +33,7 @@
                 <a href="#"> <input type="submit" value="you already joined" class="btn btn--primary btn--reverse"></a> 
             </div>
             <div class="form__field">
-                <a href="communityChat.php"> <input type="submit" value="community chat" class="btn btn--primary btn--reverse"></a> 
+                <a href="communityChat.php?com=1"> <input type="submit" value="community chat" class="btn btn--primary btn--reverse"></a> 
             </div>
         </div>
     </div>

@@ -3,6 +3,21 @@
     if(!isset($_SESSION["user"])) {
         header("Location: login.php");
     }
+
+    include_once(__DIR__ . "/classes/Message.php");
+    $user = new Message();
+    $user->setId($_SESSION['id']);
+    $user->setCommunityId($_GET['com']);
+
+    $messages = $user->getMessagesFromDatabase();
+
+    if(!empty($_POST)) {
+        $user->setMessage($_POST['message']);
+        $user->setTime(date("H:i"));
+        $user->saveMessage();
+        $messages = $user->getMessagesFromDatabase(); //recheck all messages in db
+    }
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,17 +34,15 @@
         <h1 class="h1--members">Luis Coosmans, Victoria Dasman and Gary Leekman </h1>
     </div>
     <div class="chatbox">
-        <div class="chatbox__messages">
-            <div class="chatbox__header"><h4 class="chatbox__user">Luis Coosmans</h4><h4 class="chatbox__user">11:50</h4></div>
-            <p>Lorem ipsum dolor sit amet.</p>
-        </div>
-
-        <div class="send">
-            <div class="chatbox__messages chatbox__messages--me">
-            <div class="chatbox__header"><h4 class="chatbox__user"></h4><h4 class="chatbox__user">11:50</h4></div>
-                <p>delete and loop the other one.</p>
+        
+    <?php foreach ($messages as $message): ?>
+        <?php if($_SESSION['id'] == $message['userId']) {echo '<div class="send">';} ?>
+            <div class="chatbox__messages <?php if($_SESSION['id'] == $message['userId']) {echo 'chatbox__messages--me';} ?> ">
+            <div class="chatbox__header"><h4 class="chatbox__user"> <?php if($_SESSION['id'] != $message['userId']) {echo $message['name'];} ?></h4><h4 class="chatbox__user"><?php echo $message['time'] ?></h4></div>
+                <p><?php echo $message['message'] ?></p>
             </div>
-        </div>
+            <?php if($_SESSION['id'] == $message['userId']) {echo '</div>';} ?>
+    <?php endforeach; ?>
         
     </div>
     <form action="" method="POST" class="form__messages">

@@ -22,13 +22,12 @@
             </div>
         </form>
     </header>
-
-    <a href="community.php">
-        <div class="community__container">
-            <div class="community__title__container">
-                <h2>Current Communities</h2>
-                <p>See All (2)</p>
-            </div>
+    <div class="community__container">
+        <div class="community__title__container">
+            <h2>Current Communities</h2>
+            <p>See All (2)</p>
+        </div>
+        <a href="community.php?com=1" class="community__data__container__a">
             <div class="community__data__container">
             <div class="label"><p>Member</p></div>
                 <div class="community__img">
@@ -41,26 +40,28 @@
                 </div>
                 <p class=community__adress>28 verbleekstraat, Rijmenam 2820</p>
             </div>
-        </div>
-    </a>
+        </a>
+    </div>
 
     <div class="community__container community__nearby">
         <div class="community__title__container">
             <h2>Communities around you</h2>
             <p>See All (7)</p>
         </div>
-        <div class="community__data__container">
-        <div class="label--green label"><p>Looking for members</p></div>
-            <div class="community__img">
-                <img src="images/tomatoes.jpg" alt="farming resource picture">
+        <a href="#" class="community__data__container__a">
+            <div class="community__data__container">
+            <div class="label--green label"><p>Looking for members</p></div>
+                <div class="community__img">
+                    <img src="images/tomatoes.jpg" alt="farming resource picture">
+                </div>
+                <div class="community__info">
+                <h3>Veeman, Dré en Co.</h3>
+                    <div class="farming"><p>tomatoes</p></div>
+                    <div class="farming"><p>tangerine</p></div>
+                </div>
+                <p class=community__adress>17 Ravendreef, Bonheiden 2820</p>
             </div>
-            <div class="community__info">
-            <h3>Veeman, Dré en Co.</h3>
-                <div class="farming"><p>tomatoes</p></div>
-                <div class="farming"><p>tangerine</p></div>
-            </div>
-            <p class=community__adress>17 Ravendreef, Bonheiden 2820</p>
-        </div>
+        </a>
     </div>
     <?php include_once("footer.inc.php"); ?>
 </body>

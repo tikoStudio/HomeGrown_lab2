@@ -58,6 +58,7 @@ h2 {
 h3 {
     margin: 0.5em 0 0 0.5em;
     font-size: 1em;
+    color: #222455;
 }
 
 a {
@@ -269,6 +270,11 @@ header .form__field input[type=text]::placeholder {
     flex-direction: column;
 }
 
+.community__data__container__a {
+    display: flex;
+    flex-direction: column;
+}
+
 .community__nearby {
     margin-top: 1vh;
 }
@@ -395,9 +401,14 @@ nav img {
     background-color: #F2F2F2;
     color: #000;
     width: fit-content;
-    padding: 0.3em 0.8em;
+    padding: 0.6em 0.8em;
     margin: 0.5em 1em;
     border-radius: 0.6em;
+}
+
+.chatbox__messages p {
+    padding: 0;
+    margin: 0;
 }
 
 .chatbox__messages--me {
