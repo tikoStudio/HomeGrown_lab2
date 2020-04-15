@@ -30,10 +30,10 @@
             </div>
             <p class="community__adress center">28 verbleekstraat, Rijmenam 2820</p>
             <div class="form__field top__container">
-                <a href="index.php"> <input type="submit" value="Turn on" class="btn btn--primary btn--reverse"></a> 
+                <a href="#"> <input type="submit" value="you already joined" class="btn btn--primary btn--reverse"></a> 
             </div>
             <div class="form__field">
-                <a href="index.php"> <input type="submit" value="Turn on" class="btn btn--primary btn--reverse"></a> 
+                <a href="communityChat.php"> <input type="submit" value="community chat" class="btn btn--primary btn--reverse"></a> 
             </div>
         </div>
     </div>

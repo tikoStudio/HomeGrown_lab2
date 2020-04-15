@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="form__field">
-                            <p>Already have an account?<a href="login.php" class="blue">Login</a></p>
+                            <p>Already have an account?<a href="register.php" class="blue">Login</a></p>
                         </div>
                     </div>
                 </form>
