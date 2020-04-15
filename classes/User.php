@@ -2,11 +2,11 @@
      include_once(__DIR__ . "./Db.php");
 
     class User {
-        private $id;
-        private $email;
-        private $name;
-        private $avatar;
-        private $password;
+        protected $id;
+        protected $email;
+        protected $name;
+        protected $avatar;
+        protected $password;
 
         public function setName($name) {
 
@@ -25,6 +25,17 @@
 
         public function getName() {
                 return $this->name;
+        }
+
+        public function getNameFromDatabase() {
+            $conn = Db::getConnection();
+            $statement = $conn->prepare("SELECT name FROM users WHERE id= :id");
+            $id = $this->getId();
+            $statement->bindParam(":id", $id);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+            return $result;
         }
 
         public function setEmail($email) {
@@ -153,4 +164,18 @@
                 return false;
             }
         }
+
+        public function idFromSession($email) {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select id from users where email = :email");
+            $statement->bindParam(":email", $email);
+
+            //return result
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
     }

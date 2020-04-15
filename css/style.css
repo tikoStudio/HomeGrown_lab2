@@ -26,8 +26,9 @@ body {
 }
 
 .gps__container {
-    margin-top: 40vh;
+    margin-top: 38vh;
     width: 90%;
+    overflow: hidden;
 }
 
 .gps div p {

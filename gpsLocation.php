@@ -3,6 +3,12 @@
     if(!isset($_SESSION["user"])) {
         header("Location: login.php");
     }
+
+    include_once(__DIR__ . "/classes/User.php");
+    $user = new User();
+    
+    $user->setId($_SESSION['id']);
+    $username = $user->getNameFromDatabase();
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +21,7 @@
 </head>
 <body class="gps">
     <div class="gps__container">
-        <h1 class="h1__xl">Hi Nigel,<br>Welcome to <br>Home<span class="green">Grown</span> </h1>
+        <h1 class="h1__xl">Hi <?php echo $username['name'] ?>,<br>Welcome to <br>Home<span class="green">Grown</span> </h1>
         <p>Please allow GPS Functions for Homegrown to find community and farms suggestions near you.</p>
 
         <div class="form__field">

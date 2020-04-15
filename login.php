@@ -9,7 +9,14 @@
         if(!empty($email) && !empty($password)){
             if($user->checkLogin($email, $password)){
                 session_start();
-                $_SESSION["user"] = $email;
+				$user->setEmail($email);
+				$idArray = $user->idFromSession($email);
+				$id = $idArray['id'];
+				$user->setId($id);
+
+				// later aanpassen -> if checkbox is ticked use cookie 
+				$_SESSION["user"] = $email; 
+				$_SESSION["id"] = $id;
                 
                 //redirect to index.php
                 header("Location: gpsLocation.php");
