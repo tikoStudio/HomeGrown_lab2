@@ -99,17 +99,19 @@
 			$conn = Db::getConnection();
 
 			// query
-			$statement = $conn->prepare("insert into users (name, email, password) values (:name, :email, :password)");
+			$statement = $conn->prepare("insert into users (name, email, password, avatar) values (:name, :email, :password, :avatar)");
 			
 			// variabelen klaarzetten om te binden
 			$name = $this->getName();
 			$email = $this->getEmail();
-			$password = $this->getPassword();
+            $password = $this->getPassword();
+            $avatar = $this->getAvatar();
 			
 			// uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
 			$statement->bindParam(":name", $name);
 			$statement->bindParam(":email", $email);
-			$statement->bindParam(":password", $password);
+            $statement->bindParam(":password", $password);
+            $statement->bindParam("avatar", $avatar);
 
 			// als je geen execute doet dan wordt die query niet uitgevoerd
 			$result = $statement->execute();

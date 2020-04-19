@@ -1,5 +1,6 @@
 <?php
     include_once(__DIR__ . "/classes/User.php");
+    include_once("functions.php");
 
     if(!empty($_POST)) {
 
@@ -12,6 +13,18 @@
             if($_POST['password'] != $_POST['passwordconfirmation']) {
                 $error = "Password and confirmation do not match!";
             }
+
+            //PROFILE PICTURE
+            if(!empty($_FILES['avatar']['name'])) {         
+                try {
+                    $image = $_FILES['avatar']['name'];
+                    uploadImage($image);
+                    $user->setAvatar($image);
+                }catch(Exception $e) {
+                    $image = $userData['avatar'];
+                    $error = $e->getMessage();
+                }
+            } //no else, field not required
 
             if ( $user->availableEmail($user->getEmail()) ) {
                 // Email ready to use
@@ -61,12 +74,13 @@
                     <div class="form__field__container">
 
                         <div class="form__field">
+                            <label for="avatar"><img class="form__avatar" src="images/avatarUpload.svg" alt="upload avatar"></label>
                             <input type="file" class="form-control white" name="avatar" id="avatar">
                         </div>
 
                         <div class="form__field form__field__input">
                             <img src="images/name.svg" alt="mail icon" class="form__icon">
-                            <input type="text" class="form-control white" name="name" id="name" placeholder="Name">
+                            <input type="text" class="form-control white" name="name" id="name" placeholder="Name" onchange=file_changed()>
                         </div>
 
                         <div class="form__field form__field__input">
@@ -95,5 +109,6 @@
                 </form>
         </div>
     </div>
+    <script src="js/file_change.js"></script>
 </body>
 </html>
