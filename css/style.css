@@ -597,4 +597,12 @@ nav img {
 .mapContainer {
     width: 100vw;
     height: 100vh;
+    position: absolute;
+    top: 0;
 }
+
+.mapboxgl-ctrl-attrib.mapboxgl-compact::after, a.mapboxgl-ctrl-logo {
+    display: none;
+}
+
+/* END MAP */

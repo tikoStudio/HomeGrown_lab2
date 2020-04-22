@@ -20,10 +20,8 @@
 <body>
     
     <div id="mapContainer" class="mapContainer"></div>
-    <div id="safetyContainer">
-        
-        <p class="safetyText">Safe!</p>
-    </div>
+    
+    <?php include_once("footer.inc.php"); ?>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/map.js"></script>
