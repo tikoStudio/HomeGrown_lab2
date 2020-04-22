@@ -59,8 +59,21 @@
                 </div>
             </div>
     </div>
+
+    <div class="blur"></div>
+    <div class="nudge__popup">
+        <img src="images/nudged.svg" alt="nudge alert popup">
+        <p>You nudged a community member. Would you like to add a message to the nudge?</p>
+        <textarea name="nudgeMessage" id="nudgeMessage"></textarea>
+        <button class="nudge__popup__send">Send</button>
+    </div>
+    <div class="nudge__popup nudge__complete">
+        <img src="images/nudged.svg" alt="nudge alert popup">
+        <h2>Nudge has been send</h2>
+    </div>
 </div>
 
     <?php include_once("footer.inc.php"); ?>
+    <script src="js/nudge.js"></script>
 </body>
 </html>

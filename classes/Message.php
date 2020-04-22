@@ -61,7 +61,8 @@
 
 		public function getMessagesFromDatabase() {
 			$conn = Db::getConnection();
-			$statement = $conn->prepare("select messages.userId, messages.message, messages.time, u1.name from users as u1, messages where communityId = :communityId and userId = u1.id order by messages.id asc");
+			$statement = $conn->prepare("select messages.userId, messages.message, messages.time, u1.name from users as u1, messages
+			 where communityId = :communityId and userId = u1.id order by messages.id asc");
 			$communityId = $this->getCommunityId();
 			$statement->bindParam(":communityId", $communityId);
 
