@@ -15,13 +15,28 @@
 	<link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,700&display=swap" rel="stylesheet">
 
+
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css"
+    type="text/css"
+    />
+
     <title>Homegrown Map</title>
 </head>
 <body>
     
+    
     <div id="mapContainer" class="mapContainer"></div>
+    <div class="calculation-box">
+        <p>Draw a polygon using the draw tools.</p>
+        <div id="calculated-area"></div>
+    </div>
     
     <?php include_once("footer.inc.php"); ?>
+    <?php include_once("nav.inc.php") ?>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/map.js"></script>

@@ -605,4 +605,13 @@ nav img {
     display: none;
 }
 
+.mapboxgl-marker {
+    background-color: rgba(255, 0, 0, 0.31);
+    width: 10px;
+    height: 10px;
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+    margin-top: 15vh;
+}
 /* END MAP */

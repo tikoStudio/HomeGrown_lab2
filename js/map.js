@@ -3,8 +3,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYXJuaWk1IiwiYSI6ImNrMm9saDBrcDA2eHEzbXBwcWp1d
 var map = new mapboxgl.Map({
 container: 'mapContainer', // Container id
 style: 'mapbox://styles/mapbox/streets-v11',
-center: [4.465243, 51.021587], // Starting position
-zoom: 15 // Starting zoom
+center: [4.465269, 51.021694], // Starting position
+zoom: 17 // Starting zoom
 });
 
 //Init GLOBAL variables
@@ -64,3 +64,70 @@ function positionError(err) {
 function deg2rad(deg) {
     return deg * (Math.PI/180) //Convert degrees to radial
 }
+
+var draw = new MapboxDraw({
+displayControlsDefault: false,
+controls: {
+polygon: true,
+trash: false
+}
+});
+map.addControl(draw);
+ 
+map.on('draw.create', updateArea);
+map.on('draw.delete', updateArea);
+map.on('draw.update', updateArea);
+ 
+function updateArea(e) {
+var data = draw.getAll();
+var answer = document.getElementById('calculated-area');
+if (data.features.length > 0) {
+var area = turf.area(data);
+console.log(data.features[0].geometry.coordinates[0])
+// restrict to area to 2 decimal points
+var rounded_area = Math.round(area * 100) / 100;
+answer.innerHTML =
+'<p><strong>' +
+rounded_area +
+'</strong></p><p>square meters</p>';
+} else {
+answer.innerHTML = '';
+if (e.type !== 'draw.delete')
+alert('Use the draw tools to draw a polygon!');
+}
+}
+
+
+
+
+
+map.on('load', function() {
+    map.addSource('Gary', {
+    'type': 'geojson',
+    'data': {
+    'type': 'Feature',
+    'geometry': {
+    'type': 'Polygon',
+    'coordinates': [
+    [
+    [4.465629730950667, 51.02155666327056],
+    [4.465678064026349, 51.02149399607427],
+    [4.46576190717883, 51.02151757383976],
+    [4.46571061490431, 51.021579000049],
+    [4.465629730950667, 51.02155666327056]
+    ]
+    ]
+    }
+    }
+    });
+    map.addLayer({
+    'id': 'Gary',
+    'type': 'line',
+    'source': 'Gary',
+    'layout': {},
+    'paint': {
+    'line-color': '#7DD429',
+    'line-width': 3
+    }
+    });
+    });

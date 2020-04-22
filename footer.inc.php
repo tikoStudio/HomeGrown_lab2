@@ -1,6 +1,6 @@
 <footer>
         <div class="middle">
-            <img src="images/map.svg" alt="map button" class="mapbtn">
+            <a href="map.php"><img src="images/map.svg" alt="map button" class="mapbtn"></a>
             <div class="line"></div>
         </div>
         <nav>
