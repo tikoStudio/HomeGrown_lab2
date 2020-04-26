@@ -28,10 +28,8 @@
 </head>
 <body>
     
-    
     <div id="mapContainer" class="mapContainer"></div>
     <div class="calculation-box">
-        <p>Draw a polygon using the draw tools.</p>
         <div id="calculated-area"></div>
     </div>
     

@@ -97,37 +97,98 @@ alert('Use the draw tools to draw a polygon!');
 }
 }
 
-
-
-
-
 map.on('load', function() {
     map.addSource('Gary', {
-    'type': 'geojson',
-    'data': {
-    'type': 'Feature',
-    'geometry': {
-    'type': 'Polygon',
-    'coordinates': [
-    [
-    [4.465629730950667, 51.02155666327056],
-    [4.465678064026349, 51.02149399607427],
-    [4.46576190717883, 51.02151757383976],
-    [4.46571061490431, 51.021579000049],
-    [4.465629730950667, 51.02155666327056]
-    ]
-    ]
-    }
-    }
+        'type': 'geojson',
+        'data': {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    'type': 'Feature1',
+                    'properties': {
+                        'name': "Gary"
+                    },
+                    'geometry': {
+                        'type': 'Polygon',                        
+                        'coordinates': [
+                            [
+                                [4.465629730950667, 51.02155666327056],
+                                [4.465678064026349, 51.02149399607427],
+                                [4.46576190717883, 51.02151757383976],
+                                [4.46571061490431, 51.021579000049],
+                                [4.465629730950667, 51.02155666327056]
+                            ]
+                        ]
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'name': "Maria"
+                    },
+                    'geometry': {
+                            'type': 'Polygon',
+                            'coordinates': [
+                                [
+                                    [4.463185663879898, 51.02399895177513],
+                                    [4.463238580872513, 51.024056100622346],
+                                    [4.463324446180991, 51.02408059296431],
+                                    [4.463366380401368, 51.02404919252385],
+                                    [4.46324057774018, 51.023974459390416],
+                                    [4.463185663879898, 51.02399895177513]
+                                ]
+                            ]
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'name': "Johnny"
+                    },
+                    'geometry': {
+                            'type': 'Polygon',
+                            'coordinates': [
+                                [
+                                    [4.465804384511387, 51.019479739475344],
+                                    [4.465874223528033, 51.01930389648365],
+                                    [4.465640414646515, 51.01927237944403],
+                                    [4.465564502671725, 51.01945097571988],
+                                    [4.465804384511387, 51.019479739475344]
+                                ]
+                            ]
+                    }
+                }
+            ]
+        }
     });
+
     map.addLayer({
     'id': 'Gary',
-    'type': 'line',
+    'type': 'fill',
     'source': 'Gary',
     'layout': {},
     'paint': {
-    'line-color': '#7DD429',
-    'line-width': 3
+    'fill-color': 'rgba(125, 212, 41, 0.4)',
+    'fill-outline-color': '#7DD429',
     }
     });
-    });
+
+    // When a click event occurs on a feature in the states layer, open a popup at the
+    // location of the click, with description HTML from its properties.
+    map.on('click', 'Gary', function(e) {
+        new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(e.features[0].properties.name)
+        .addTo(map);
+        console.log("click")
+        });
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        map.on('mouseenter', 'Gary', function() {
+        map.getCanvas().style.cursor = 'pointer';
+        });
+         
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'Gary', function() {
+        map.getCanvas().style.cursor = '';
+        });
+});
