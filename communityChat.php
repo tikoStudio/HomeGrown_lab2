@@ -1,11 +1,22 @@
 <?php
+    include_once(__DIR__ . "/classes/Message.php");
+    include_once(__DIR__ . "/classes/Community.php");
+
     session_start();
+    $community = new Community();
+    $user = new Message();
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
+    }  else if (!isset($_GET['com']) || empty($_GET['com'])) {
+        header("Location: index.php");
+    } else if(!empty($_GET['com'])) {
+        $community->setId($_GET['com']);
+        $cData = $community->getcommunityData();
+        if(!$cData) {
+            header("Location: index.php");
+        }
     }
 
-    include_once(__DIR__ . "/classes/Message.php");
-    $user = new Message();
     $user->setId($_SESSION['id']);
     $user->setCommunityId($_GET['com']);
 
@@ -34,7 +45,7 @@
 <body>
 
     <div class="community__container community__container--top">
-        <h1 class="h1--members">Luis Coosmans, Victoria Dasman and Gary Leekman </h1>
+        <h1 class="h1--members"><?php echo $cData['name'] ?></h1>
     </div>
     <div class="chatbox">
 
