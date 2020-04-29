@@ -479,6 +479,7 @@ nav img {
 .memberlist {
     height: 150px;
     overflow: scroll;
+    margin-top: 3vh;
 }
 
 .member {
@@ -495,9 +496,30 @@ nav img {
     margin-left: 1.5em;
 }
 
+.member--avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.member--name {
+    position: absolute;
+    margin-left: 55px;
+    width: 100px;
+    overflow: hidden;
+}
+
 .p__member--name {
     margin-left: 0.5em;
     font-weight: bold;
+}
+
+.member--farming {
+    margin-left: 7.5em;
+    margin-right: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .member--nudge {

@@ -1,32 +1,36 @@
 <?php
      include_once(__DIR__ . "./Db.php");
 
-    class User {
+    class User
+    {
         protected $id;
         protected $email;
         protected $name;
         protected $avatar;
         protected $password;
 
-        public function setName($name) {
-			if(empty($name)) {
-					throw new Exception("Name cannot be empty!");
-			}
+        public function setName($name)
+        {
+            if (empty($name)) {
+                throw new Exception("Name cannot be empty!");
+            }
 
-			if(!preg_match("/^[a-zA-Z ]*$/", $_POST['name'])) {
-					throw new Exception("Name contains invalid characters!");
-			}
+            if (!preg_match("/^[a-zA-Z ]*$/", $_POST['name'])) {
+                throw new Exception("Name contains invalid characters!");
+            }
 
-			$this->name = $name;
+            $this->name = $name;
 
-			return $this;
+            return $this;
         }
 
-        public function getName() {
-			return $this->name;
+        public function getName()
+        {
+            return $this->name;
         }
 
-        public function getNameFromDatabase() {
+        public function getNameFromDatabase()
+        {
             $conn = Db::getConnection();
             $statement = $conn->prepare("SELECT name FROM users WHERE id= :id");
             $id = $this->getId();
@@ -37,98 +41,104 @@
             return $result;
         }
 
-        public function setEmail($email) {
+        public function setEmail($email)
+        {
+            if (empty($email)) {
+                throw new Exception("Email cannot be empty!");
+            }
 
-			if(empty($email)) {
-				throw new Exception("Email cannot be empty!");
-			}
+            $this->email = $email;
 
-			$this->email = $email;
-
-			return $this;
+            return $this;
         }
 
-        public function getEmail() {
-			return $this->email;
+        public function getEmail()
+        {
+            return $this->email;
         }
 
-        public function validEmail($email) {
-			$email = $_POST['email'];
-			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				return true;
-			} else {
-				return false;
-			}
+        public function validEmail($email)
+        {
+            $email = $_POST['email'];
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
-        public function availableEmail($email) {
-			$conn = Db::getConnection();
-			$statement = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
-			$statement->bindParam(":email", $email);
-			$statement->execute();
-			$result = $statement->fetch(PDO::FETCH_ASSOC);
+        public function availableEmail($email)
+        {
+            $conn = Db::getConnection();
+            $statement = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+            $statement->bindParam(":email", $email);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
 
-			if ($result == false) {
-				// Email available
-				return true;
-			} else {
-				// Email not available
-				return false;
-			}
+            if ($result == false) {
+                // Email available
+                return true;
+            } else {
+                // Email not available
+                return false;
+            }
         }
 
-        public function setPassword($password) {
-			if(empty($password)) {
-				throw new Exception("Password cannot be empty");
-			}
+        public function setPassword($password)
+        {
+            if (empty($password)) {
+                throw new Exception("Password cannot be empty");
+            }
 
-			$options = ['cost' => 12];
-			$password = password_hash($password, PASSWORD_DEFAULT, $options);
+            $options = ['cost' => 12];
+            $password = password_hash($password, PASSWORD_DEFAULT, $options);
 
-			$this->password = $password;
+            $this->password = $password;
 
-			return $this;
+            return $this;
         }
 
-        public function getPassword() {
-                return $this->password;
+        public function getPassword()
+        {
+            return $this->password;
         }
 
-        public function save() {
-			// connectie
-			$conn = Db::getConnection();
+        public function save()
+        {
+            // connectie
+            $conn = Db::getConnection();
 
-			// query
-			$statement = $conn->prepare("insert into users (name, email, password, avatar) values (:name, :email, :password, :avatar)");
-			
-			// variabelen klaarzetten om te binden
-			$name = $this->getName();
-			$email = $this->getEmail();
+            // query
+            $statement = $conn->prepare("insert into users (name, email, password, avatar) values (:name, :email, :password, :avatar)");
+            
+            // variabelen klaarzetten om te binden
+            $name = $this->getName();
+            $email = $this->getEmail();
             $password = $this->getPassword();
             $avatar = $this->getAvatar();
-			
-			// uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
-			$statement->bindParam(":name", $name);
-			$statement->bindParam(":email", $email);
+            
+            // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
+            $statement->bindParam(":name", $name);
+            $statement->bindParam(":email", $email);
             $statement->bindParam(":password", $password);
             $statement->bindParam("avatar", $avatar);
 
-			// als je geen execute doet dan wordt die query niet uitgevoerd
-			$result = $statement->execute();
+            // als je geen execute doet dan wordt die query niet uitgevoerd
+            $result = $statement->execute();
 
-			return $result;
+            return $result;
         }
 
         public function getId()
         {
-			return $this->id;
+            return $this->id;
         }
 
         public function setId($id)
         {
-			$this->id = $id;
+            $this->id = $id;
 
-			return $this;
+            return $this;
         }
 
         public function getAvatar()
@@ -137,13 +147,14 @@
         }
             
         public function setAvatar($avatar)
-        {  
+        {
             $this->avatar = $avatar;
 
             return $this;
         }
 
-        public function checkLogin($email, $password) {
+        public function checkLogin($email, $password)
+        {
             //db conn
             $conn = Db::getConnection();
             //insert query
@@ -153,19 +164,20 @@
             //return result
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-            if(empty($result)) {
+            if (empty($result)) {
                 return false;
             }
             $hash = $result[0]["password"];
-            if(password_verify($password, $hash)) {
+            if (password_verify($password, $hash)) {
                 return true;
-            }else {
+            } else {
                 echo "fail";
                 return false;
             }
         }
 
-        public function idFromSession($email) {
+        public function idFromSession($email)
+        {
             //db conn
             $conn = Db::getConnection();
             //insert query
@@ -178,4 +190,18 @@
             return $result;
         }
 
+        public function getAllUserData()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select * from users where id = :id");
+            $id = $this->getId();
+            $statement->bindParam(":id", $id);
+            
+            //return result
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
