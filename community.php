@@ -3,19 +3,21 @@
     include_once('classes/Community.php');
 
     session_start();
-    if (!isset($_SESSION["user"])) {
-        header("Location: login.php");
-    }
-
-    /* todo if get is not in database or empty -> redirect to no community found page/something went wrong */
-
-    $isTop = false;
-
     $user = new User();
     $community = new Community();
+    if (!isset($_SESSION["user"])) {
+        header("Location: login.php");
+    } else if (!isset($_GET['com']) || empty($_GET['com'])) {
+        header("Location: index.php");
+    } else if(!empty($_GET['com'])) {
+        $community->setId($_GET['com']);
+        $cData = $community->getcommunityData();
+        if(!$cData) {
+            header("Location: index.php");
+        }
+    }
 
-    $community->setId($_GET['com']);
-    $cData = $community->getcommunityData();
+    $isTop = false;  
 ?>
 <!DOCTYPE html>
 <html lang="en">
