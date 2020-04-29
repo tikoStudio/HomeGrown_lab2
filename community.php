@@ -7,6 +7,8 @@
         header("Location: login.php");
     }
 
+    /* todo if get is not in database or empty -> redirect to no community found page/something went wrong */
+
     $isTop = false;
 
     $user = new User();
@@ -98,7 +100,9 @@
                         <p><?php echo $userData['crop1'] ?>
                         </p>
                     </div>
-                    <div class="member--nudge"><img src="images/notification.svg" alt="nudge button"></div>
+                    <div class="member--nudge" data-userId2=<?php echo $userData['id']; ?>
+                        data-userId1 = <?php echo $_SESSION['id'] ?>><img
+                            src="images/notification.svg" alt="nudge button"></div>
                 </div>
                 <?php endif; ?>
                 <?php if (!empty($cData['userId2'])): ?>
@@ -118,7 +122,9 @@
                         <p><?php echo $userData['crop1'] ?>
                         </p>
                     </div>
-                    <div class="member--nudge"><img src="images/notification.svg" alt="nudge button"></div>
+                    <div class="member--nudge" data-userId2=<?php echo $userData['id']; ?>
+                        data-userId1 = <?php echo $_SESSION['id'] ?>><img
+                            src="images/notification.svg" alt="nudge button"></div>
                 </div>
                 <?php endif; ?>
                 <?php if (!empty($cData['userId3'])): ?>
@@ -138,7 +144,9 @@
                         <p><?php echo $userData['crop1'] ?>
                         </p>
                     </div>
-                    <div class="member--nudge"><img src="images/notification.svg" alt="nudge button"></div>
+                    <div class="member--nudge" data-userId2=<?php echo $userData['id']; ?>
+                        data-userId1 = <?php echo $_SESSION['id'] ?>><img
+                            src="images/notification.svg" alt="nudge button"></div>
                 </div>
                 <?php endif; ?>
                 <?php if (!empty($cData['userId4'])): ?>
@@ -158,7 +166,9 @@
                         <p><?php echo $userData['crop1'] ?>
                         </p>
                     </div>
-                    <div class="member--nudge"><img src="images/notification.svg" alt="nudge button"></div>
+                    <div class="member--nudge" data-userId2=<?php echo $userData['id']; ?>
+                        data-userId1 = <?php echo $_SESSION['id'] ?>><img
+                            src="images/notification.svg" alt="nudge button"></div>
                 </div>
                 <?php endif; ?>
             </div>
