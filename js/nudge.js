@@ -17,12 +17,26 @@ let sendNudgeButton = document.querySelector('.nudge__popup__send')
 
 sendNudgeButton.addEventListener("click", (e) => {
   text = document.querySelector('#nudgeMessage').value
-  document.querySelector('#nudgeMessage').value = ""
-  document.querySelector('.nudge__popup').style.display="none"
-  document.querySelector('.nudge__complete').style.display="block"
-  console.log(userId1)
-  console.log(userId2)
-  console.log(text)
+
+  // make form en maak ajax call om nudge in database te stoppen
+  let formData = new FormData();
+  formData.append('userId1', userId1)  
+  formData.append('userId2', userId2)
+  formData.append('text', text)
+  fetch('ajax/sendNudge.php', {
+    method: 'POST',
+    body: formData
+    })
+    .then((response) => response.json())
+    .then((result) => {
+      document.querySelector('#nudgeMessage').value = ""
+      document.querySelector('.nudge__popup').style.display="none"
+      document.querySelector('.nudge__complete').style.display="block"
+      console.log(formData.get('text'))
+    })
+    .catch((error) => {
+    console.error('Error:', error);
+    });
 })
 
 let nudgeComplete = document.querySelector('.nudge__complete')
