@@ -214,6 +214,7 @@ header, footer {
     height: 13vh;
     display: flex;
     justify-content: center;
+    z-index: 50000;
 }
 
 header {
@@ -271,6 +272,10 @@ header .form__field input[type=text]::placeholder {
     flex-direction: column;
 }
 
+.community__container--all {
+    margin-bottom: 18vh;
+}
+
 .community__container p {
     color: #6E7FAA;
 }
@@ -303,6 +308,10 @@ header .form__field input[type=text]::placeholder {
     display: flex;
     align-self: center;
     flex-direction: column;
+}
+
+.community__data__container--all {
+    margin-top: 3vh;
 }
 
 .community__data__container__a {
