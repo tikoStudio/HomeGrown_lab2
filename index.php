@@ -37,9 +37,12 @@
     <div class="community__container">
         <div class="community__title__container">
             <h2>Current Communities</h2>
-            <p>See All (<?php echo $myCommunitiesCount["COUNT(*)"] ?>)
-            </p>
+            <a href="allMyCommunities.php">
+                <p>See All (<?php echo $myCommunitiesCount["COUNT(*)"] ?>)
+                </p>
+            </a>
         </div>
+        <?php if (isset($myCommunities[0])): ?>
         <a href="community.php?com=<?php echo $myCommunities[0]['id'] ?>"
             class="community__data__container__a">
             <div class="community__data__container">
@@ -70,13 +73,23 @@
                 </p>
             </div>
         </a>
+        <?php else: ?>
+        <div class="community__data__container">
+            <div class="community__data--empty">
+                <h2>Join a community</h2>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 
     <div class="community__container community__nearby">
         <div class="community__title__container">
             <h2>Communities around you</h2>
-            <p>See All (<?php echo $nearbyCommunitiesCount["COUNT(*)"] ?>)
-            </p>
+            <a href="allNearbyCommunities.php">
+                <p>See All (<?php echo $nearbyCommunitiesCount["COUNT(*)"] ?>)
+                </p>
+            </a>
+
         </div>
         <a href="community.php?com=<?php echo $nearbyCommunities[0]['id'] ?>"
             class="community__data__container__a">

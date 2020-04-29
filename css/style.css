@@ -275,6 +275,16 @@ header .form__field input[type=text]::placeholder {
     color: #6E7FAA;
 }
 
+.community__container a {
+    font-weight: 500;
+}
+
+.community__data--empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .community__title__container {
     flex-direction: row;
     display: flex;
