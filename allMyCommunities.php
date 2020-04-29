@@ -23,14 +23,7 @@
 </head>
 
 <body>
-    <header>
-        <form action="" method="POST">
-            <div class="form__field form__field__search">
-                <img src="images/search.svg" alt="mail icon" class="form__icon">
-                <input type="text" id="search" name="search" placeholder="Look for specific farms">
-            </div>
-        </form>
-    </header>
+    <?php include_once('nav.inc.php'); ?>
 
     <div class="community__container community__container--all">
         <div class="community__title__container">
