@@ -135,24 +135,32 @@
     <div class="blur blur--active"></div>
     <div class="nudgeList">
         <div class="line nudgeLine"></div>
-        <?php foreach ($nudgeCollection as $nudgeItem): ?>
-        <?php
+        <div class="nudgeFolder">
+            <?php foreach ($nudgeCollection as $nudgeItem): ?>
+            <?php
             $nudger = new User();
             $nudger->setId($nudgeItem["userId2"]);
             $nudgeData = $nudger->getAllUserData();
         ?>
-        <div class="nudgeItem">
-            <div class="member--avatar nudge--avatar"><?php if (!empty($nudgeData["avatar"])): ?>
-                <img src="<?php echo "uploads/" . $nudgeData["avatar"]; ?>"
-                    alt="profile picture"><?php endif; ?>
+            <div class="nudgeItem">
+                <div class="member--avatar nudge--avatar"><?php if (!empty($nudgeData["avatar"])): ?>
+                    <img src="<?php echo "uploads/" . $nudgeData["avatar"]; ?>"
+                        alt="profile picture"><?php endif; ?>
+                </div>
+                <div class="nudge--name">
+                    <p class="p__member--name"><?php echo $nudgeData['name']; ?>
+                        <span>nudged you</span>
+                    </p>
+                </div>
+                <div class="nudge--text">
+                    <p><?php echo $nudgeItem['text']; ?>
+                    </p>
+                </div>
+                <a href="?nudge=true&t=<?php echo $nudgeItem['id'] ?>"
+                    class="nudgeLink">X</a>
             </div>
-            <div class="member--name nudge--name">
-                <p class="p__member--name"><?php echo $nudgeData['name']; ?>
-                    <span>nudged you</span>
-                </p>
-            </div>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
     </div>
     <?php endif; ?>
     <?php include_once("footer.inc.php"); ?>
