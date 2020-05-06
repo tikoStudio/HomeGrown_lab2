@@ -130,4 +130,19 @@
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        public function unreadNudges()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select COUNT(*) from nudges where userId2= :id and active = 1");
+            $id = $this->getUserId2();
+            $statement->bindParam(":id", $id);
+ 
+            //return result
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
