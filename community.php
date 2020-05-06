@@ -249,6 +249,7 @@
         </nav>
     </footer>
     <script src="js/nudge.js"></script>
+    <script src="js/nudgeBlur.js"></script>
 </body>
 
 </html>

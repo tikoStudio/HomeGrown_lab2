@@ -109,7 +109,7 @@
     </div>
     <?php endif; ?>
     <?php include_once("footer.inc.php"); ?>
-
+    <script src="js/nudgeBlur.js"></script>
 </body>
 
 </html>

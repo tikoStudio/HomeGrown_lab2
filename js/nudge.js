@@ -3,7 +3,6 @@ let userId1
 let userId2
 let text
 
-
 nudgeButtons.forEach(element => {
   element.addEventListener("click", (e) => {
       document.querySelector('.blur').style.display="block"

@@ -85,6 +85,7 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/map.js"></script>
+    <script src="js/nudgeBlur.js"></script>
 </body>
 
 </html>
