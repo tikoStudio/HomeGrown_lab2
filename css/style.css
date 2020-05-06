@@ -494,6 +494,60 @@ nav img {
 
 /* END NUDGE */
 
+/* NUDGE DISPLAY */
+
+.blur--active {
+    display: block;
+}
+
+.nudgeList {
+    position: absolute;
+    bottom: 0px;
+    height: 55vh;
+    background-color: #569350;
+    width: 100vw;
+    z-index: 110;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nudgeLine {
+    width: 30%;
+    margin-top: 15px;
+}
+
+.nudgeItem {
+   background-color: #fff;
+   width: 95%;
+   height: 15vh;
+   color: #3E3F68;
+   display: flex;
+}
+
+div .nudge--avatar {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-self: center;
+}
+
+div .nudge--avatar img {
+    height: 60px;
+    width: 60px;
+}
+
+div .nudge--name {
+    margin-left: 100px;
+}
+
+div .nudge--name span {
+    font-weight: 500;
+}
+
+/* END NUDGE DISPLAY */
+
 /* MEMBERLIST */
 .memberlist {
     height: 150px;

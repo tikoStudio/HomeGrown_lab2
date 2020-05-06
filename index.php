@@ -1,5 +1,7 @@
 <?php
     include_once('classes/Community.php');
+    include_once('classes/Nudge.php');
+    include_once('classes/User.php');
 
     session_start();
     if (!isset($_SESSION["user"])) {
@@ -12,6 +14,12 @@
     $myCommunitiesCount = $community->countMyCommunities();
     $nearbyCommunities = $community->getNearbyCommunities();
     $nearbyCommunitiesCount = $community->countNearbyCommunities();
+
+    if (!empty($_GET['nudge'])) {
+        $nudge = new Nudge();
+        $nudge->setMyid($_SESSION['id']);
+        $nudgeCollection = $nudge->showNudges();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,6 +130,31 @@
             </div>
         </a>
     </div>
+
+    <?php if (isset($nudgeCollection)): ?>
+    <div class="blur blur--active"></div>
+    <div class="nudgeList">
+        <div class="line nudgeLine"></div>
+        <?php foreach ($nudgeCollection as $nudgeItem): ?>
+        <?php
+            $nudger = new User();
+            $nudger->setId($nudgeItem["userId2"]);
+            $nudgeData = $nudger->getAllUserData();
+        ?>
+        <div class="nudgeItem">
+            <div class="member--avatar nudge--avatar"><?php if (!empty($nudgeData["avatar"])): ?>
+                <img src="<?php echo "uploads/" . $nudgeData["avatar"]; ?>"
+                    alt="profile picture"><?php endif; ?>
+            </div>
+            <div class="member--name nudge--name">
+                <p class="p__member--name"><?php echo $nudgeData['name']; ?>
+                    <span>nudged you</span>
+                </p>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
     <?php include_once("footer.inc.php"); ?>
 </body>
 

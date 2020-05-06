@@ -3,6 +3,7 @@
 
     class Nudge
     {
+        private $myid;
         private $userId1; //sender
         private $userId2; //receiver
         private $text;
@@ -56,6 +57,18 @@
             return $this;
         }
 
+        public function getMyid()
+        {
+            return $this->myid;
+        }
+
+        public function setMyid($myid)
+        {
+            $this->myid = $myid;
+
+            return $this;
+        }
+
         public function saveNudge()
         {
             //db conn
@@ -73,5 +86,20 @@
 
             //return result
             $statement->execute();
+        }
+
+        public function showNudges()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select * from nudges where userId2 = :id");
+            $id = $this->getMyid();
+            $statement->bindParam(":id", $id);
+
+            //return result
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
         }
     }
