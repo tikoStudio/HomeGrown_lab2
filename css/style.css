@@ -501,7 +501,7 @@ nav img {
 }
 
 .nudgeList {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     height: 55vh;
     background-color: #569350;

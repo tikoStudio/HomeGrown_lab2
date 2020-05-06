@@ -1,23 +1,35 @@
 <?php
     include_once('classes/User.php');
     include_once('classes/Community.php');
+    include_once('classes/Nudge.php');
 
     session_start();
     $user = new User();
     $community = new Community();
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
-    } else if (!isset($_GET['com']) || empty($_GET['com'])) {
+    } elseif (!isset($_GET['com']) || empty($_GET['com'])) {
         header("Location: index.php");
-    } else if(!empty($_GET['com'])) {
+    } elseif (!empty($_GET['com'])) {
         $community->setId($_GET['com']);
         $cData = $community->getcommunityData();
-        if(!$cData) {
+        if (!$cData) {
             header("Location: index.php");
         }
     }
 
-    $isTop = false;  
+    $isTop = false;
+
+    if (!empty($_GET['nudge'])) {
+        $nudge = new Nudge();
+        $nudge->setMyid($_SESSION['id']);
+        $nudgeCollection = $nudge->showNudges();
+        if (!empty($_GET['nid'])) {
+            $nudge->setPostId($_GET['nid']);
+            $nudge->markAsRead();
+            $nudgeCollection = $nudge->showNudges();
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -189,7 +201,53 @@
         </div>
     </div>
 
-    <?php include_once("footer.inc.php"); ?>
+    <?php if (isset($nudgeCollection)): ?>
+    <div class="blur blur--active"></div>
+    <div class="nudgeList">
+        <div class="line nudgeLine"></div>
+        <div class="nudgeFolder">
+            <?php foreach ($nudgeCollection as $nudgeItem): ?>
+            <?php
+            $nudger = new User();
+            $nudger->setId($nudgeItem["userId1"]);
+            $nudgeData = $nudger->getAllUserData();
+        ?>
+            <div class="nudgeItem">
+                <div class="member--avatar nudge--avatar"><?php if (!empty($nudgeData["avatar"])): ?>
+                    <img src="<?php echo "uploads/" . $nudgeData["avatar"]; ?>"
+                        alt="profile picture"><?php endif; ?>
+                </div>
+                <div class="nudge--name">
+                    <p class="p__member--name"><?php echo $nudgeData['name']; ?>
+                        <span>nudged you</span>
+                    </p>
+                </div>
+                <div class="nudge--text">
+                    <p><?php echo $nudgeItem['text']; ?>
+                    </p>
+                </div>
+                <a href="?nudge=true&nid=<?php echo $nudgeItem['id'] ?>"
+                    class="nudgeLink">X</a>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <footer>
+        <div class="middle">
+            <a href="map.php"><img src="images/map.svg" alt="map button" class="mapbtn"></a>
+            <div class="line"></div>
+        </div>
+        <nav>
+            <a href="index.php"><img src="images/home.svg" alt="home icon"></a>
+            <a href="allMyCommunities.php"><img src="images/list.svg" alt="list icon"></a>
+            <a
+                href="?com=<?php echo $_GET['com']; ?>&nudge=true"><img
+                    src="images/notification.svg" alt="notification icon"></a>
+            <a href="#"><img src="images/profile.svg" alt="profile icon"></a>
+        </nav>
+    </footer>
     <script src="js/nudge.js"></script>
 </body>
 

@@ -4,6 +4,7 @@
     class Nudge
     {
         private $myid;
+        private $postId;
         private $userId1; //sender
         private $userId2; //receiver
         private $text;
@@ -69,6 +70,18 @@
             return $this;
         }
 
+        public function getPostId()
+        {
+            return $this->postId;
+        }
+
+        public function setPostId($postId)
+        {
+            $this->postId = $postId;
+
+            return $this;
+        }
+
         public function saveNudge()
         {
             //db conn
@@ -93,8 +106,23 @@
             //db conn
             $conn = Db::getConnection();
             //insert query
-            $statement = $conn->prepare("select * from nudges where userId2 = :id");
+            $statement = $conn->prepare("select * from nudges where userId2 = :id and active = 1");
             $id = $this->getMyid();
+            $statement->bindParam(":id", $id);
+
+            //return result
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function markAsRead()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("update nudges set active= 0 where id= :id");
+            $id = $this->getPostId();
             $statement->bindParam(":id", $id);
 
             //return result

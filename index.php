@@ -19,6 +19,11 @@
         $nudge = new Nudge();
         $nudge->setMyid($_SESSION['id']);
         $nudgeCollection = $nudge->showNudges();
+        if (!empty($_GET['nid'])) {
+            $nudge->setPostId($_GET['nid']);
+            $nudge->markAsRead();
+            $nudgeCollection = $nudge->showNudges();
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -139,7 +144,7 @@
             <?php foreach ($nudgeCollection as $nudgeItem): ?>
             <?php
             $nudger = new User();
-            $nudger->setId($nudgeItem["userId2"]);
+            $nudger->setId($nudgeItem["userId1"]);
             $nudgeData = $nudger->getAllUserData();
         ?>
             <div class="nudgeItem">
@@ -156,7 +161,7 @@
                     <p><?php echo $nudgeItem['text']; ?>
                     </p>
                 </div>
-                <a href="?nudge=true&t=<?php echo $nudgeItem['id'] ?>"
+                <a href="?nudge=true&nid=<?php echo $nudgeItem['id'] ?>"
                     class="nudgeLink">X</a>
             </div>
             <?php endforeach; ?>

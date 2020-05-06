@@ -1,18 +1,20 @@
 <?php
     include_once(__DIR__ . "/classes/Message.php");
     include_once(__DIR__ . "/classes/Community.php");
+    include_once('classes/Nudge.php');
+    include_once('classes/User.php');
 
     session_start();
     $community = new Community();
     $user = new Message();
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
-    }  else if (!isset($_GET['com']) || empty($_GET['com'])) {
+    } elseif (!isset($_GET['com']) || empty($_GET['com'])) {
         header("Location: index.php");
-    } else if(!empty($_GET['com'])) {
+    } elseif (!empty($_GET['com'])) {
         $community->setId($_GET['com']);
         $cData = $community->getcommunityData();
-        if(!$cData) {
+        if (!$cData) {
             header("Location: index.php");
         }
     }
@@ -27,6 +29,17 @@
         $user->setTime(date("H:i"));
         $user->saveMessage();
         $messages = $user->getMessagesFromDatabase(); //recheck all messages in db
+    }
+
+    if (!empty($_GET['nudge'])) {
+        $nudge = new Nudge();
+        $nudge->setMyid($_SESSION['id']);
+        $nudgeCollection = $nudge->showNudges();
+        if (!empty($_GET['nid'])) {
+            $nudge->setPostId($_GET['nid']);
+            $nudge->markAsRead();
+            $nudgeCollection = $nudge->showNudges();
+        }
     }
 
 ?>
@@ -45,7 +58,8 @@
 <body>
 
     <div class="community__container community__container--top">
-        <h1 class="h1--members"><?php echo $cData['name'] ?></h1>
+        <h1 class="h1--members"><?php echo $cData['name'] ?>
+        </h1>
     </div>
     <div class="chatbox">
 
@@ -79,7 +93,53 @@
         <img src="images/plus.svg" alt="send text" class="send__message__img">
     </form>
 
-    <?php include_once("footer.inc.php"); ?>
+    <?php if (isset($nudgeCollection)): ?>
+    <div class="blur blur--active"></div>
+    <div class="nudgeList">
+        <div class="line nudgeLine"></div>
+        <div class="nudgeFolder">
+            <?php foreach ($nudgeCollection as $nudgeItem): ?>
+            <?php
+            $nudger = new User();
+            $nudger->setId($nudgeItem["userId1"]);
+            $nudgeData = $nudger->getAllUserData();
+        ?>
+            <div class="nudgeItem">
+                <div class="member--avatar nudge--avatar"><?php if (!empty($nudgeData["avatar"])): ?>
+                    <img src="<?php echo "uploads/" . $nudgeData["avatar"]; ?>"
+                        alt="profile picture"><?php endif; ?>
+                </div>
+                <div class="nudge--name">
+                    <p class="p__member--name"><?php echo $nudgeData['name']; ?>
+                        <span>nudged you</span>
+                    </p>
+                </div>
+                <div class="nudge--text">
+                    <p><?php echo $nudgeItem['text']; ?>
+                    </p>
+                </div>
+                <a href="?nudge=true&nid=<?php echo $nudgeItem['id'] ?>"
+                    class="nudgeLink">X</a>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <footer>
+        <div class="middle">
+            <a href="map.php"><img src="images/map.svg" alt="map button" class="mapbtn"></a>
+            <div class="line"></div>
+        </div>
+        <nav>
+            <a href="index.php"><img src="images/home.svg" alt="home icon"></a>
+            <a href="allMyCommunities.php"><img src="images/list.svg" alt="list icon"></a>
+            <a
+                href="?com=<?php echo $_GET['com']; ?>&nudge=true"><img
+                    src="images/notification.svg" alt="notification icon"></a>
+            <a href="#"><img src="images/profile.svg" alt="profile icon"></a>
+        </nav>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/chat.js"></script>
 </body>
