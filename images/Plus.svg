@@ -1,13 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="126" height="136.125" viewBox="0 0 126 136.125">
-  <g id="Group_2968" data-name="Group 2968" transform="translate(-0.468 0.25)">
-    <rect id="Rectangle_1" data-name="Rectangle 1" width="22" height="136" transform="translate(52.468 -0.25)" fill="none"/>
-    <rect id="Rectangle_2" data-name="Rectangle 2" width="20" height="126" transform="translate(126.468 58.75) rotate(90)" fill="none"/>
-    <g id="icons" transform="translate(1776.434 -1821.25)">
-      <g id="arrow" transform="translate(-4258 428)">
-        <g id="chevron-right" transform="translate(312.791 598.539)">
-          <path id="Path_515" data-name="Path 515" d="M2299.99,871.3l-54.875,55.772a11.674,11.674,0,0,1-16.7,0h0a12.14,12.14,0,0,1,0-16.974l38.174-38.8a12.14,12.14,0,0,0,0-16.974l-38.174-38.8a12.14,12.14,0,0,1,0-16.974h0a11.674,11.674,0,0,1,16.7,0l54.875,55.772a12.139,12.139,0,0,1,0,16.974Z" transform="translate(-33.99 0)" fill="#999"/>
-        </g>
-      </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="34" viewBox="0 0 32 34">
+  <g id="Plus" transform="translate(0 -0.344)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="6" height="34" transform="translate(13 0.344)" fill="#999"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="5" height="32" transform="translate(32 15.344) rotate(90)" fill="#999"/>
   </g>
 </svg>

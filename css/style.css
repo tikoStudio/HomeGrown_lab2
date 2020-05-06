@@ -682,10 +682,15 @@ div .nudge--text {
 
 .form__messages {
     display: flex;
+    background-color: #DDF5E7;
+    border-radius: 25px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .input__message {
-    background-color: #DDF5E7;
+    background-color: transparent;
     width: 80%;
     height: 4em;
     border: none;
@@ -704,11 +709,12 @@ div .nudge--text {
 }
 
 .send__message__img {
-    background-color: #DDF5E7;
-    width: 20%;
-    height: 4em;
+    /*background-color: #DDF5E7;*/
+    height: 2em;
     position: absolute;
     right: 0;
+    align-self: center;
+    margin-right: 1.5em;
 }
 /* END CHAT */
 
