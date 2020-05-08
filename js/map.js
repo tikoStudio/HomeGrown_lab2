@@ -3,8 +3,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidGltb3RoeWsiLCJhIjoiY2s5YjQzc3VpMGl4djNlbzAwb
 var map = new mapboxgl.Map({
 container: 'mapContainer', // Container id
 style: 'mapbox://styles/timothyk/ck9h30yyg0n471iqwryimh56t',
-center: [4.465269, 51.021694], // Starting position
-zoom: 17 // Starting zoom
+center: [4.475269, 51.021694], // Starting position
+zoom: 12 // Starting zoom
 });
 
 //Init GLOBAL variables
