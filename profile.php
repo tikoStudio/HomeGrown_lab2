@@ -32,6 +32,39 @@
 
 <body>
 
+    <div class="profileList">
+        <div class="line nudgeLine"></div>
+        <h2 class="profile__head">profile</h2>
+
+        <div class="white__field">
+            <img src="uploads/elizabeth.jpg" alt="profile img" class="profile__avatar">
+            <h2>Mijn naam</h2>
+        </div>
+
+        <h2 class="profile__head">crops</h2>
+
+        <div class="white__field white__field--crops">
+            <h2 class="zero">crop 1</h2>
+            <div class="profile__crop"></div>
+            <h2 class="zero">crop 2</h2>
+            <div class="profile__crop"></div>
+            <h2 class="zero">crop 3</h2>
+            <div class="profile__crop"></div>
+        </div>
+
+        <h2 class="profile__head">Nudges</h2>
+
+        <textarea name="nudgeMessage" id="nudgeMessage"></textarea>
+        <button class="nudge__popup__send">Send</button>
+
+        <div class="nudge__popup nudge__complete">
+            <img src="images/nudged.svg" alt="nudge alert popup">
+            <h2>Nudge has been send</h2>
+        </div>
+    </div>
+
+
+
     <?php if (isset($nudgeCollection)): ?>
     <div class="blur blur--active"></div>
     <div class="nudgeList">

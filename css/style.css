@@ -741,6 +741,88 @@ div .nudge--text {
 }
 /* END CHAT */
 
+/*  PROFILE */
+
+.profileList {
+    bottom: 0px;
+    height: 100vh;
+    background-color: #569350;
+    width: 100vw;
+    z-index: 109;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile__head {
+    font-size: 1.7em;
+    margin: 5px 0;
+}
+
+.white__field {
+    background-color: #fff;
+    height: 25vh;
+    width: 95vw;
+    border-radius: 20px;
+    display: flex;
+    color: #3E3F68;
+}
+
+.white__field h2 {
+    margin-left: 5vw;
+    width: 130px;
+    overflow: scroll;
+}
+
+.profile__avatar {
+    height: 20vh;
+    margin-top: 2.5vh;
+    margin-left: 5vw;
+    border-radius: 20px;
+}
+
+.white__field--crops {
+    flex-direction: column;
+    align-items: center;
+}
+
+.white__field h2.zero {
+    margin-left: 0;
+    width: auto;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.profile__crop {
+    height: 4vh;
+    width: 70vw;
+    background-color: rgb(102, 183, 78, 0.35);
+    border-radius: 10px;
+}
+
+#nudgeMessage {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.35);
+    border: none;
+    border-radius: 15px;
+    height: 7vh;
+    color: #FFFFFF;
+}
+
+.nudge__popup__send {
+    background-color: #fff;
+    border: none;
+    border-radius: 15px;
+    width: 80%;
+    padding: 0.5em 0;
+    color: #248823;
+    margin-top: 0.5em;
+}
+
+/* END PROFILE */
+
 /* MAP */
 
 .mapContainer {
