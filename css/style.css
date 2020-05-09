@@ -503,6 +503,20 @@ nav img {
 
 /* END NUDGE */
 
+/* NOTIFICATIONS NUDGE */
+
+.test {
+    height: 10px;
+    width: 10px;
+    background-color: #FF5858;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 12px;
+    margin-top: -6px;
+}
+
+/* END NOTIFICATIONS NUDGE */
+
 /* NUDGE DISPLAY */
 
 .blur--active {
@@ -756,16 +770,3 @@ div .nudge--text {
     color: #000;    
 }
 
-/* NOTIFICATIONS NUDGE */
-
-.test {
-    height: 10px;
-    width: 10px;
-    background-color: #FF5858;
-    border-radius: 50%;
-    position: absolute;
-    margin-left: 12px;
-    margin-top: -6px;
-}
-
-/* END NOTIFICATIONS NUDGE */

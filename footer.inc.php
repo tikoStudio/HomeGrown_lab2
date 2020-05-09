@@ -20,6 +20,6 @@
             <?php endif; ?>
             <a href="?nudge=true"><img src="images/notification.svg" alt="notification icon"></a>
         </div>
-        <a href="#"><img src="images/profile.svg" alt="profile icon"></a>
+        <a href="profile.php"><img src="images/profile.svg" alt="profile icon"></a>
     </nav>
 </footer>

@@ -30,6 +30,11 @@
             $nudgeCollection = $nudge->showNudges();
         }
     }
+
+    $nudges = new Nudge();
+        
+    $nudges->setUserId2($_SESSION['id']);
+    $nudgeCount = $nudges->unreadNudges();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -226,7 +231,7 @@
                     <p><?php echo $nudgeItem['text']; ?>
                     </p>
                 </div>
-                <a href="?nudge=true&nid=<?php echo $nudgeItem['id'] ?>"
+                <a href="?com=<?php echo $_GET['com'] ?>&nudge=true&nid=<?php echo $nudgeItem['id'] ?>"
                     class="nudgeLink">X</a>
             </div>
             <?php endforeach; ?>
@@ -242,10 +247,15 @@
         <nav>
             <a href="index.php"><img src="images/home.svg" alt="home icon"></a>
             <a href="allMyCommunities.php"><img src="images/list.svg" alt="list icon"></a>
-            <a
-                href="?com=<?php echo $_GET['com']; ?>&nudge=true"><img
-                    src="images/notification.svg" alt="notification icon"></a>
-            <a href="#"><img src="images/profile.svg" alt="profile icon"></a>
+            <div>
+                <?php  if ($nudgeCount['COUNT(*)'] > 0):?>
+                <div class="test"></div>
+                <?php endif; ?>
+                <a
+                    href="?com=<?php echo $_GET['com']; ?>&nudge=true"><img
+                        src="images/notification.svg" alt="notification icon"></a>
+            </div>
+            <a href="profile.php"><img src="images/profile.svg" alt="profile icon"></a>
         </nav>
     </footer>
     <script src="js/nudge.js"></script>
