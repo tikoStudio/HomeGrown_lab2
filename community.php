@@ -49,10 +49,10 @@
         <div class="community__data__container community__data__container--xl">
             <div class="label">
                 <p><?php if ($_SESSION['id'] != $cData['userId1'] && $_SESSION['id'] != $cData['userId2'] && $_SESSION['id'] != $cData['userId3'] && $_SESSION['id'] != $cData['userId4']): ?>
-                    <?php if (!empty($cData['userId1']) || !empty($cData['userId2']) || !empty($cData['userId3']) || !empty($cData['userId1'])): ?>
+                    <?php if (empty($cData['userId1']) || empty($cData['userId2']) || empty($cData['userId3']) || empty($cData['userId1'])): ?>
                     <?php echo "Looking for members"; ?>
-                    <?php endif; ?>
-                    <?php else: echo "Members"; endif; ?>
+                    <?php else: echo "currently full"; endif; ?>
+                    <?php else: echo "Member"; endif; ?>
                 </p>
             </div>
             <div class="community__img">

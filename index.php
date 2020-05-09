@@ -82,7 +82,8 @@
         <?php else: ?>
         <div class="community__data__container">
             <div class="community__data--empty">
-                <h2>Join a community</h2>
+                <h2>Join a community, take a look at <a href="allNearbyCommunities.php">nearby communities</a>, or go to
+                    the map!</h2>
             </div>
         </div>
         <?php endif; ?>

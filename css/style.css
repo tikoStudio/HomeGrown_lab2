@@ -92,7 +92,7 @@ a {
 
 .form__field {
     display: inline-flex;
-    margin: 15px 0;
+    margin: 12px 0;
     font-weight: 500;
 }
 
@@ -124,7 +124,7 @@ a {
 .form__image {
     margin-top: 1.5em;
     width: 180px;
-    height: 190px;
+    height: 170px;
 }
 
 .form__field input {
@@ -288,6 +288,15 @@ header .form__field input[type=text]::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.community__data--empty {
+    margin: 15px;
+}
+
+.community__data--empty a {
+    color: #6e70bd;
+    font-weight: bold;
 }
 
 .community__title__container {

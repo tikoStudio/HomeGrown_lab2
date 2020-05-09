@@ -40,14 +40,18 @@
 
     <div class="community__container community__container--all">
         <div class="community__title__container">
-            <h2>Current Communities</h2>
+            <h2>Nearby Communities</h2>
         </div>
         <?php foreach ($nearbyCommunities as $community): ?>
         <a href="community.php?com=<?php echo $community['id'] ?>"
             class="community__data__container__a">
             <div class="community__data__container community__data__container--all">
                 <div class="label">
-                    <p>Member</p>
+                    <p><?php if (empty($community['userId1']) || empty($community['userId2']) || empty($community['userId3']) || empty($community['userId4'])) {
+    echo "Looking for members";
+} else {
+    echo "currently full";
+} ?>
                 </div>
                 <div class="community__img">
                     <img src="images/<?php echo $community['img']; ?>"
