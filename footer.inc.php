@@ -5,6 +5,11 @@
         
         $nudges->setUserId2($_SESSION['id']);
         $nudgeCount = $nudges->unreadNudges();
+
+        include_once('classes/User.php');
+        $user = new User();
+        $user->setId($_SESSION['id']);
+        $token = $user->tokenFromSession();
 ?>
 <footer>
     <div class="middle">
@@ -20,6 +25,8 @@
             <?php endif; ?>
             <a href="?nudge=true"><img src="images/notification.svg" alt="notification icon"></a>
         </div>
-        <a href="profile.php"><img src="images/profile.svg" alt="profile icon"></a>
+        <a
+            href="profile.php?u=<?php echo $token['activationToken']; ?>"><img
+                src="images/profile.svg" alt="profile icon"></a>
     </nav>
 </footer>

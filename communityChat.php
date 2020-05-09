@@ -19,6 +19,10 @@
         }
     }
 
+    $loggedIn = new User();
+    $loggedIn->setId($_SESSION['id']);
+    $token = $loggedIn->tokenFromSession();
+
     $user->setId($_SESSION['id']);
     $user->setCommunityId($_GET['com']);
 
@@ -147,7 +151,9 @@
                     href="?com=<?php echo $_GET['com']; ?>&nudge=true"><img
                         src="images/notification.svg" alt="notification icon"></a>
             </div>
-            <a href="profile.php"><img src="images/profile.svg" alt="profile icon"></a>
+            <a
+                href="profile.php?u=<?php echo $token['activationToken']; ?>"><img
+                    src="images/profile.svg" alt="profile icon"></a>
         </nav>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -17,6 +17,17 @@
             $nudgeCollection = $nudge->showNudges();
         }
     }
+
+    if (empty($_GET["u"])) {
+        header("Location: index.php");
+    } else {
+        $user = new User();
+        $user->setToken($_GET['u']);
+        $profile = $user->userFromToken();
+        if (!$profile) {
+            header("Location: index.php");
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +73,7 @@
             <h2>Nudge has been send</h2>
         </div>
     </div>
-
+    <div class="blur"></div>
 
 
     <?php if (isset($nudgeCollection)): ?>

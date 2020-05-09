@@ -5,6 +5,8 @@
 
     session_start();
     $user = new User();
+    $user->setId($_SESSION['id']);
+    $token = $user->tokenFromSession();
     $community = new Community();
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
@@ -255,7 +257,9 @@
                     href="?com=<?php echo $_GET['com']; ?>&nudge=true"><img
                         src="images/notification.svg" alt="notification icon"></a>
             </div>
-            <a href="profile.php"><img src="images/profile.svg" alt="profile icon"></a>
+            <a
+                href="profile.php?u=<?php echo $token['activationToken']; ?>"><img
+                    src="images/profile.svg" alt="profile icon"></a>
         </nav>
     </footer>
     <script src="js/nudge.js"></script>

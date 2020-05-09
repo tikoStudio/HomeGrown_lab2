@@ -8,6 +8,7 @@
         protected $name;
         protected $avatar;
         protected $password;
+        protected $token;
 
         public function setName($name)
         {
@@ -109,19 +110,22 @@
             $conn = Db::getConnection();
 
             // query
-            $statement = $conn->prepare("insert into users (name, email, password, avatar) values (:name, :email, :password, :avatar)");
+            $statement = $conn->prepare("insert into users (name, email, password, avatar, activationToken) values (:name, :email, :password, :avatar, :activationToken)");
             
             // variabelen klaarzetten om te binden
             $name = $this->getName();
             $email = $this->getEmail();
             $password = $this->getPassword();
             $avatar = $this->getAvatar();
-            
+            $hash = md5($name);
+            $activationToken = uniqid($hash, true);
+
             // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
             $statement->bindParam(":name", $name);
             $statement->bindParam(":email", $email);
             $statement->bindParam(":password", $password);
             $statement->bindParam("avatar", $avatar);
+            $statement->bindParam(":activationToken", $activationToken);
 
             // als je geen execute doet dan wordt die query niet uitgevoerd
             $result = $statement->execute();
@@ -199,6 +203,48 @@
             $id = $this->getId();
             $statement->bindParam(":id", $id);
             
+            //return result
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function getToken()
+        {
+            return $this->token;
+        }
+
+        public function setToken($token)
+        {
+            $this->token = $token;
+
+            return $this;
+        }
+
+        public function tokenFromSession()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select activationToken from users where id = :id");
+            $id = $this->getId();
+            $statement->bindParam(":id", $id);
+
+            //return result
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function userFromToken()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select * from users where activationToken = :activationToken");
+            $activationToken = $this->getToken();
+            $statement->bindParam(":activationToken", $activationToken);
+
             //return result
             $statement->execute();
             $result = $statement->fetch(PDO::FETCH_ASSOC);
