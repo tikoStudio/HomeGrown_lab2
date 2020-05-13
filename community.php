@@ -56,7 +56,7 @@
         <div class="community__data__container community__data__container--xl">
             <div class="label">
                 <p><?php if ($_SESSION['id'] != $cData['userId1'] && $_SESSION['id'] != $cData['userId2'] && $_SESSION['id'] != $cData['userId3'] && $_SESSION['id'] != $cData['userId4']): ?>
-                    <?php if (empty($cData['userId1']) || empty($cData['userId2']) || empty($cData['userId3']) || empty($cData['userId1'])): ?>
+                    <?php if (empty($cData['userId1']) || empty($cData['userId2']) || empty($cData['userId3']) || empty($cData['userId4'])): ?>
                     <?php echo "Looking for members"; ?>
                     <?php else: echo "currently full"; endif; ?>
                     <?php else: echo "Member"; endif; ?>
@@ -88,7 +88,7 @@
             <p class="community__adress center"><?php echo $cData['address'] ?>
             </p>
             <?php if ($_SESSION['id'] != $cData['userId1'] && $_SESSION['id'] != $cData['userId2'] && $_SESSION['id'] != $cData['userId3'] && $_SESSION['id'] != $cData['userId4']): ?>
-            <?php if (!empty($cData['userId1']) || !empty($cData['userId2']) || !empty($cData['userId3']) || !empty($cData['userId1'])): ?>
+            <?php if (empty($cData['userId1']) || empty($cData['userId2']) || empty($cData['userId3']) || empty($cData['userId4'])): ?>
             <div class="form__field top__container">
                 <a href="#"> <input type="submit" value="Join community"
                         class="btn btn--primary btn--reverse btn--round"></a>
