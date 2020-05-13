@@ -145,4 +145,19 @@
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        public function countNudges()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select COUNT(*) from nudges where userId2= :id and active = 1");
+            $id = $this->getMyid();
+            $statement->bindParam(":id", $id);
+  
+            //return result
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }

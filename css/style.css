@@ -837,6 +837,24 @@ div .nudge--text {
     height: 15px;
 }
 
+.nudge__profile {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile__head--small {
+    margin: 0;
+}
+
+.profile__head--top {
+    margin-top: 15px;
+}
+
+.anchor__profile {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 /* END PROFILE */
 
 /* MAP */
