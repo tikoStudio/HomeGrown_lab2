@@ -855,6 +855,38 @@ div .nudge--text {
     text-decoration: underline;
 }
 
+.crop1__popup, .crop2__popup, .crop3__popup {
+    background-color: #67B74E;
+    height: 34%;
+    width: 75%;
+    position: absolute;
+    margin-left: 12.5%;
+    margin-top: 30%;
+    border-radius: 35px;
+    text-align: center;
+    z-index: 200;
+    margin-left: auto;
+    display: none;
+}
+
+#crop1, #crop2, #crop3 {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.35);
+    border: none;
+    border-radius: 15px;
+    color: #FFFFFF;
+}
+
+.crop__popup__send {
+    background-color: #fff;
+    border: none;
+    border-radius: 15px;
+    width: 80%;
+    padding: 0.5em 0;
+    color: #248823;
+    margin-top: 0.5em;
+}
+
 /* END PROFILE */
 
 /* MAP */
