@@ -2,6 +2,7 @@
     include_once('classes/User.php');
     include_once('classes/Community.php');
     include_once('classes/Nudge.php');
+    include_once('classes/CommunityRequest.php');
 
     session_start();
     $user = new User();
@@ -37,6 +38,11 @@
         
     $nudges->setUserId2($_SESSION['id']);
     $nudgeCount = $nudges->unreadNudges();
+
+    $communityRequest = new CommunityRequest();
+    $communityRequest->setUserId($_SESSION['id']);
+    $communityRequest->setCommunityId($_GET["com"]);
+    $myRequests = $communityRequest->getMyrequest();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,12 +95,14 @@
             </p>
             <?php if ($_SESSION['id'] != $cData['userId1'] && $_SESSION['id'] != $cData['userId2'] && $_SESSION['id'] != $cData['userId3'] && $_SESSION['id'] != $cData['userId4']): ?>
             <?php if (empty($cData['userId1']) || empty($cData['userId2']) || empty($cData['userId3']) || empty($cData['userId4'])): ?>
+            <?php if (!$myRequests): ?>
             <div class="form__field top__container">
                 <a href="#" data-userId1=<?php echo $_SESSION['id'] ?>
                     data-communityId=<?php echo $_GET['com'] ?>
                     class="join__community">
                     <input type="submit" value="Join community" class="btn btn--primary btn--reverse btn--round"></a>
             </div>
+            <?php endif; ?>
             <?php endif; ?>
             <?php else: $isTop = true; endif; ?>
             <div class="form__field <?php if ($isTop) {
