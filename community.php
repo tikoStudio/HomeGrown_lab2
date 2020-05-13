@@ -90,8 +90,10 @@
             <?php if ($_SESSION['id'] != $cData['userId1'] && $_SESSION['id'] != $cData['userId2'] && $_SESSION['id'] != $cData['userId3'] && $_SESSION['id'] != $cData['userId4']): ?>
             <?php if (empty($cData['userId1']) || empty($cData['userId2']) || empty($cData['userId3']) || empty($cData['userId4'])): ?>
             <div class="form__field top__container">
-                <a href="#"> <input type="submit" value="Join community"
-                        class="btn btn--primary btn--reverse btn--round"></a>
+                <a href="#" data-userId1=<?php echo $_SESSION['id'] ?>
+                    data-communityId=<?php echo $_GET['com'] ?>
+                    class="join__community">
+                    <input type="submit" value="Join community" class="btn btn--primary btn--reverse btn--round"></a>
             </div>
             <?php endif; ?>
             <?php else: $isTop = true; endif; ?>
@@ -262,6 +264,8 @@
                     src="images/profile.svg" alt="profile icon"></a>
         </nav>
     </footer>
+
+    <script src="js/joinCommunity.js"></script>
     <script src="js/nudge.js"></script>
     <script src="js/nudgeBlur.js"></script>
 </body>
