@@ -17,7 +17,11 @@ joinBtn.addEventListener("click", () => {
         })
         .then((response) => response.json())
         .then((result) => {
-          console.log("joined")
+            document.querySelector('.request').style.display = "block"
+            document.querySelector('.blur').style.display = "block"
+            joinBtn.style.display = "none"
+            document.querySelector('.btn--chat--field').classList.add("top__container")
+            document.querySelector('.join__container').style.display = "none"
         })
         .catch((error) => {
         console.error('Error:', error);

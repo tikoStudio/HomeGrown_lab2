@@ -58,6 +58,11 @@
 
 <body>
 
+    <div class="nudge__popup nudge__complete request">
+        <img src="images/nudged.svg" alt="nudge alert popup">
+        <h2>Your request has been send to the community!</h2>
+    </div>
+
     <div class="community__container community__container--top">
         <div class="community__data__container community__data__container--xl">
             <div class="label">
@@ -96,16 +101,16 @@
             <?php if ($_SESSION['id'] != $cData['userId1'] && $_SESSION['id'] != $cData['userId2'] && $_SESSION['id'] != $cData['userId3'] && $_SESSION['id'] != $cData['userId4']): ?>
             <?php if (empty($cData['userId1']) || empty($cData['userId2']) || empty($cData['userId3']) || empty($cData['userId4'])): ?>
             <?php if (!$myRequests): ?>
-            <div class="form__field top__container">
+            <div class="form__field top__container join__container">
                 <a href="#" data-userId1=<?php echo $_SESSION['id'] ?>
                     data-communityId=<?php echo $_GET['com'] ?>
                     class="join__community">
                     <input type="submit" value="Join community" class="btn btn--primary btn--reverse btn--round"></a>
             </div>
-            <?php endif; ?>
-            <?php endif; ?>
+            <?php else: $isTop = true;endif; ?>
+            <?php else: $isTop = true;endif; ?>
             <?php else: $isTop = true; endif; ?>
-            <div class="form__field <?php if ($isTop) {
+            <div class="form__field btn--chat--field <?php if ($isTop) {
     echo "top__container";
 } ?>">
                 <a
