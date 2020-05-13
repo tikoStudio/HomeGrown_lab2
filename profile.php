@@ -84,8 +84,10 @@
 				<p class="crop__name"><?php echo $myData['crop1'] ?>
 				</p>
 				<?php else: ?>
+				<?php if ($token['activationToken'] == $_GET['u']): ?>
 				<p class="crop__name crop1"><img src="images/plus.svg" class="img__plus">
 				</p>
+				<?php endif; ?>
 				<?php endif; ?>
 			</div>
 			<h2 class="zero">crop 2</h2>
@@ -94,8 +96,10 @@
 				<p class="crop__name"><?php echo $myData['crop2'] ?>
 				</p>
 				<?php else: ?>
+				<?php if ($token['activationToken'] == $_GET['u']): ?>
 				<p class="crop__name crop2"><img src="images/plus.svg" class="img__plus">
 				</p>
+				<?php endif; ?>
 				<?php endif; ?>
 			</div>
 			<h2 class="zero">crop 3</h2>
@@ -104,8 +108,10 @@
 				<p class="crop__name"><?php echo $myData['crop3'] ?>
 				</p>
 				<?php else: ?>
+				<?php if ($token['activationToken'] == $_GET['u']): ?>
 				<p class="crop__name crop3"><img src="images/plus.svg" class="img__plus">
 				</p>
+				<?php endif; ?>
 				<?php endif; ?>
 			</div>
 		</div>
