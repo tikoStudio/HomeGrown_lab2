@@ -250,4 +250,19 @@
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        public function updateCrop1()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("update users set crop1 = :crop where activationToken = :activationToken");
+            $activationToken = $this->getToken();
+            $statement->bindParam(":activationToken", $activationToken);
+
+            //return result
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }

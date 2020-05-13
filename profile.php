@@ -18,12 +18,24 @@
         }
     }
 
+    $nudges = new Nudge();
+        
+    $nudges->setUserId2($_SESSION['id']);
+    $nudgeCount = $nudges->unreadNudges();
+
+    include_once('classes/User.php');
+    $user = new User();
+    $user->setId($_SESSION['id']);
+    $token = $user->tokenFromSession();
+
     if (empty($_GET["u"])) {
         header("Location: index.php");
     } else {
         $user = new User();
         $user->setToken($_GET['u']);
         $profile = $user->userFromToken();
+        $user->setId($profile['id']);
+        $myData = $user->getAllUserData();
         if (!$profile) {
             header("Location: index.php");
         }
@@ -47,20 +59,52 @@
         <div class="line nudgeLine"></div>
         <h2 class="profile__head">profile</h2>
 
+        <!-- profile name and page -->
         <div class="white__field">
-            <img src="uploads/elizabeth.jpg" alt="profile img" class="profile__avatar">
-            <h2>Mijn naam</h2>
+            <?php if (!empty($myData['avatar'])): ?>
+            <img src="uploads/<?php echo $myData['avatar']; ?>"
+                alt="profile img" class="profile__avatar">
+            <?php else: ?>
+            <img src="uploads/photolessUser.jpg" alt="profile img" class="profile__avatar">
+            <?php endif; ?>
+            <h2><?php echo $myData['name'] ?>
+            </h2>
         </div>
 
-        <h2 class="profile__head">crops</h2>
 
+        <!-- crops -->
+        <h2 class="profile__head">crops</h2>
         <div class="white__field white__field--crops">
             <h2 class="zero">crop 1</h2>
-            <div class="profile__crop"></div>
+            <div class="profile__crop">
+                <?php if (!empty($myData['crop1'])): ?>
+                <p class="crop__name"><?php echo $myData['crop1'] ?>
+                </p>
+                <?php else: ?>
+                <p class="crop__name crop1"><img src="images/plus.svg" class="img__plus">
+                </p>
+                <?php endif; ?>
+            </div>
             <h2 class="zero">crop 2</h2>
-            <div class="profile__crop"></div>
+            <div class="profile__crop">
+                <?php if (!empty($myData['crop2'])): ?>
+                <p class="crop__name"><?php echo $myData['crop2'] ?>
+                </p>
+                <?php else: ?>
+                <p class="crop__name crop2"><img src="images/plus.svg" class="img__plus">
+                </p>
+                <?php endif; ?>
+            </div>
             <h2 class="zero">crop 3</h2>
-            <div class="profile__crop"></div>
+            <div class="profile__crop profile__crop--end">
+                <?php if (!empty($myData['crop3'])): ?>
+                <p class="crop__name"><?php echo $myData['crop3'] ?>
+                </p>
+                <?php else: ?>
+                <p class="crop__name crop3"><img src="images/plus.svg" class="img__plus">
+                </p>
+                <?php endif; ?>
+            </div>
         </div>
 
         <h2 class="profile__head">Nudges</h2>
@@ -101,15 +145,45 @@
                     <p><?php echo $nudgeItem['text']; ?>
                     </p>
                 </div>
-                <a href="?nudge=true&nid=<?php echo $nudgeItem['id'] ?>"
+                <a href="?u=<?php echo $token['activationToken']?>&nudge=true&nid=<?php echo $nudgeItem['id'] ?>"
                     class="nudgeLink">X</a>
             </div>
             <?php endforeach; ?>
         </div>
     </div>
     <?php endif; ?>
-    <?php include_once("footer.inc.php"); ?>
-    <script src="js/nudgeBlur.js"></script>
+
+
+
+
+
+    <!-- footer navigation -->
+    <footer>
+        <div class="middle">
+            <a href="map.php"><img src="images/map.svg" alt="map button" class="mapbtn"></a>
+            <div class="line"></div>
+        </div>
+        <nav>
+            <a href="index.php"><img src="images/home.svg" alt="home icon"></a>
+            <a href="allMyCommunities.php"><img src="images/list.svg" alt="list icon"></a>
+            <div>
+                <?php  if ($nudgeCount['COUNT(*)'] > 0):?>
+                <div class="test"></div>
+                <?php endif; ?>
+                <a
+                    href="?u=<?php echo $token['activationToken']?>&nudge=true"><img
+                        src="images/notification.svg" alt="notification icon"></a>
+            </div>
+            <a
+                href="profile.php?u=<?php echo $token['activationToken']; ?>"><img
+                    src="images/profile.svg" alt="profile icon"></a>
+        </nav>
+
+
+
+
+        <script src="js/nudgeBlur.js"></script>
+        <script src="js/fillCrops.js"></script>
 </body>
 
 </html>

@@ -261,7 +261,7 @@ header .form__field input[type=text]::placeholder {
 }
 
 .mapbtn {
-    height: 70px;
+    height: 60px;
     margin-bottom: 4vh;
 }
 
@@ -762,7 +762,7 @@ div .nudge--text {
 
 .white__field {
     background-color: #fff;
-    height: 25vh;
+    height: 20vh;
     width: 95vw;
     border-radius: 20px;
     display: flex;
@@ -776,7 +776,7 @@ div .nudge--text {
 }
 
 .profile__avatar {
-    height: 20vh;
+    height: 15vh;
     margin-top: 2.5vh;
     margin-left: 5vw;
     border-radius: 20px;
@@ -785,6 +785,7 @@ div .nudge--text {
 .white__field--crops {
     flex-direction: column;
     align-items: center;
+    height: 22vh;
 }
 
 .white__field h2.zero {
@@ -793,6 +794,7 @@ div .nudge--text {
     margin-top: 3px;
     margin-bottom: 5px;
     font-size: 1.2em;
+    overflow: hidden;
 }
 
 .profile__crop {
@@ -800,6 +802,16 @@ div .nudge--text {
     width: 70vw;
     background-color: rgb(102, 183, 78, 0.35);
     border-radius: 10px;
+}
+
+.profile__crop--end {
+    margin-bottom: 5px;
+}
+
+.crop__name {
+    margin: 3px 0 0 0;
+    display: flex;
+    justify-content: center;
 }
 
 #nudgeMessage {
@@ -819,6 +831,10 @@ div .nudge--text {
     padding: 0.5em 0;
     color: #248823;
     margin-top: 0.5em;
+}
+
+.img__plus {
+    height: 15px;
 }
 
 /* END PROFILE */
