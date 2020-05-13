@@ -121,9 +121,11 @@
 		<h4 class="profile__head--small profile__head--top">You have <?php $nudgeCount = $nudges->countNudges(); echo $nudgeCount['COUNT(*)'];?>
 			unread
 			nudges.</h4>
+		<?php if ($nudgeCount['COUNT(*)'] > 0): ?>
 		<h4 class="profile__head--small">Click <a class="anchor__profile"
 				href="?u=<?php echo $myData['activationToken']?>&nudge=true">here</a>
 			to read them!</h4>
+		<?php endif; ?>
 		<?php endif; ?>
 
 		<div class="nudge__popup nudge__complete nudge__profile">
