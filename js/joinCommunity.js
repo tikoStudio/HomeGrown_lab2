@@ -17,8 +17,8 @@ joinBtn.addEventListener("click", () => {
         })
         .then((response) => response.json())
         .then((result) => {
-            document.querySelector('.request').style.display = "block"
-            document.querySelector('.blur').style.display = "block"
+            document.querySelector('.nudge__complete__request').style.display = "block"
+            document.querySelector('.blurReq').style.display = "block"
             joinBtn.style.display = "none"
             document.querySelector('.btn--chat--field').classList.add("top__container")
             document.querySelector('.join__container').style.display = "none"
@@ -26,4 +26,14 @@ joinBtn.addEventListener("click", () => {
         .catch((error) => {
         console.error('Error:', error);
         });
+})
+
+document.querySelector('.blurReq').addEventListener('click', () => {
+    document.querySelector('.nudge__complete__request').style.display = "none"
+    document.querySelector('.blurReq').style.display = "none"
+})
+
+document.querySelector('.nudge__complete__request').addEventListener('click', () => {
+    document.querySelector('.nudge__complete__request').style.display = "none"
+    document.querySelector('.blurReq').style.display = "none"
 })

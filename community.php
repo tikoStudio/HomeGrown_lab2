@@ -58,7 +58,8 @@
 
 <body>
 
-    <div class="nudge__popup nudge__complete request">
+    <div class="blurReq"></div>
+    <div class="nudge__complete__request">
         <img src="images/nudged.svg" alt="nudge alert popup">
         <h2>Your request has been send to the community!</h2>
     </div>

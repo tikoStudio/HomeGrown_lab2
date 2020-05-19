@@ -7,10 +7,17 @@
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
     }
+    $user = new User();
+    $user->setId($_SESSION['id']);
+    $token = $user->tokenFromSession();
 
     $community = new Community();
     $community->setId($_SESSION['id']);
     $nearbyCommunities = $community->getNearbyCommunities();
+
+    if (empty($_GET['tag'])) {
+        header("Location: index.php");
+    }
 
     if (!empty($_GET['nudge'])) {
         $nudge = new Nudge();
@@ -22,6 +29,19 @@
             $nudgeCollection = $nudge->showNudges();
         }
     }
+
+    $nudges = new Nudge();
+        
+        $nudges->setUserId2($_SESSION['id']);
+        $nudgeCount = $nudges->unreadNudges();
+
+        include_once('classes/User.php');
+        $user = new User();
+        $user->setId($_SESSION['id']);
+        $token = $user->tokenFromSession();
+
+    $taggedCommunities = $community->getTaggedCommunities($_GET['tag']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +49,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All my communities</title>
+    <title>tagged Communities</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,700&display=swap" rel="stylesheet">
@@ -40,42 +60,39 @@
 
     <div class="community__container community__container--all">
         <div class="community__title__container">
-            <h2>Nearby Communities</h2>
+            <h2>Current Communities</h2>
         </div>
-        <?php foreach ($nearbyCommunities as $community): ?>
-        <div class="community__data__container community__data__container--all">
-            <a href="community.php?com=<?php echo $community['id'] ?>"
-                class="community__data__container__a"></a>
-            <div class="label">
-                <p><?php if (empty($community['userId1']) || empty($community['userId2']) || empty($community['userId3']) || empty($community['userId4'])) {
-    echo "Looking for members";
-} else {
-    echo "currently full";
-} ?>
-            </div>
-            <div class="community__img">
-                <img src="images/<?php echo $community['img']; ?>"
-                    alt="farming resource picture">
-            </div>
-            <div class="community__info">
-                <h3><?php echo $community['name']?>
-                </h3>
-                <?php if (!empty($community['crop1'])): ?>
-                <div class=" farming">
-                    <p><?php echo $community['crop1'] ?>
-                    </p>
+        <?php foreach ($taggedCommunities as $community): ?>
+        <a href="community.php?com=<?php echo $community['id'] ?>"
+            class="community__data__container__a">
+            <div class="community__data__container community__data__container--all">
+                <div class="label">
+                    <p>Member</p>
                 </div>
-                <?php endif; ?>
-                <?php if (!empty($community['crop2'])): ?>
-                <div class="farming">
-                    <p><?php echo $community['crop2'] ?>
-                    </p>
+                <div class="community__img">
+                    <img src="images/<?php echo $community['img']; ?>"
+                        alt="farming resource picture">
                 </div>
-                <?php endif; ?>
+                <div class="community__info">
+                    <h3><?php echo $community['name']?>
+                    </h3>
+                    <?php if (!empty($community['crop1'])): ?>
+                    <div class=" farming">
+                        <p><?php echo $community['crop1'] ?>
+                        </p>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($community['crop2'])): ?>
+                    <div class="farming">
+                        <p><?php echo $community['crop2'] ?>
+                        </p>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <p class=community__adress><?php echo $community['address'] ?>
+                </p>
             </div>
-            <p class=community__adress><?php echo $community['address'] ?>
-            </p>
-        </div>
+        </a>
         <?php endforeach; ?>
     </div>
 
@@ -114,7 +131,29 @@
         </div>
     </div>
     <?php endif; ?>
-    <?php include_once("footer.inc.php"); ?>
+
+    <footer>
+        <div class="middle">
+            <a href="map.php"><img src="images/map.svg" alt="map button" class="mapbtn"></a>
+            <div class="line"></div>
+        </div>
+        <nav>
+            <a href="index.php"><img src="images/home.svg" alt="home icon"></a>
+            <a href="allMyCommunities.php"><img src="images/list.svg" alt="list icon"></a>
+            <div>
+                <?php  if ($nudgeCount['COUNT(*)'] > 0):?>
+                <div class="test"></div>
+                <?php endif; ?>
+                <a
+                    href="?tag=<?php echo $_GET['tag']; ?>&nudge=true"><img
+                        src="images/notification.svg" alt="notification icon"></a>
+            </div>
+            <a
+                href="profile.php?u=<?php echo $token['activationToken']; ?>"><img
+                    src="images/profile.svg" alt="profile icon"></a>
+        </nav>
+    </footer>
+
     <script src="js/nudgeBlur.js"></script>
 </body>
 

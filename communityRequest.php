@@ -93,36 +93,36 @@
             </a>
         </div>
         <?php if (isset($myCommunities[0])): ?>
-        <a href="community.php?com=<?php echo $myCommunities[0]['id'] ?>"
-            class="community__data__container__a">
-            <div class="community__data__container">
-                <div class="label">
-                    <p>Member</p>
-                </div>
-                <div class="community__img">
-                    <img src="images/<?php echo $myCommunities[0]['img']; ?>"
-                        alt="farming resource picture">
-                </div>
-                <div class="community__info">
-                    <h3><?php echo $myCommunities[0]['name']?>
-                    </h3>
-                    <?php if (!empty($myCommunities[0]['crop1'])): ?>
-                    <div class=" farming">
-                        <p><?php echo $myCommunities[0]['crop1'] ?>
-                        </p>
-                    </div>
-                    <?php endif; ?>
-                    <?php if (!empty($myCommunities[0]['crop2'])): ?>
-                    <div class="farming">
-                        <p><?php echo $myCommunities[0]['crop2'] ?>
-                        </p>
-                    </div>
-                    <?php endif; ?>
-                </div>
-                <p class=community__adress><?php echo $myCommunities[0]['address'] ?>
-                </p>
+
+        <div class="community__data__container">
+            <a href="community.php?com=<?php echo $myCommunities[0]['id'] ?>"
+                class="community__data__container__a"></a>
+            <div class="label">
+                <p>Member</p>
             </div>
-        </a>
+            <div class="community__img">
+                <img src="images/<?php echo $myCommunities[0]['img']; ?>"
+                    alt="farming resource picture">
+            </div>
+            <div class="community__info">
+                <h3><?php echo $myCommunities[0]['name']?>
+                </h3>
+                <?php if (!empty($myCommunities[0]['crop1'])): ?>
+                <div class=" farming">
+                    <p><?php echo $myCommunities[0]['crop1'] ?>
+                    </p>
+                </div>
+                <?php endif; ?>
+                <?php if (!empty($myCommunities[0]['crop2'])): ?>
+                <div class="farming">
+                    <p><?php echo $myCommunities[0]['crop2'] ?>
+                    </p>
+                </div>
+                <?php endif; ?>
+            </div>
+            <p class=community__adress><?php echo $myCommunities[0]['address'] ?>
+            </p>
+        </div>
         <?php else: ?>
         <div class="community__data__container">
             <div class="community__data--empty">
@@ -140,45 +140,44 @@
                 <p>See All (<?php echo $nearbyCommunitiesCount["COUNT(*)"] ?>)
                 </p>
             </a>
-
         </div>
-        <a href="community.php?com=<?php echo $nearbyCommunities[0]['id'] ?>"
-            class="community__data__container__a">
-            <div class="community__data__container">
-                <div class="<?php if (empty($nearbyCommunities[0]['userId1']) || empty($nearbyCommunities[0]['userId2']) || empty($nearbyCommunities[0]['userId3']) || empty($nearbyCommunities[0]['userId4'])) {
+
+        <div class="community__data__container">
+            <a href="community.php?com=<?php echo $nearbyCommunities[0]['id'] ?>"
+                class="community__data__container__a"></a>
+            <div class="<?php if (empty($nearbyCommunities[0]['userId1']) || empty($nearbyCommunities[0]['userId2']) || empty($nearbyCommunities[0]['userId3']) || empty($nearbyCommunities[0]['userId4'])) {
         echo "label--green";
     } ?> label">
-                    <p><?php if (empty($nearbyCommunities[0]['userId1']) || empty($nearbyCommunities[0]['userId2']) || empty($nearbyCommunities[0]['userId3']) || empty($nearbyCommunities[0]['userId4'])) {
+                <p><?php if (empty($nearbyCommunities[0]['userId1']) || empty($nearbyCommunities[0]['userId2']) || empty($nearbyCommunities[0]['userId3']) || empty($nearbyCommunities[0]['userId4'])) {
         echo "Looking for members";
     } else {
         echo "currently full";
     } ?>
-                    </p>
-                </div>
-                <div class="community__img">
-                    <img src="images/<?php echo $nearbyCommunities[0]['img'] ?>"
-                        alt="farming resource picture">
-                </div>
-                <div class="community__info">
-                    <h3><?php echo $nearbyCommunities[0]['name'] ?>
-                    </h3>
-                    <?php if (!empty($nearbyCommunities[0]['crop1'])): ?>
-                    <div class=" farming">
-                        <p><?php echo $nearbyCommunities[0]['crop1'] ?>
-                        </p>
-                    </div>
-                    <?php endif; ?>
-                    <?php if (!empty($nearbyCommunities[0]['crop2'])): ?>
-                    <div class="farming">
-                        <p><?php echo $nearbyCommunities[0]['crop2'] ?>
-                        </p>
-                    </div>
-                    <?php endif; ?>
-                </div>
-                <p class=community__adress><?php echo $nearbyCommunities[0]['address'] ?>
                 </p>
             </div>
-        </a>
+            <div class="community__img">
+                <img src="images/<?php echo $nearbyCommunities[0]['img'] ?>"
+                    alt="farming resource picture">
+            </div>
+            <div class="community__info">
+                <h3><?php echo $nearbyCommunities[0]['name'] ?>
+                </h3>
+                <?php if (!empty($nearbyCommunities[0]['crop1'])): ?>
+                <div class=" farming">
+                    <p><?php echo $nearbyCommunities[0]['crop1'] ?>
+                    </p>
+                </div>
+                <?php endif; ?>
+                <?php if (!empty($nearbyCommunities[0]['crop2'])): ?>
+                <div class="farming">
+                    <p><?php echo $nearbyCommunities[0]['crop2'] ?>
+                    </p>
+                </div>
+                <?php endif; ?>
+            </div>
+            <p class=community__adress><?php echo $nearbyCommunities[0]['address'] ?>
+            </p>
+        </div>
     </div>
 
     <?php if (isset($nudgeCollection)): ?>

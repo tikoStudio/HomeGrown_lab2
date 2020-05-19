@@ -163,4 +163,18 @@
                 return $result;
             }
         }
+
+        public function getTaggedCommunities($crop)
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select * from community where crop1 = :crop or crop2 = :crop");
+            $statement->bindParam(':crop', $crop);
+ 
+            //return result
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
