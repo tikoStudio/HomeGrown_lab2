@@ -22,7 +22,6 @@ sendNudgeButton.addEventListener("click", (e) => {
       .then((result) => {
         document.querySelector('#nudgeMessage').value = ""
         document.querySelector('.nudge__complete').style.display="block"
-        console.log(formData.get('text'))
       })
       .catch((error) => {
       console.error('Error:', error);

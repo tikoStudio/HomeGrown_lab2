@@ -5,6 +5,7 @@
     {
         private $userId;
         private $communityId;
+        private $id;
  
         public function getUserId()
         {
@@ -26,6 +27,18 @@
         public function setCommunityId($communityId)
         {
             $this->communityId = $communityId;
+
+            return $this;
+        }
+
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        public function setId($id)
+        {
+            $this->id = $id;
 
             return $this;
         }
@@ -82,6 +95,44 @@
 
             // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
             $statement->bindParam(":communityId", $communityId);
+
+            // als je geen execute doet dan wordt die query niet uitgevoerd
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $result;
+        }
+
+        public function acceptRequest()
+        {
+            // connectie
+            $conn = Db::getConnection();
+            // query
+            $statement = $conn->prepare("update communityrequest set accepted = 1 where id = :id");
+            // variabelen klaarzetten om te binden
+            $id = $this->getId();
+
+            // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
+            $statement->bindParam(":id", $id);
+
+            // als je geen execute doet dan wordt die query niet uitgevoerd
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $result;
+        }
+
+        public function denyRequest()
+        {
+            // connectie
+            $conn = Db::getConnection();
+            // query
+            $statement = $conn->prepare("update communityrequest set accepted = 0 where id = :id");
+            // variabelen klaarzetten om te binden
+            $id = $this->getId();
+
+            // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
+            $statement->bindParam(":id", $id);
 
             // als je geen execute doet dan wordt die query niet uitgevoerd
             $statement->execute();

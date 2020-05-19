@@ -105,4 +105,62 @@
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        public function acceptMember($userId)
+        {
+            //db conn
+            $conn = Db::getConnection();
+
+            // check where to update
+            $searchStatement = $conn->prepare("select * from community where id = :id");
+            $id = $this->getId();
+            $searchStatement->bindParam(":id", $id);
+            $searchStatement->execute();
+            $searchResult = $searchStatement->fetch(PDO::FETCH_ASSOC);
+            
+            if (empty($searchResult['userId1'])) {
+                //insert query
+                $statement = $conn->prepare("update community set userId1 = :userId where id = :id");
+                $statement->bindParam(":userId", $userId);
+                $statement->bindParam(":id", $id);
+
+                //return result
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+                return $result;
+            } elseif (empty($searchResult['userId2'])) {
+                //insert query
+                $statement = $conn->prepare("update community set userId2 = :userId where id = :id");
+                $id = $this->getId();
+                $statement->bindParam(":userId", $userId);
+                $statement->bindParam(":id", $id);
+
+                //return result
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+                return $result;
+            } elseif (empty($searchResult['userId3'])) {
+                //insert query
+                $statement = $conn->prepare("update community set userId3 = :userId where id = :id");
+                $id = $this->getId();
+                $statement->bindParam(":userId", $userId);
+                $statement->bindParam(":id", $id);
+
+                //return result
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+                return $result;
+            } elseif (empty($searchResult['userId4'])) {
+                //insert query
+                $statement = $conn->prepare("update community set userId4 = :userId where id = :id");
+                $id = $this->getId();
+                $statement->bindParam(":userId", $userId);
+                $statement->bindParam(":id", $id);
+
+                //return result
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+                return $result;
+            }
+        }
     }

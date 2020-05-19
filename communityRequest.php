@@ -74,7 +74,13 @@
         </h2> Requested to join <h2><?php echo $communityName['name']; ?>
         </h2>
         </p>
-        <button class="nudge__popup__send">Send</button>
+        <button class="nudge__popup__send" id="acceptRequest" data-communityId=<?php echo $uncheckedRequestFilled['communityId'];?>
+            data-requestId= <?php echo $uncheckedRequestFilled['id'] ?>
+            data-userId= <?php echo $uncheckedRequestFilled['userId']; ?>
+            >accept</button>
+        <button class="nudge__popup__send" id="denyRequest" data-requestId=<?php echo $uncheckedRequestFilled['id'] ?>
+            data-userId= <?php echo $uncheckedRequestFilled['userId']; ?>
+            >deny</button>
     </div>
     <?php endif ?>
 
@@ -209,6 +215,7 @@
 
     <?php include_once("footer.inc.php"); ?>
     <script src="js/nudgeBlur.js"></script>
+    <script src="js/requests.js"></script>
 </body>
 
 </html>

@@ -445,7 +445,7 @@ nav img {
     filter: blur(2px);
     background-color: rgba(255, 255, 255, 0.6);
     top: 0;
-    z-index: 100;
+    z-index: 101;
     display: none;
 }
 
@@ -893,7 +893,7 @@ div .nudge--text {
 
 .nudge__popup__request {
     background-color: #67B74E;
-    height: 40%;
+    height: 44%;
     width: 75%;
     position: absolute;
     margin-left: 12.5%;
