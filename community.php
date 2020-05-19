@@ -124,10 +124,13 @@
                 $user->setId($cData['userId1']);
                 $userData = $user->getAllUserData(); ?>
                 <div class="member">
-                    <div class="member--avatar"><?php if (!empty($userData['avatar'])): ?>
-                        <img src="<?php echo "uploads/" . $userData['avatar']; ?>"
-                            alt="profile picture"><?php endif; ?>
-                    </div>
+                    <a
+                        href="profile.php?u=<?php echo $userData['activationToken'] ?>">
+                        <div class="member--avatar"><?php if (!empty($userData['avatar'])): ?>
+                            <img src="<?php echo "uploads/" . $userData['avatar']; ?>"
+                                alt="profile picture"><?php endif; ?>
+                        </div>
+                    </a>
                     <div class="member--name">
                         <p class="p__member--name"><?php echo $userData['name']; ?>
                         </p>
@@ -146,10 +149,13 @@
                 $user->setId($cData['userId2']);
                 $userData = $user->getAllUserData(); ?>
                 <div class="member">
-                    <div class="member--avatar"><?php if (!empty($userData['avatar'])): ?>
-                        <img src="<?php echo "uploads/" . $userData['avatar']; ?>"
-                            alt="profile picture"><?php endif; ?>
-                    </div>
+                    <a
+                        href="profile.php?u=<?php echo $userData['activationToken'] ?>">
+                        <div class="member--avatar"><?php if (!empty($userData['avatar'])): ?>
+                            <img src="<?php echo "uploads/" . $userData['avatar']; ?>"
+                                alt="profile picture"><?php endif; ?>
+                        </div>
+                    </a>
                     <div class="member--name">
                         <p class="p__member--name"><?php echo $userData['name']; ?>
                         </p>
@@ -168,10 +174,13 @@
                 $user->setId($cData['userId3']);
                 $userData = $user->getAllUserData(); ?>
                 <div class="member">
-                    <div class="member--avatar"><?php if (!empty($userData['avatar'])): ?>
-                        <img src="<?php echo "uploads/" . $userData['avatar']; ?>"
-                            alt="profile picture"><?php endif; ?>
-                    </div>
+                    <a
+                        href="profile.php?u=<?php echo $userData['activationToken'] ?>">
+                        <div class="member--avatar"><?php if (!empty($userData['avatar'])): ?>
+                            <img src="<?php echo "uploads/" . $userData['avatar']; ?>"
+                                alt="profile picture"><?php endif; ?>
+                        </div>
+                    </a>
                     <div class="member--name">
                         <p class="p__member--name"><?php echo $userData['name']; ?>
                         </p>
@@ -190,10 +199,13 @@
                 $user->setId($cData['userId4']);
                 $userData = $user->getAllUserData(); ?>
                 <div class="member">
-                    <div class="member--avatar"><?php if (!empty($userData['avatar'])): ?>
-                        <img src="<?php echo "uploads/" . $userData['avatar']; ?>"
-                            alt="profile picture"><?php endif; ?>
-                    </div>
+                    <a
+                        href="profile.php?u=<?php echo $userData['activationToken'] ?>">
+                        <div class="member--avatar"><?php if (!empty($userData['avatar'])): ?>
+                            <img src="<?php echo "uploads/" . $userData['avatar']; ?>"
+                                alt="profile picture"><?php endif; ?>
+                        </div>
+                    </a>
                     <div class="member--name">
                         <p class="p__member--name"><?php echo $userData['name']; ?>
                         </p>
