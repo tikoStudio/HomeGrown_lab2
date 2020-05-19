@@ -40,6 +40,11 @@ body {
     padding: 2em 2em 0 2em;
 }
 
+.avatarlink {
+    display: flex;
+    align-self: center;
+}
+
 /* REGISTER AVATAR */
 #avatar {
     height: 15vh;

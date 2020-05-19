@@ -114,10 +114,13 @@
             $nudgeData = $nudger->getAllUserData();
         ?>
             <div class="nudgeItem">
-                <div class="member--avatar nudge--avatar"><?php if (!empty($nudgeData["avatar"])): ?>
-                    <img src="<?php echo "uploads/" . $nudgeData["avatar"]; ?>"
-                        alt="profile picture"><?php endif; ?>
-                </div>
+                <a class="avatarlink"
+                    href="profile.php?u=<?php echo $nudgeData['activationToken'] ?>">
+                    <div class="member--avatar nudge--avatar"><?php if (!empty($nudgeData["avatar"])): ?>
+                        <img src="<?php echo "uploads/" . $nudgeData["avatar"]; ?>"
+                            alt="profile picture"><?php endif; ?>
+                    </div>
+                </a>
                 <div class="nudge--name">
                     <p class="p__member--name"><?php echo $nudgeData['name']; ?>
                         <span>nudged you</span>
