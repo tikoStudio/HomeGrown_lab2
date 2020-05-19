@@ -1,8 +1,8 @@
 <?php
-    include_once('classes/Community.php');
-    include_once('classes/Nudge.php');
-    include_once('classes/User.php');
-    include_once('classes/CommunityRequest.php');
+     include_once('classes/Community.php');
+     include_once('classes/Nudge.php');
+     include_once('classes/User.php');
+     include_once('classes/CommunityRequest.php');
 
     session_start();
     if (!isset($_SESSION["user"])) {
@@ -27,16 +27,18 @@
         }
     }
 
+    $uncheckedRequestFilled;
+    $showRequest = false;
     $myLeadingCommunities = $community->getMyLeadingCommunities();
     $CommunityRequest = new CommunityRequest();
     foreach ($myLeadingCommunities as $community) {
         $CommunityRequest->setCommunityId($community['id']);
         $uncheckedRequests = $CommunityRequest->showRequests();
-        if ($uncheckedRequests['accepted'] == null) {
-            header("Location: communityRequest.php");
+        if ($uncheckedRequests && $uncheckedRequests['accepted'] == null) {
+            $uncheckedRequestFilled = $uncheckedRequests;
+            $showRequest = true;
         }
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +46,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeGrown</title>
+    <title>requests</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,700&display=swap" rel="stylesheet">
@@ -52,6 +54,30 @@
 
 <body>
     <?php include_once('nav.inc.php'); ?>
+
+    <?php if ($showRequest):?>
+    <?php
+        $requester = new User();
+        $requester->setId($uncheckedRequestFilled['userId']);
+        $userName = $requester->getAllUserData();
+
+        $requestedCom = new Community();
+        $requestedCom->setId($uncheckedRequestFilled['communityId']);
+        $communityName = $requestedCom->getcommunityData();
+    ?>
+    <div class="blur blur--active"></div>
+
+    <div class="nudge__popup__request">
+        <img src="images/nudged.svg" alt="nudge alert popup">
+        <p>
+        <h2><?php echo $userName['name']; ?>
+        </h2> Requested to join <h2><?php echo $communityName['name']; ?>
+        </h2>
+        </p>
+        <button class="nudge__popup__send">Send</button>
+    </div>
+    <?php endif ?>
+
     <div class="community__container">
         <div class="community__title__container">
             <h2>Current Communities</h2>
@@ -114,13 +140,13 @@
             class="community__data__container__a">
             <div class="community__data__container">
                 <div class="<?php if (empty($nearbyCommunities[0]['userId1']) || empty($nearbyCommunities[0]['userId2']) || empty($nearbyCommunities[0]['userId3']) || empty($nearbyCommunities[0]['userId4'])) {
-    echo "label--green";
-} ?> label">
+        echo "label--green";
+    } ?> label">
                     <p><?php if (empty($nearbyCommunities[0]['userId1']) || empty($nearbyCommunities[0]['userId2']) || empty($nearbyCommunities[0]['userId3']) || empty($nearbyCommunities[0]['userId4'])) {
-    echo "Looking for members";
-} else {
-    echo "currently full";
-} ?>
+        echo "Looking for members";
+    } else {
+        echo "currently full";
+    } ?>
                     </p>
                 </div>
                 <div class="community__img">
@@ -150,7 +176,6 @@
     </div>
 
     <?php if (isset($nudgeCollection)): ?>
-    <div class="blur blur--active"></div>
     <div class="nudgeList">
         <div class="line nudgeLine"></div>
         <div class="nudgeFolder">
@@ -181,6 +206,7 @@
         </div>
     </div>
     <?php endif; ?>
+
     <?php include_once("footer.inc.php"); ?>
     <script src="js/nudgeBlur.js"></script>
 </body>

@@ -47,6 +47,21 @@
             return $result;
         }
 
+        public function getMyLeadingCommunities()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select * from community where userId1 = :id");
+            $id = $this->getId();
+            $statement->bindParam(":id", $id);
+
+            //return result
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         public function countMyCommunities()
         {
             $conn = Db::getConnection();

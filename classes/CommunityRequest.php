@@ -70,4 +70,23 @@
             
             return $result;
         }
+
+        public function showRequests()
+        {
+            // connectie
+            $conn = Db::getConnection();
+            // query
+            $statement = $conn->prepare("select * from communityrequest where communityId = :communityId");
+            // variabelen klaarzetten om te binden
+            $communityId = $this->getCommunityId();
+
+            // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
+            $statement->bindParam(":communityId", $communityId);
+
+            // als je geen execute doet dan wordt die query niet uitgevoerd
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $result;
+        }
     }
