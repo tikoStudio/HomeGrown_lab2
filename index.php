@@ -76,17 +76,23 @@
                 </h3>
                 <?php if (!empty($myCommunities[0]['crop1'])): ?>
 
-                <div class=" farming">
-                    <p><?php echo $myCommunities[0]['crop1'] ?>
-                    </p>
-                </div>
+                <a class="anchortag"
+                    href="taggedCommunities.php?tag=<?php echo $myCommunities[0]['crop1']; ?>">
+                    <div class=" farming">
+                        <p><?php echo $myCommunities[0]['crop1'] ?>
+                        </p>
+                    </div>
+                </a>
 
                 <?php endif; ?>
                 <?php if (!empty($myCommunities[0]['crop2'])): ?>
-                <div class="farming">
-                    <p><?php echo $myCommunities[0]['crop2'] ?>
-                    </p>
-                </div>
+                <a class="anchortag"
+                    href="taggedCommunities.php?tag=<?php echo $myCommunities[0]['crop2']; ?>">
+                    <div class="farming">
+                        <p><?php echo $myCommunities[0]['crop2'] ?>
+                        </p>
+                    </div>
+                </a>
                 <?php endif; ?>
             </div>
             <p class=community__adress><?php echo $myCommunities[0]['address'] ?>
@@ -133,17 +139,24 @@
                 <h3><?php echo $nearbyCommunities[0]['name'] ?>
                 </h3>
                 <?php if (!empty($nearbyCommunities[0]['crop1'])): ?>
-                <div class=" farming">
-                    <p><?php echo $nearbyCommunities[0]['crop1'] ?>
-                    </p>
-                </div>
+                <a class="anchortag"
+                    href="taggedCommunities.php?tag=<?php echo $nearbyCommunities[0]['crop1']; ?>">
+                    <div class=" farming">
+                        <p><?php echo $nearbyCommunities[0]['crop1'] ?>
+                        </p>
+                    </div>
+                </a>
                 <?php endif; ?>
                 <?php if (!empty($nearbyCommunities[0]['crop2'])): ?>
-                <div class="farming">
-                    <p><?php echo $nearbyCommunities[0]['crop2'] ?>
-                    </p>
-                </div>
-                <?php endif; ?>
+                <a class="anchortag"
+                    href="taggedCommunities.php?tag=<?php echo $nearbyCommunities[0]['crop2']; ?>">
+                    <div class="farming">
+                        <p><?php echo $nearbyCommunities[0]['crop2'] ?>
+                        </p>
+                    </div>
+                    <a class="anchortag"
+                        href="taggedCommunities.php?tag=<?php echo $myCommunities[0]['crop1']; ?>">
+                        <?php endif; ?>
             </div>
             <p class=community__adress><?php echo $nearbyCommunities[0]['address'] ?>
             </p>

@@ -45,6 +45,10 @@ body {
     align-self: center;
 }
 
+.anchortag {
+    z-index: 200;
+}
+
 /* REGISTER AVATAR */
 #avatar {
     height: 15vh;

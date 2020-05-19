@@ -84,16 +84,22 @@
 
                 <div class="farm__container">
                     <?php if ($cData['crop1']): ?>
-                    <div class="farming farming--xl">
-                        <p><?php echo $cData['crop1'] ?>
-                        </p>
-                    </div>
+                    <a class="anchortag"
+                        href="taggedCommunities.php?tag=<?php echo $cData['crop1']; ?>">
+                        <div class="farming farming--xl">
+                            <p><?php echo $cData['crop1'] ?>
+                            </p>
+                        </div>
+                    </a>
                     <?php endif; ?>
                     <?php if ($cData['crop2']): ?>
-                    <div class="farming farming--xl">
-                        <p><?php echo $cData['crop2'] ?>
-                        </p>
-                    </div>
+                    <a class="anchortag"
+                        href="taggedCommunities.php?tag=<?php echo $cData['crop2']; ?>">
+                        <div class="farming farming--xl">
+                            <p><?php echo $cData['crop2'] ?>
+                            </p>
+                        </div>
+                    </a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -137,8 +143,11 @@
                         </p>
                     </div>
                     <div class="farming member--farming">
-                        <p><?php echo $userData['crop1'] ?>
-                        </p>
+                        <a class="anchortag"
+                            href="taggedCommunities.php?tag=<?php echo $userData['crop1']; ?>">
+                            <p><?php echo $userData['crop1'] ?>
+                            </p>
+                        </a>
                     </div>
                     <div class="member--nudge" data-userId2=<?php echo $userData['id']; ?>
                         data-userId1 = <?php echo $_SESSION['id'] ?>><img
@@ -162,8 +171,11 @@
                         </p>
                     </div>
                     <div class="farming member--farming">
-                        <p><?php echo $userData['crop1'] ?>
-                        </p>
+                        <a class="anchortag"
+                            href="taggedCommunities.php?tag=<?php echo $userData['crop1']; ?>">
+                            <p><?php echo $userData['crop1'] ?>
+                            </p>
+                        </a>
                     </div>
                     <div class="member--nudge" data-userId2=<?php echo $userData['id']; ?>
                         data-userId1 = <?php echo $_SESSION['id'] ?>><img
@@ -187,8 +199,11 @@
                         </p>
                     </div>
                     <div class="farming member--farming">
-                        <p><?php echo $userData['crop1'] ?>
-                        </p>
+                        <a class="anchortag"
+                            href="taggedCommunities.php?tag=<?php echo $userData['crop1']; ?>">
+                            <p><?php echo $userData['crop1'] ?>
+                            </p>
+                        </a>
                     </div>
                     <div class="member--nudge" data-userId2=<?php echo $userData['id']; ?>
                         data-userId1 = <?php echo $_SESSION['id'] ?>><img
@@ -212,8 +227,11 @@
                         </p>
                     </div>
                     <div class="farming member--farming">
-                        <p><?php echo $userData['crop1'] ?>
-                        </p>
+                        <a class="anchortag"
+                            href="taggedCommunities.php?tag=<?php echo $userData['crop1']; ?>">
+                            <p><?php echo $userData['crop1'] ?>
+                            </p>
+                        </a>
                     </div>
                     <div class="member--nudge" data-userId2=<?php echo $userData['id']; ?>
                         data-userId1 = <?php echo $_SESSION['id'] ?>><img
