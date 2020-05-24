@@ -1,50 +1,54 @@
-<?php  
-	include_once(__DIR__ . "/classes/User.php");
-	$user = new User();
+<?php
+    include_once(__DIR__ . "/classes/User.php");
+    $user = new User();
 
-    if(!empty($_POST)) {
+    if (!empty($_POST)) {
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
         
-        if(!empty($email) && !empty($password)){
-            if($user->checkLogin($email, $password)){
+        if (!empty($email) && !empty($password)) {
+            if ($user->checkLogin($email, $password)) {
                 session_start();
-				$user->setEmail($email);
-				$idArray = $user->idFromSession($email);
-				$id = $idArray['id'];
-				$user->setId($id);
+                $user->setEmail($email);
+                $idArray = $user->idFromSession($email);
+                $id = $idArray['id'];
+                $user->setId($id);
 
-				// later aanpassen -> if checkbox is ticked use cookie 
-				$_SESSION["user"] = $email; 
-				$_SESSION["id"] = $id;
+                // later aanpassen -> if checkbox is ticked use cookie
+                $_SESSION["user"] = $email;
+                $_SESSION["id"] = $id;
                 
                 //redirect to index.php
                 header("Location: gpsLocation.php");
-            }else{
+            } else {
                 $error = "Password and email are not correct";
             }
-        }else {
+        } else {
             $error = "email and password are required";
         }
     }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>HomeGrown-Login</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
 </head>
+
 <body class="gradient">
-    <div class="login">
+	<div class="login">
 		<div class="form form--login">
 			<form action="" method="post">
 				<img class="form__image" src="images/logo.svg" alt="HomeGrown logo">
 				<h1 form__title>HomeGrown</h1>
 
-				<?php if(isset($error)) : ?>
+				<?php if (isset($error)) : ?>
 				<div class="form__error">
 					<p>
 						<?php echo $error; ?>
@@ -69,7 +73,7 @@
 					</div>
 
 					<div class="form__field">
-						<input type="submit" value="Login" class="btn btn--primary">	
+						<input type="submit" value="Login" class="btn btn--primary">
 					</div>
 
 				</div>
@@ -81,4 +85,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
