@@ -459,7 +459,7 @@ nav img {
     filter: blur(2px);
     background-color: rgba(255, 255, 255, 0.6);
     top: 0;
-    z-index: 101;
+    z-index: 1000;
     display: none;
 }
 
@@ -483,7 +483,7 @@ nav img {
     margin-top: 30%;
     border-radius: 35px;
     text-align: center;
-    z-index: 200;
+    z-index: 1099;
     display: none;
 }
 
@@ -567,7 +567,7 @@ nav img {
     height: 55vh;
     background-color: #569350;
     width: 100vw;
-    z-index: 110;
+    z-index: 1100;
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -698,7 +698,7 @@ div .nudge--text {
 
 /* CHAT */
 .chatbox {
-    height: 55vh;
+    height: 60vh;
     overflow: overlay;
     display: flex;
     flex-direction: column;
@@ -824,7 +824,7 @@ div .nudge--text {
 .white__field--crops {
     flex-direction: column;
     align-items: center;
-    height: 22vh;
+    height: 25vh;
 }
 
 .white__field h2.zero {
@@ -837,7 +837,7 @@ div .nudge--text {
 }
 
 .profile__crop {
-    height: 4vh;
+    height: 5vh;
     width: 70vw;
     background-color: rgb(102, 183, 78, 0.35);
     border-radius: 10px;
@@ -972,4 +972,3 @@ div .nudge--text {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     color: #000;    
 }
-

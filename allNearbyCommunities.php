@@ -46,7 +46,9 @@
         <div class="community__data__container community__data__container--all">
             <a href="community.php?com=<?php echo $community['id'] ?>"
                 class="community__data__container__a"></a>
-            <div class="label">
+            <div class="label <?php if (empty($community['userId1']) || empty($community['userId2']) || empty($community['userId3']) || empty($community['userId4'])) {
+    echo "label--green";
+} ?>">
                 <p><?php if (empty($community['userId1']) || empty($community['userId2']) || empty($community['userId3']) || empty($community['userId4'])) {
     echo "Looking for members";
 } else {
