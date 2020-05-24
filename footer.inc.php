@@ -19,7 +19,7 @@
     <nav>
         <a href="index.php"><img src="images/home.svg" alt="home icon"></a>
         <a href="allMyCommunities.php"><img src="images/list.svg" alt="list icon"></a>
-        <div>
+        <div class="slide">
             <?php  if ($nudgeCount['COUNT(*)'] > 0):?>
             <div class="test"></div>
             <?php endif; ?>

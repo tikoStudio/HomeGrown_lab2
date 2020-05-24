@@ -84,7 +84,7 @@
 
     <?php if (isset($nudgeCollection)): ?>
     <div class="blur blur--active"></div>
-    <div class="nudgeList">
+    <div class="nudgeList animate__fadeInUp">
         <div class="line nudgeLine"></div>
         <div class="nudgeFolder">
             <?php foreach ($nudgeCollection as $nudgeItem): ?>
@@ -119,6 +119,25 @@
     <?php endif; ?>
     <?php include_once("footer.inc.php"); ?>
     <script src="js/nudgeBlur.js"></script>
+    <?php if (isset($nudgeCollection)): ?>
+    <script>
+        const queryString = window.location.search;
+        console.log(queryString);
+        if (queryString.includes("nid")) {} else {
+            let animation = setInterval(myMethod, 2);
+            topcss = 100
+
+            function myMethod() {
+                if (topcss <= 45) {
+                    clearInterval(animation)
+                }
+                document.querySelector('.nudgeList').style.top = topcss + "vh"
+                console.log(topcss)
+                topcss -= 3
+            }
+        }
+    </script>
+    <?php endif; ?>
 </body>
 
 </html>
