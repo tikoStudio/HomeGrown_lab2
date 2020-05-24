@@ -849,7 +849,7 @@ div .nudge--text {
 }
 
 .crop__name {
-    margin: 3px 0 0 0;
+    margin: 1vh 0 1vh 0;
     display: flex;
     justify-content: center;
 }
@@ -904,9 +904,14 @@ div .nudge--text {
     margin-top: 30%;
     border-radius: 35px;
     text-align: center;
-    z-index: 200;
+    z-index: 1100;
     margin-left: auto;
     display: none;
+}
+
+.crop1__popup img, .crop2__popup img, .crop3__popup img {
+    height: 20%;
+    margin-top: 0.5em;
 }
 
 #crop1, #crop2, #crop3 {

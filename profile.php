@@ -119,16 +119,19 @@
 		<!-- crops -->
 
 		<div class="crop1__popup">
+			<img src="images/nudged.svg" alt="nudge alert popup">
 			<h2 class="crop1Title">Add a crop to your profile.</h2>
 			<textarea name="nudgeMessage" id="crop1"></textarea>
 			<button id="crop1Btn" class="crop__popup__send" data-userId1=<?php echo $_SESSION['id'] ?>>Send</button>
 		</div>
 		<div class="crop2__popup">
+			<img src="images/nudged.svg" alt="nudge alert popup">
 			<h2 class="crop2Title">Add a crop to your profile.</h2>
 			<textarea name="nudgeMessage" id="crop2"></textarea>
 			<button id="crop2Btn" class="crop__popup__send" data-userId1=<?php echo $_SESSION['id'] ?>>Send</button>
 		</div>
 		<div class="crop3__popup">
+			<img src="images/nudged.svg" alt="nudge alert popup">
 			<h2 class="crop3Title">Add a crop to your profile.</h2>
 			<textarea name="nudgeMessage" id="crop3"></textarea>
 			<button id="crop3Btn" class="crop__popup__send" data-userId1=<?php echo $_SESSION['id'] ?>>Send</button>
