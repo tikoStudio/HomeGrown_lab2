@@ -204,7 +204,6 @@
     <?php if (isset($nudgeCollection)): ?>
     <script>
         const queryString = window.location.search;
-        console.log(queryString);
         if (queryString.includes("nid")) {} else {
             let animation = setInterval(myMethod, 2);
             topcss = 100
@@ -214,7 +213,6 @@
                     clearInterval(animation)
                 }
                 document.querySelector('.nudgeList').style.top = topcss + "vh"
-                console.log(topcss)
                 topcss -= 3
             }
         }
