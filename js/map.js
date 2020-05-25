@@ -83,7 +83,7 @@ var data = draw.getAll();
 var answer = document.getElementById('calculated-area');
 if (data.features.length > 0) {
 var area = turf.area(data);
-console.log(data.features[0].geometry.coordinates[0])
+test(data.features[0].geometry.coordinates[0]);
 // restrict to area to 2 decimal points
 var rounded_area = Math.round(area * 100) / 100;
 answer.innerHTML =
@@ -300,7 +300,7 @@ map.on('load', function() {
     map.on('click', 'Gary', function(e) {
         new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML(`<img src='images/${e.features[0].properties.img}' alt=''><h2 class='map__popup__name'>${e.features[0].properties.name}</h2>`)
+        .setHTML(`<a href='community.php?com=${e.features[0].properties.id}'><img src='images/${e.features[0].properties.img}' alt=''></a><a href='community.php?com=${e.features[0].properties.id}'><h2 class='map__popup__name'>${e.features[0].properties.name}</h2></a>`)
         .addTo(map);
         });
         // Change the cursor to a pointer when the mouse is over the states layer.
@@ -313,3 +313,9 @@ map.on('load', function() {
         map.getCanvas().style.cursor = '';
         });
 });
+
+function test(place) {
+    console.log(place)
+    document.querySelector('.blur').style.display = "block"
+    document.querySelector('.community__popup').style.display = "flex"
+}
