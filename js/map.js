@@ -107,7 +107,8 @@ map.on('load', function() {
                     'type': 'Feature1',
                     'properties': {
                         'name': 'De Mechelse kwekers',
-                        'img': 'cucumber.png'
+                        'img': 'cucumber.png',
+                        'id': 1
                     },
                     'geometry': {
                         'type': 'Polygon',                        
@@ -126,7 +127,8 @@ map.on('load', function() {
                     'type': 'Feature',
                     'properties': {
                         'name': "De Mechelse kwekers",
-                        'img': 'cucumber.png'
+                        'img': 'cucumber.png',
+                        'id': 1
                     },
                     'geometry': {
                             'type': 'Polygon',
@@ -146,7 +148,8 @@ map.on('load', function() {
                     'type': 'Feature',
                     'properties': {
                         'name': "tomaten kwekertjes Be",
-                        'img': 'tomatoes.jpg'
+                        'img': 'tomatoes.jpg',
+                        'id': 2
                     },
                     'geometry': {
                             'type': 'Polygon',
@@ -165,7 +168,8 @@ map.on('load', function() {
                     'type': 'Feature',
                     'properties': {
                         'name': "oregano boerenbond mechelen",
-                        'img': 'oregano.jpg'
+                        'img': 'oregano.jpg',
+                        'id': 3
                     },
                     'geometry': {
                             'type': 'Polygon',
@@ -186,7 +190,8 @@ map.on('load', function() {
                     'type': 'Feature',
                     'properties': {
                         'name': "de tomatenplukkers",
-                        'img': 'tomatoes.jpg'
+                        'img': 'tomatoes.jpg',
+                        'id': 4
                     },
                     'geometry': {
                             'type': 'Polygon',
@@ -215,7 +220,8 @@ map.on('load', function() {
                     'type': 'Feature',
                     'properties': {
                         'name': "de groene handjes Be",
-                        'img': 'cucumber.png'
+                        'img': 'cucumber.png',
+                        'id': 5
                     },
                     'geometry': {
                             'type': 'Polygon',
@@ -234,7 +240,8 @@ map.on('load', function() {
                     'type': 'Feature',
                     'properties': {
                         'name': "yet another farm here",
-                        'img': 'oregano.jpg'
+                        'img': 'oregano.jpg',
+                        'id': 6
                     },
                     'geometry': {
                             'type': 'Polygon',
@@ -255,7 +262,8 @@ map.on('load', function() {
                     'type': 'Feature',
                     'properties': {
                         'name': "the raspberry club van mechelen",
-                        'img': 'raspberry.jpg'
+                        'img': 'raspberry.jpg',
+                        'id': 7
                     },
                     'geometry': {
                             'type': 'Polygon',
