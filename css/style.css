@@ -973,8 +973,102 @@ div .nudge--text {
     margin-top: 15vh;
 }
 /* END MAP */
+
+/* MAP POPUPS */
+
+.mapboxgl-popup-content {
+    position: relative;
+    background: #569350;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 15px;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+}
+
 .mapboxgl-popup {
     max-width: 400px;
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    color: #000;    
+    color: #fff;    
 }
+
+#mapContainer > div.mapboxgl-popup img {
+    width: 100px;
+    z-index: 999;
+}
+
+.map__popup__name {
+    margin-left: 0.5em;
+}
+
+.mapboxgl-popup-close-button {
+    font-size: 2em;
+    color: #fff;
+}
+
+/* END MAP POPUPS */
+
+/* MAP POPUP TIPS */
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+    -webkit-align-self: center;
+    align-self: center;
+    border-bottom: none;
+    border-top-color: #569350;
+}
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    -webkit-align-self: center;
+    align-self: center;
+    border-left: none;
+    border-right-color: #569350;
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    -webkit-align-self: center;
+    align-self: center;
+    border-right: none;
+    border-left-color: #569350;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+    -webkit-align-self: center;
+    align-self: center;
+    border-top: none;
+    border-bottom-color: #569350;
+}
+
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip {
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+    border-bottom: none;
+    border-left: none;
+    border-top-color: #569350;
+}
+
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    -webkit-align-self: flex-end;
+    align-self: flex-end;
+    border-bottom: none;
+    border-right: none;
+    border-top-color: #569350;
+}
+
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+    border-top: none;
+    border-left: none;
+    border-bottom-color: #569350;
+}
+
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    -webkit-align-self: flex-end;
+    align-self: flex-end;
+    border-top: none;
+    border-right: none;
+    border-bottom-color: #569350;
+}
+
+/* END MAP POPUP TIPS */

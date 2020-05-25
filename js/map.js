@@ -292,9 +292,8 @@ map.on('load', function() {
     map.on('click', 'Gary', function(e) {
         new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML(e.features[0].properties.name)
+        .setHTML(`<img src='images/${e.features[0].properties.img}' alt=''><h2 class='map__popup__name'>${e.features[0].properties.name}</h2>`)
         .addTo(map);
-        console.log("click")
         });
         // Change the cursor to a pointer when the mouse is over the states layer.
         map.on('mouseenter', 'Gary', function() {
