@@ -1,4 +1,5 @@
 var imgError = false
+var imgUpload = false
 // Init map
 mapboxgl.accessToken = 'pk.eyJ1IjoidGltb3RoeWsiLCJhIjoiY2s5YjQzc3VpMGl4djNlbzAwbDJnM3EwbyJ9.Q9r-ZxP6xrDkeEg0PLu9Sw';
 var map = new mapboxgl.Map({
@@ -335,12 +336,17 @@ function test(place) {
 document.querySelector('.blur').addEventListener('click', (e) => {
     document.querySelector('.blur').style.display = "none"
     document.querySelector('.community__popup').style.display = "none"
+    document.querySelector('.community__popup__confirm').style.display = "none"
 })
+let exits = document.querySelectorAll('.exit__community__popup')
+exits.forEach(element => {
+    element.addEventListener('click', (e) => {
+        document.querySelector('.blur').style.display = "none"
+        document.querySelector('.community__popup').style.display = "none"
+        document.querySelector('.community__popup__confirm').style.display = "none"
+    })
+});
 
-document.querySelector('.exit__community__popup').addEventListener('click', (e) => {
-    document.querySelector('.blur').style.display = "none"
-    document.querySelector('.community__popup').style.display = "none"
-})
 
 document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
     let communityName = document.querySelector('#name').value 
@@ -384,6 +390,8 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
             })
             .then((response) => response.json())
             .then((result) => {
+                document.querySelector('.community__popup').style.display = "none"
+                document.querySelector('.community__popup__confirm').style.display = "flex"
             })
             .catch((error) => {
             console.error('Error:', error);
@@ -404,8 +412,10 @@ document.querySelector('#avatar').addEventListener('change', () => {
                 document.querySelector('.form__avatar').setAttribute('src', reader.result)
                 let splitted = document.querySelector('#avatar').value.split("C:\\fakepath\\")
                 image = splitted[1]
+                imgUpload = true
             } else {
                 imgError = true
+                imgUpload = false
             }
         })
 

@@ -19,8 +19,6 @@
         } else {
             $makeCom->setCrop2('null');
         }
-        //$image = $_FILES['img']['name'];
-        //uploadImage($_POST['img']);
         $makeCom->setImg($_POST['img']);
 
         $makeCom->setName($_POST['communityName']);

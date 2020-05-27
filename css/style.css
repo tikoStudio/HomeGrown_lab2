@@ -1119,6 +1119,12 @@ div .nudge--text {
     position: absolute;
     right: 14px;
     top: -7px;
+    cursor: pointer;
+}
+
+.community__popup__confirm {
+    margin-top: 60%;
+    height: 22vh;
 }
 
 /* END CREATE COMMUNITY */

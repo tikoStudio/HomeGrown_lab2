@@ -1,6 +1,7 @@
 <?php
     include_once('classes/Nudge.php');
     include_once('classes/User.php');
+    include_once('functions.php');
 
     session_start();
     if (!isset($_SESSION["user"])) {
@@ -17,6 +18,7 @@
             $nudgeCollection = $nudge->showNudges();
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +67,13 @@
             <input type="text" class="form-control white form-control-place" name="crop1" id="crops2"
                 placeholder="Crops">
         </div>
-        <button class="nudge__popup__send" data-userId=<?php echo $_SESSION['id'] ?>>Send</button>
+        <button name="button" class="nudge__popup__send" data-userId=<?php echo $_SESSION['id']?>>Send</button>
+    </div>
+
+    <div class="community__popup community__popup__confirm">
+        <p class="exit__community__popup">X</p>
+        <h2>Your community has been created</h2>
+        <h5 class="white noMarge">Please wait 14-24hours before your community becomes visible.</h5>
     </div>
 
     <div id="mapContainer" class="mapContainer"></div>
