@@ -135,7 +135,7 @@
             // connectie
             $conn = Db::getConnection();
             // query
-            $statement = $conn->prepare("insert into communitiesmaking (userId1, polygon1, crop1, crop2, img, name) values (:userId, :polygon1, crop1, crop2, :img, :name)");
+            $statement = $conn->prepare("insert into communitiesmaking (userId1, polygon1, crop1, crop2, img, name) values (:userId, :polygon1, :crop1, :crop2, :img, :name)");
             // variabelen klaarzetten om te binden
             $userId = $this->getUserId();
             $polygon1 = $this->getPolygon1();

@@ -372,10 +372,10 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
         formData.append('communityName', communityName)
         formData.append('crop1', crop1)
         formData.append('crop2', crop2)
-        formData.append('img', img)
+        formData.append('img', image)
         formData.append('polygon1', poly)
-
-        console.log(poly)
+        
+        console.log(image)
 
         //fetch
         fetch('ajax/makeCommunity.php', {
@@ -391,6 +391,7 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
         
     }
 })
+var image
 document.querySelector('#avatar').addEventListener('change', () => {
     const file = document.querySelector('#avatar').files[0]
 
@@ -401,6 +402,8 @@ document.querySelector('#avatar').addEventListener('change', () => {
             if(reader.result.includes('image/gif') || reader.result.includes('image/jpeg') || reader.result.includes('image/png')) {
                 imgError = false
                 document.querySelector('.form__avatar').setAttribute('src', reader.result)
+                let splitted = document.querySelector('#avatar').value.split("C:\\fakepath\\")
+                image = splitted[1]
             } else {
                 imgError = true
             }

@@ -6,7 +6,7 @@
 
         //new class object
         $makeCom = new MakeCommunity();
-        $makeCom->setUserId($_POST["userid"]);
+        $makeCom->setUserId($_POST["userId"]);
         $makeCom->setPolygon1($_POST["polygon1"]);
         if (!empty($_POST['crop1'])) {
             $makeCom->setCrop1($_POST['crop1']);
@@ -15,15 +15,15 @@
         }
 
         if (!empty($_POST['crop2'])) {
-            $makeCom->setCrop1($_POST['crop2']);
+            $makeCom->setCrop2($_POST['crop2']);
         } else {
-            $makeCom->setCrop1('null');
+            $makeCom->setCrop2('null');
         }
         //$image = $_FILES['img']['name'];
-        //uploadImage($image);
+        //uploadImage($_POST['img']);
         $makeCom->setImg($_POST['img']);
 
-        $makeCom->setName($_POST['name']);
+        $makeCom->setName($_POST['communityName']);
 
         
        
