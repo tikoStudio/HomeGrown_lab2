@@ -314,8 +314,51 @@ map.on('load', function() {
         });
 });
 
+function isEmpty(value){
+    return (value == null || value.length === 0);
+  }
+
 function test(place) {
     console.log(place)
     document.querySelector('.blur').style.display = "block"
     document.querySelector('.community__popup').style.display = "flex"
+
+    /* on send */
+    // do functions (send place to function)
+    //save img, name, userId,crop1 and crop2
 }
+
+document.querySelector('.blur').addEventListener('click', (e) => {
+    document.querySelector('.blur').style.display = "none"
+    document.querySelector('.community__popup').style.display = "none"
+})
+
+document.querySelector('.exit__community__popup').addEventListener('click', (e) => {
+    document.querySelector('.blur').style.display = "none"
+    document.querySelector('.community__popup').style.display = "none"
+})
+
+document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
+    let communityName = document.querySelector('#name').value 
+    let crop1 = document.querySelector('#crops1').value 
+    let crop2 = document.querySelector('#crops2').value 
+    let img = document.querySelector('#avatar').value
+    console.log(communityName)
+    console.log(crop1)
+    console.log(crop2)
+    console.log(img)
+
+    if(isEmpty(img)) {
+        document.querySelector('.white').innerHTML = "please upload an image for your community"
+        document.querySelector('.white').classList.add('red')
+    }else if(isEmpty(communityName)) {
+        document.querySelector('.white').innerHTML = "please enter a name for your community"
+        document.querySelector('.white').classList.add('red')
+    }else if(isEmpty(crop1) && isEmpty(crop2)) {
+        document.querySelector('.white').innerHTML = "your community must have at least 1 crop"
+        document.querySelector('.white').classList.add('red')
+    }else {
+        
+    }
+})
+

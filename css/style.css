@@ -146,6 +146,10 @@ a {
     color: #fff;
 }
 
+.red {
+    color: rgb(189, 40, 40);
+}
+
 .green {
     color: #25A032;
 }
@@ -1105,6 +1109,16 @@ div .nudge--text {
 
 .form__field__small {
     margin: 8px 0;
+}
+
+.community__popup h2 {
+    margin-top: 25px;
+}
+
+.exit__community__popup {
+    position: absolute;
+    right: 14px;
+    top: -7px;
 }
 
 /* END CREATE COMMUNITY */

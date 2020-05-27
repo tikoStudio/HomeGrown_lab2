@@ -45,6 +45,7 @@
 
     <div class="blur"></div>
     <div class="community__popup">
+        <p class="exit__community__popup">X</p>
         <h2>You created a community!</h2>
         <h5 class="white noMarge">Please fill in some basic information about this community.</h5>
         <div class="form__field">
@@ -57,11 +58,11 @@
         </div>
 
         <div class="form__field form__field__input form__field__small">
-            <input type="text" class="form-control white form-control-place" name="crop1" id="crops"
+            <input type="text" class="form-control white form-control-place" name="crop1" id="crops1"
                 placeholder="Crops">
         </div>
         <div class="form__field form__field__input form__field__small">
-            <input type="text" class="form-control white form-control-place" name="crop1" id="crops"
+            <input type="text" class="form-control white form-control-place" name="crop1" id="crops2"
                 placeholder="Crops">
         </div>
         <button class="nudge__popup__send">Send</button>
