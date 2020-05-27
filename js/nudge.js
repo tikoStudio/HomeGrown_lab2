@@ -31,7 +31,7 @@ sendNudgeButton.addEventListener("click", (e) => {
       document.querySelector('#nudgeMessage').value = ""
       document.querySelector('.nudge__popup').style.display="none"
       document.querySelector('.nudge__complete').style.display="block"
-      console.log(formData.get('text'))
+      //console.log(formData.get('text'))
     })
     .catch((error) => {
     console.error('Error:', error);

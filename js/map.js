@@ -324,12 +324,12 @@ function isFileImage(file) {
  
     return file && acceptedImageTypes.includes(file['type'])
 }
-
+var poly
 function test(place) {
     console.log(place)
     document.querySelector('.blur').style.display = "block"
     document.querySelector('.community__popup').style.display = "flex"
-
+    poly = place
 }
 
 document.querySelector('.blur').addEventListener('click', (e) => {
@@ -347,9 +347,8 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
     let crop1 = document.querySelector('#crops1').value 
     let crop2 = document.querySelector('#crops2').value 
     let img = document.querySelector('#avatar').value
-    console.log(img)
-    console.log(img['type'])
-console.log(imgError)
+    userId = document.querySelector('.nudge__popup__send').dataset.userid
+
     if(isEmpty(img)) {
         document.querySelector('.white').innerHTML = "please upload an image for your community"
         document.querySelector('.white').classList.add('red')
@@ -364,6 +363,32 @@ console.log(imgError)
         document.querySelector('.white').classList.add('red')
     }else {
         console.log("fetch hier")
+
+        //save img to upload folder
+
+        //make form
+        let formData = new FormData();
+        formData.append('userId', userId)  
+        formData.append('communityName', communityName)
+        formData.append('crop1', crop1)
+        formData.append('crop2', crop2)
+        formData.append('img', img)
+        formData.append('polygon1', poly)
+
+        console.log(poly)
+
+        //fetch
+        fetch('ajax/makeCommunity.php', {
+            method: 'POST',
+            body: formData
+            })
+            .then((response) => response.json())
+            .then((result) => {
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+        
     }
 })
 document.querySelector('#avatar').addEventListener('change', () => {

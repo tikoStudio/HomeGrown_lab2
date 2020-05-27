@@ -65,7 +65,7 @@
             <input type="text" class="form-control white form-control-place" name="crop1" id="crops2"
                 placeholder="Crops">
         </div>
-        <button class="nudge__popup__send">Send</button>
+        <button class="nudge__popup__send" data-userId=<?php echo $_SESSION['id'] ?>>Send</button>
     </div>
 
     <div id="mapContainer" class="mapContainer"></div>
