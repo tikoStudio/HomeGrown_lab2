@@ -1,3 +1,4 @@
+var imgError = false
 // Init map
 mapboxgl.accessToken = 'pk.eyJ1IjoidGltb3RoeWsiLCJhIjoiY2s5YjQzc3VpMGl4djNlbzAwbDJnM3EwbyJ9.Q9r-ZxP6xrDkeEg0PLu9Sw';
 var map = new mapboxgl.Map({
@@ -316,16 +317,19 @@ map.on('load', function() {
 
 function isEmpty(value){
     return (value == null || value.length === 0);
-  }
+}
+
+function isFileImage(file) {
+    const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+ 
+    return file && acceptedImageTypes.includes(file['type'])
+}
 
 function test(place) {
     console.log(place)
     document.querySelector('.blur').style.display = "block"
     document.querySelector('.community__popup').style.display = "flex"
 
-    /* on send */
-    // do functions (send place to function)
-    //save img, name, userId,crop1 and crop2
 }
 
 document.querySelector('.blur').addEventListener('click', (e) => {
@@ -343,11 +347,9 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
     let crop1 = document.querySelector('#crops1').value 
     let crop2 = document.querySelector('#crops2').value 
     let img = document.querySelector('#avatar').value
-    console.log(communityName)
-    console.log(crop1)
-    console.log(crop2)
     console.log(img)
-
+    console.log(img['type'])
+console.log(imgError)
     if(isEmpty(img)) {
         document.querySelector('.white').innerHTML = "please upload an image for your community"
         document.querySelector('.white').classList.add('red')
@@ -357,8 +359,28 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
     }else if(isEmpty(crop1) && isEmpty(crop2)) {
         document.querySelector('.white').innerHTML = "your community must have at least 1 crop"
         document.querySelector('.white').classList.add('red')
+    }else if(imgError) {
+        document.querySelector('.white').innerHTML = "your image must be a jpeg, png or gif"
+        document.querySelector('.white').classList.add('red')
     }else {
-        
+        console.log("fetch hier")
     }
 })
+document.querySelector('#avatar').addEventListener('change', () => {
+    const file = document.querySelector('#avatar').files[0]
 
+    if(file) {
+        const reader = new FileReader()
+
+        reader.addEventListener('load', () => {
+            if(reader.result.includes('image/gif') || reader.result.includes('image/jpeg') || reader.result.includes('image/png')) {
+                imgError = false
+                document.querySelector('.form__avatar').setAttribute('src', reader.result)
+            } else {
+                imgError = true
+            }
+        })
+
+        reader.readAsDataURL(file)
+    }
+})
