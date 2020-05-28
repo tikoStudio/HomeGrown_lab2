@@ -302,13 +302,8 @@ header .form__field input[type=text]::placeholder {
 }
 
 .community__data--empty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.community__data--empty {
     margin: 15px;
+    margin: auto 15px;
 }
 
 .community__data--empty a {
@@ -1085,7 +1080,7 @@ div .nudge--text {
     width: 75%;
     position: absolute;
     margin-left: 12.5%;
-    margin-top: 25%;
+    margin-top: 22%;
     border-radius: 35px;
     text-align: center;
     z-index: 1099;
@@ -1125,6 +1120,16 @@ div .nudge--text {
 .community__popup__confirm {
     margin-top: 60%;
     height: 22vh;
+}
+
+.mapboxgl-ctrl-group > button {
+    background-color: #67B74E;
+    border-radius: 50%;
+    filter: invert(95%) sepia(3%) saturate(472%) hue-rotate(167deg) brightness(117%) contrast(100%);
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+    border-radius: 50%;
 }
 
 /* END CREATE COMMUNITY */

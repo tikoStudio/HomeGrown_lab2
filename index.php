@@ -103,7 +103,7 @@
         <div class="community__data__container">
             <div class="community__data--empty">
                 <h2>Join a community, take a look at <a href="allNearbyCommunities.php">nearby communities</a>, or go to
-                    the map!</h2>
+                    the <a href="map.php">map</a> and join/make a community!</h2>
             </div>
         </div>
         <?php endif; ?>

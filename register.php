@@ -20,7 +20,6 @@
                     uploadImage($image);
                     $user->setAvatar($image);
                 } catch (Exception $e) {
-                    $image = $userData['avatar'];
                     $error = $e->getMessage();
                 }
             } //no else, field not required
@@ -83,7 +82,6 @@
                     <div class="form__field form__field__input">
                         <img src="images/name.svg" alt="mail icon" class="form__icon">
                         <input type="text" class="form-control white" name="name" id="name" placeholder="Name">
-                        <!-- onchange=file_changed()> -->
                     </div>
 
                     <div class="form__field form__field__input">
@@ -114,7 +112,7 @@
             </form>
         </div>
     </div>
-    <!-- <script src="js/file_change.js"></script> -->
+    <script src="js/registerImg.js"></script>
 </body>
 
 </html>
