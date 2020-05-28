@@ -52,7 +52,7 @@
         <h5 class="white noMarge">Please fill in some basic information about this community.</h5>
         <div class="form__field">
             <label for="avatar"><img class="form__avatar" src="images/communityUpload.svg" alt="upload avatar"></label>
-            <input type="file" class="form-control white" name="avatar" id="avatar">
+            <input type="file" class="form-control white" name="avatar" id="avatar" accept="image/*">
         </div>
         <div class="form__field form__field__input form__field__small">
             <input type="text" class="form-control white form-control-place" name="name" id="name"

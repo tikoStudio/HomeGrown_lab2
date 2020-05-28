@@ -43,6 +43,7 @@
         <div class="community__title__container">
             <h2>Current Communities</h2>
         </div>
+        <?php if (!empty($myCommunities)): ?>
         <?php foreach ($myCommunities as $community): ?>
         <div class="community__data__container community__data__container--all">
             <a href="community.php?com=<?php echo $community['id'] ?>"
@@ -80,6 +81,14 @@
             </p>
         </div>
         <?php endforeach; ?>
+        <?php else: ?>
+        <div class="community__data__container">
+            <div class="community__data--empty">
+                <h2>Join a community, take a look at <a href="allNearbyCommunities.php">nearby communities</a>, or go to
+                    the <a href="map.php">map</a> and join/make a community!</h2>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 
     <?php if (isset($nudgeCollection)): ?>

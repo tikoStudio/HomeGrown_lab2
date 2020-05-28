@@ -76,7 +76,7 @@
                     <div class="form__field">
                         <label for="avatar"><img class="form__avatar" src="images/avatarUpload.svg"
                                 alt="upload avatar"></label>
-                        <input type="file" class="form-control white" name="avatar" id="avatar">
+                        <input type="file" class="form-control white" name="avatar" id="avatar" accept="image/*">
                     </div>
 
                     <div class="form__field form__field__input">
