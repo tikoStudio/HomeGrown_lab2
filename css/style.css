@@ -782,6 +782,10 @@ div .nudge--text {
 
 /*  PROFILE */
 
+.form__field--profile {
+    margin: 0;
+}
+
 .profileList {
     bottom: 0px;
     height: 100vh;

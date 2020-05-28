@@ -10,13 +10,13 @@
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
             // Check if image file is correct
-            if (isset($_POST["submit"])) {
+            /*if (isset($_POST["submit"])) {
                 $check = getimagesize($image);
                 if ($check == false) {
                     throw new Exception('Het geuploade bestand is geen foto.');
                     $uploadOk = 0;
                 }
-            }
+            }*/
             // Check if file already exists
             if (file_exists($target_file)) { // no exception because we Do want to change users picture but not upload it again
                 $uploadOk = 0;

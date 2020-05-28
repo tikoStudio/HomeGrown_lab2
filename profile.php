@@ -1,11 +1,14 @@
 <?php
     include_once('classes/Nudge.php');
     include_once('classes/User.php');
+    include_once("functions.php");
 
     session_start();
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
     }
+    
+    $changeImg = false;
 
     if (!empty($_GET['nudge'])) {
         $nudge = new Nudge();
@@ -42,6 +45,16 @@
         }
     }
     
+    if (!empty($_POST)) {
+        if (!empty($_FILES['avatar']['name'])) {
+            $image = $_FILES['avatar']['name'];
+            uploadImage($image);
+            $user->setAvatar($image);
+            $user->changeImg();
+            header('Location: profile.php?u=' . $_GET["u"]);
+        } //no else, field not required
+    }
+    
     $nudges->setMyid($myData['id']);
 ?>
 <!DOCTYPE html>
@@ -65,14 +78,25 @@
 
 		<!-- profile name and page -->
 		<div class="white__field">
-			<?php if (!empty($myData['avatar'])): ?>
-			<img src="uploads/<?php echo $myData['avatar']; ?>"
-				alt="profile img" class="profile__avatar">
-			<?php else: ?>
-			<img src="uploads/photolessUser.jpg" alt="profile img" class="profile__avatar">
-			<?php endif; ?>
-			<h2><?php echo $myData['name'] ?>
-			</h2>
+
+			<form class="form__field form__field--profile" action="" method="POST" enctype="multipart/form-data">
+				<label for="avatar">
+					<?php if (!empty($myData['avatar'])): ?>
+					<img src="uploads/<?php echo $myData['avatar']; ?>"
+						alt="profile img" class="profile__avatar form__avatar">
+					<?php else: ?>
+					<img src="uploads/photolessUser.jpg" alt="profile img" class="profile__avatar form__avatar">
+					<?php endif; ?></label>
+				<input type="file" class="form-control white" name="avatar" id="avatar" accept="image/*">
+
+
+				<div>
+					<h2><?php echo $myData['name'] ?>
+					</h2>
+					<input type="hidden" class="form-control white" name="test" id="test" placeholder="test">
+					<input type="submit" value="update profile picture" name="submit">
+				</div>
+			</form>
 		</div>
 		<!-- end profile name and page -->
 
@@ -226,6 +250,7 @@
 		<script src="js/nudgeBlur.js"></script>
 		<script src="js/profileNudge.js"></script>
 		<script src="js/fillCrops.js"></script>
+		<script src="js/registerImg.js"></script>
 		<?php if (isset($nudgeCollection)): ?>
 		<script>
 			const queryString = window.location.search;

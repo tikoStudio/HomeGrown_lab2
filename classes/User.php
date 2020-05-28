@@ -298,4 +298,21 @@
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        public function changeImg()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("update users set avatar = :avatar where id = :id");
+            $id = $this->getId();
+            $avatar = $this->getAvatar();
+            $statement->bindParam(":avatar", $avatar);
+            $statement->bindParam(":id", $id);
+ 
+            //return result
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
