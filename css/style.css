@@ -786,6 +786,14 @@ div .nudge--text {
     margin: 0;
 }
 
+.form__field--profile .btn {
+    margin: 0;
+}
+
+.btn--hidden {
+    display: none;
+}
+
 .profileList {
     bottom: 0px;
     height: 100vh;

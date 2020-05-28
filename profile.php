@@ -7,8 +7,6 @@
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
     }
-    
-    $changeImg = false;
 
     if (!empty($_GET['nudge'])) {
         $nudge = new Nudge();
@@ -94,7 +92,8 @@
 					<h2><?php echo $myData['name'] ?>
 					</h2>
 					<input type="hidden" class="form-control white" name="test" id="test" placeholder="test">
-					<input type="submit" value="update profile picture" name="submit">
+					<input type="submit" value="update profile picture" name="submit"
+						class="btn btn--reverse btn--primary btn--hidden">
 				</div>
 			</form>
 		</div>
