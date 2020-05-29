@@ -140,4 +140,42 @@
             
             return $result;
         }
+
+        public function showAnswered()
+        {
+            // connectie
+            $conn = Db::getConnection();
+            // query
+            $statement = $conn->prepare("select * from communityrequest where userId = :userId and accepted is not null and seenResponse is null");
+            // variabelen klaarzetten om te binden
+            $userId = $this->getUserId();
+ 
+            // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
+            $statement->bindParam(":userId", $userId);
+ 
+            // als je geen execute doet dan wordt die query niet uitgevoerd
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+             
+            return $result;
+        }
+
+        public function setToSeen()
+        {
+            // connectie
+            $conn = Db::getConnection();
+            // query
+            $statement = $conn->prepare("update communityrequest set seenResponse = 1 where id = :id");
+            // variabelen klaarzetten om te binden
+            $id = $this->getId();
+ 
+            // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
+            $statement->bindParam(":id", $id);
+ 
+            // als je geen execute doet dan wordt die query niet uitgevoerd
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+             
+            return $result;
+        }
     }

@@ -87,6 +87,10 @@ body {
     z-index: 200;
 }
 
+div.nudge__popup__request__small {
+    height: 40vh;
+}
+
 /* REGISTER AVATAR */
 #avatar {
     height: 15vh;
@@ -537,7 +541,7 @@ nav img {
     margin-top: 30%;
     border-radius: 35px;
     text-align: center;
-    z-index: 200;
+    z-index: 1000;
     display: none;
 }
 
@@ -993,14 +997,14 @@ div .nudge--text {
 
 .nudge__popup__request {
     background-color: #67B74E;
-    height: 44%;
+    height: 47%;
     width: 75%;
     position: absolute;
     margin-left: 12.5%;
     margin-top: 30%;
     border-radius: 35px;
     text-align: center;
-    z-index: 200;
+    z-index: 1000;
 }
 
 /* END COMMUNITY REQUEST */

@@ -40,7 +40,7 @@
         $user->setId($_SESSION['id']);
         $token = $user->tokenFromSession();
 
-    $taggedCommunities = $community->getNamedCommunities($_GET['cn']); // change to get named communities
+    $taggedCommunities = $community->getNamedCommunities($_GET['cn']);
 
 ?>
 <!DOCTYPE html>

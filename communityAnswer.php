@@ -40,9 +40,6 @@
     /* get accepted/rejected answer */
     $CommunityRequest->setUserId($_SESSION['id']);
     $requestAnswers = $CommunityRequest->showAnswered();
-    if (!empty($requestAnswers)) {
-        header("Location: communityAnswer.php");
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +56,35 @@
 
 <body>
     <?php include_once('nav.inc.php'); ?>
+
+    <?php if (!empty($requestAnswers)) :?>
+    <?php
+        $requestCom = new Community();
+        $requestCom->setId($requestAnswers['communityId']);
+        $comInfo = $requestCom->getcommunityData();
+    ?>
+    <div class="blur blur--active"></div>
+
+    <div class="nudge__popup__request nudge__popup__request__small">
+        <img src="images/nudged.svg" alt="nudge alert popup">
+        <p>
+            Your
+            request to join
+        <h2><?php echo $comInfo['name']; ?>
+        </h2> was <?php if ($requestAnswers['accepted'] == 1) {
+        echo "accepted";
+    } else {
+        echo "denied";
+    } ?>
+        </p>
+
+        <button class="nudge__popup__send" id="continue" data-requestId=<?php echo $requestAnswers['id'] ?>
+            data-userId= <?php echo $requestAnswers['userId']; ?>
+            >continue</button>
+    </div>
+    <?php endif; ?>
+
+
     <div class="community__container">
         <div class="community__title__container">
             <h2>Current Communities</h2>
@@ -129,13 +155,13 @@
             <a href="community.php?com=<?php echo $nearbyCommunities[0]['id'] ?>"
                 class="community__data__container__a"></a>
             <div class="<?php if (empty($nearbyCommunities[0]['userId1']) || empty($nearbyCommunities[0]['userId2']) || empty($nearbyCommunities[0]['userId3']) || empty($nearbyCommunities[0]['userId4'])) {
-    echo "label--green";
-} ?> label">
+        echo "label--green";
+    } ?> label">
                 <p><?php if (empty($nearbyCommunities[0]['userId1']) || empty($nearbyCommunities[0]['userId2']) || empty($nearbyCommunities[0]['userId3']) || empty($nearbyCommunities[0]['userId4'])) {
-    echo "Looking for members";
-} else {
-    echo "currently full";
-} ?>
+        echo "Looking for members";
+    } else {
+        echo "currently full";
+    } ?>
                 </p>
             </div>
             <div class="community__img">
@@ -207,6 +233,7 @@
     <?php endif; ?>
     <?php include_once("footer.inc.php"); ?>
     <script src="js/nudgeBlur.js"></script>
+    <script src="js/seenAnswer.js"></script>
     <?php if (isset($nudgeCollection)): ?>
     <script>
         const queryString = window.location.search;
