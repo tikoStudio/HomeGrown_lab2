@@ -6,6 +6,27 @@
     display: none;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 html {
     height: 100%;
 }
@@ -128,6 +149,7 @@ a {
     border-radius: 10px;
     background-color: rgba(218, 204, 204, 0.5);
     display: flex;
+    overflow: hidden;
 }
 
 .form__image {
@@ -717,11 +739,13 @@ div .nudge--text {
     padding: 0.6em 0.8em;
     margin: 0.5em 1em;
     border-radius: 0.6em;
+    max-width: 75%;
 }
 
 .chatbox__messages p {
     padding: 0;
     margin: 0;
+    overflow-wrap: break-word;
 }
 
 .chatbox__messages--me {
@@ -755,6 +779,7 @@ div .nudge--text {
     width: 80%;
     height: 4em;
     border: none;
+    margin-left: 0.5em;
 }
 
 .input__message::placeholder {
@@ -771,12 +796,11 @@ div .nudge--text {
 }
 
 .send__message__img {
-    /*background-color: #DDF5E7;*/
     height: 1.5em;
     position: absolute;
     right: 0;
     align-self: center;
-    margin-right: 1.5em;
+    margin-right: 2em;
 }
 /* END CHAT */
 
