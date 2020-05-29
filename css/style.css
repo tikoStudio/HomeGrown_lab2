@@ -6,6 +6,12 @@
     display: none;
 }
 
+.createlink {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: underline;
+}
+
 textarea:focus, input:focus{
     outline: none;
 }
@@ -1179,7 +1185,7 @@ div .nudge--text {
 
 .community__popup__confirm {
     margin-top: 60%;
-    height: 22vh;
+    height: 29vh;
 }
 
 .mapboxgl-ctrl-group > button {
