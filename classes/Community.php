@@ -4,6 +4,11 @@
     class Community
     {
         private $id;
+        private $userId;
+        private $polygon1;
+        private $crop1;
+        private $crop2;
+        private $name;
 
         public function getId()
         {
@@ -13,6 +18,66 @@
         public function setId($id)
         {
             $this->id = $id;
+
+            return $this;
+        }
+
+        public function getUserId()
+        {
+            return $this->userId;
+        }
+
+        public function setUserId($userId)
+        {
+            $this->userId = $userId;
+
+            return $this;
+        }
+
+        public function getPolygon1()
+        {
+            return $this->polygon1;
+        }
+
+        public function setPolygon1($polygon1)
+        {
+            $this->polygon1 = $polygon1;
+
+            return $this;
+        }
+
+        public function getCrop1()
+        {
+            return $this->crop1;
+        }
+
+        public function setCrop1($crop1)
+        {
+            $this->crop1 = $crop1;
+
+            return $this;
+        }
+
+        public function getCrop2()
+        {
+            return $this->crop2;
+        }
+
+        public function setCrop2($crop2)
+        {
+            $this->crop2 = $crop2;
+
+            return $this;
+        }
+
+        public function getName()
+        {
+            return $this->name;
+        }
+
+        public function setName($name)
+        {
+            $this->name = $name;
 
             return $this;
         }
@@ -191,6 +256,35 @@
             //return result
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function makeNewCommunity()
+        {
+            // connectie
+            $conn = Db::getConnection();
+            // query
+            $statement = $conn->prepare("insert into community (userId1, polygon1, crop1, crop2, img, name) values (:userId, :polygon1, :crop1, :crop2, :img, :name)");
+            // variabelen klaarzetten om te binden
+            $userId = $this->getUserId();
+            $polygon1 = $this->getPolygon1();
+            $crop1 = $this->getCrop1();
+            $crop2 = $this->getCrop2();
+            $img = "comingsoon.jpg";
+            $name = $this->getName();
+ 
+            // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
+            $statement->bindParam(":userId", $userId);
+            $statement->bindParam(":polygon1", $polygon1);
+            $statement->bindParam(":crop1", $crop1);
+            $statement->bindParam(":crop2", $crop2);
+            $statement->bindParam(":img", $img);
+            $statement->bindParam(":name", $name);
+ 
+            // als je geen execute doet dan wordt die query niet uitgevoerd
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+             
             return $result;
         }
     }
