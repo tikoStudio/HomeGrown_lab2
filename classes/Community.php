@@ -177,4 +177,20 @@
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        public function getNamedCommunities($param)
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select * from community where crop1 = :param or crop2 = :param or name LIKE :betweenparam ");
+            $statement->bindParam(':param', $param);
+            $searchparam = "%" . $param . "%";
+            $statement->bindParam(':betweenparam', $searchparam);
+            echo $searchparam;
+            //return result
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }

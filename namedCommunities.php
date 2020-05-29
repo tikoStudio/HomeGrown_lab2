@@ -40,7 +40,7 @@
         $user->setId($_SESSION['id']);
         $token = $user->tokenFromSession();
 
-    $taggedCommunities = $community->getTaggedCommunities($_GET['cn']); // change to get named communities
+    $taggedCommunities = $community->getNamedCommunities($_GET['cn']); // change to get named communities
 
 ?>
 <!DOCTYPE html>
@@ -61,7 +61,7 @@
 
     <div class="community__container community__container--all">
         <div class="community__title__container">
-            <h2>Communities named <?php echo $_GET['cn'] ?>
+            <h2>results for: <?php echo $_GET['cn'] ?>
             </h2>
         </div>
         <?php foreach ($taggedCommunities as $community): ?>
