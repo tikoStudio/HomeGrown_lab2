@@ -74,8 +74,7 @@
         <p class="exit__community__popup">X</p>
         <h2>Your community has been created</h2>
         <h5 class="white noMarge">Please wait 14-24 hours before your community becomes visible on the map. You can
-            review your community on the <a class="createlink" href="index.php">Homepage</a> or in your <a
-                class="createlink" href="allMyCommunities.php">community</a> list.</h5>
+            review your community in your <a class="createlink" href="allMyCommunities.php">community</a> list.</h5>
     </div>
 
     <div id="mapContainer" class="mapContainer"></div>

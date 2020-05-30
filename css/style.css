@@ -419,6 +419,11 @@ header .form__field input[type=text]::placeholder {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between; /* HELLO */
+}
+
+.crop__container {
+    display: flex;
 }
 
 .community__container--top {
@@ -1032,6 +1037,7 @@ div .nudge--text {
     background-color: rgba(255, 0, 0, 0.31);
     width: 10px;
     height: 10px;
+    border-radius: 50%;
 }
 
 .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
@@ -1178,8 +1184,8 @@ div .nudge--text {
 
 .exit__community__popup {
     position: absolute;
-    right: 14px;
-    top: -7px;
+    right: 20px;
+    top: -5px;
     cursor: pointer;
 }
 
@@ -1197,5 +1203,9 @@ div .nudge--text {
 .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
     border-radius: 50%;
 }
+
+.mapboxgl-ctrl > button:hover {
+    background-color: #67B74E;
+} 
 
 /* END CREATE COMMUNITY */

@@ -78,24 +78,26 @@
             <div class="community__info">
                 <h3><?php echo $community['name']?>
                 </h3>
-                <?php if (!empty($community['crop1'])): ?>
-                <a class="anchortag"
-                    href="taggedCommunities.php?tag=<?php echo $community['crop1']; ?>">
-                    <div class=" farming">
-                        <p><?php echo $community['crop1'] ?>
-                        </p>
-                    </div>
-                </a>
-                <?php endif; ?>
-                <?php if (!empty($community['crop2'])): ?>
-                <a class="anchortag"
-                    href="taggedCommunities.php?tag=<?php echo $community['crop2']; ?>">
-                    <div class="farming">
-                        <p><?php echo $community['crop2'] ?>
-                        </p>
-                    </div>
-                </a>
-                <?php endif; ?>
+                <div class="crop__container">
+                    <?php if (!empty($community['crop1'])): ?>
+                    <a class="anchortag"
+                        href="taggedCommunities.php?tag=<?php echo $community['crop1']; ?>">
+                        <div class=" farming">
+                            <p><?php echo $community['crop1'] ?>
+                            </p>
+                        </div>
+                    </a>
+                    <?php endif; ?>
+                    <?php if (!empty($community['crop2'])): ?>
+                    <a class="anchortag"
+                        href="taggedCommunities.php?tag=<?php echo $community['crop2']; ?>">
+                        <div class="farming">
+                            <p><?php echo $community['crop2'] ?>
+                            </p>
+                        </div>
+                    </a>
+                    <?php endif; ?>
+                </div>
             </div>
             <p class=community__adress><?php echo $community['address'] ?>
             </p>
