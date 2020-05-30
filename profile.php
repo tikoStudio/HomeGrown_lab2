@@ -251,22 +251,18 @@
 		<script src="js/fillCrops.js"></script>
 		<script src="js/registerImg.js"></script>
 		<?php if (isset($nudgeCollection)): ?>
-		<script>
+		<<script>
 			const queryString = window.location.search;
 			if (queryString.includes("nid")) {} else {
-				let animation = setInterval(myMethod, 2);
-				topcss = 100
+			let animation = setInterval(myMethod, 2);
+			topcss = 100
+			opacitycss = 0
 
-				function myMethod() {
-					if (topcss <= 45) {
-						clearInterval(animation)
-					}
-					document.querySelector('.nudgeList').style.top = topcss + "vh"
-					topcss -= 3
-				}
-			}
-		</script>
-		<?php endif; ?>
+			function myMethod() {
+			if (topcss <= 45) { clearInterval(animation) }
+				document.querySelector('.blur--active').style.opacity=opacitycss
+				document.querySelector('.nudgeList').style.top=topcss + "vh" topcss -=3 opacitycss +=0.1 } } </script>
+				<?php endif; ?>
 </body>
 
 </html>

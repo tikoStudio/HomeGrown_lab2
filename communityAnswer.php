@@ -243,13 +243,16 @@
         if (queryString.includes("nid")) {} else {
             let animation = setInterval(myMethod, 2);
             topcss = 100
+            opacitycss = 0
 
             function myMethod() {
                 if (topcss <= 45) {
                     clearInterval(animation)
                 }
+                document.querySelector('.blur--active').style.opacity = opacitycss
                 document.querySelector('.nudgeList').style.top = topcss + "vh"
                 topcss -= 3
+                opacitycss += 0.1
             }
         }
     </script>
