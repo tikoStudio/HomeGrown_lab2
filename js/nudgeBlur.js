@@ -10,3 +10,6 @@ if(blurred) {
   })
 }
 
+let nudgeItem = document.querySelectorAll('.nudgeItem')
+
+console.log(nudgeItem)

@@ -258,7 +258,6 @@
                         document.querySelector('.nudgeList').style.top = topcss + "vh"
                         topcss -= 3
                         opacitycss += 0.1
-                        console.log(topcss)
                     }
                 }
             }
