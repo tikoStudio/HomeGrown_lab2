@@ -33,21 +33,12 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Change autocomplete styles in WebKit */
-#search:-webkit-autofill,
-#search:-webkit-autofill:hover, 
-#search:-webkit-autofill:focus,
-#search:-webkit-autofill,
-#search:-webkit-autofill:hover,
-#search:-webkit-autofill:focus,
-#search:-webkit-autofill,
-#search:-webkit-autofill:hover,
-#search:-webkit-autofill:focus {
-  border: none;
-  -webkit-text-fill-color: #000;
-  color: #000;
-  box-shadow: 0 0 0px 1000px transparent inset;
-  transition: background-color 5000s ease-in-out 0s;
+.form__error {
+    margin-top: 1.5em;
+}
+
+div.form__field__regi {
+    margin-top: 0;
 }
 
 html {
@@ -72,6 +63,8 @@ body {
     background-position: -300px 0px;
     display: flex;
     justify-content: center;
+    border-bottom: solid 1px #000;
+    height: 100vh;
 }
 
 .gps__container {
@@ -271,6 +264,27 @@ a {
 
 .btn--used {
     background-color: #A0A89D;
+}
+
+/* Change autocomplete styles in WebKit */
+#search:-webkit-autofill,
+#search:-webkit-autofill:hover, 
+#search:-webkit-autofill:focus,
+#search:-webkit-autofill,
+#search:-webkit-autofill:hover,
+#search:-webkit-autofill:focus,
+#search:-webkit-autofill,
+#search:-webkit-autofill:hover,
+#search:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: #000;
+  color: #000;
+  box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#search::placeholder {
+    text-align: center;
 }
 
 header, footer {

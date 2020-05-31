@@ -66,11 +66,6 @@
         <div class="form form--login">
             <form action="" method="POST" enctype="multipart/form-data">
 
-                <?php if (isset($error)): ?>
-                <div class="form__error"><?php echo $error; ?>
-                </div>
-                <?php endif; ?>
-
                 <div class="form__field__container">
 
                     <div class="form__field">
@@ -101,7 +96,12 @@
                             id="passwordconfirmation" placeholder="Confirm password">
                     </div>
 
-                    <div class="form__field">
+                    <?php if (isset($error)): ?>
+                    <div class="form__error"><?php echo $error; ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <div class="form__field form__field__regi">
                         <input type="submit" value="Register" class="btn btn--primary">
                     </div>
 

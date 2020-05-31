@@ -3,7 +3,8 @@ let userId1
 let userId2
 let text
 
-sendNudgeButton.addEventListener("click", (e) => {
+if(sendNudgeButton) {
+  sendNudgeButton.addEventListener("click", (e) => {
     document.querySelector('.blur').style.display="block"
     text = document.querySelector('#nudgeMessage').value
     userId1 = sendNudgeButton.dataset.userid1
@@ -27,6 +28,7 @@ sendNudgeButton.addEventListener("click", (e) => {
       console.error('Error:', error);
       });
   })
+}
 
   document.querySelector('.blur').addEventListener('click', () => {
     document.querySelector('.blur').style.display="none"

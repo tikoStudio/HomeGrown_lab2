@@ -20,7 +20,6 @@
     }
 
     $nudges = new Nudge();
-        
     $nudges->setUserId2($_SESSION['id']);
     $nudgeCount = $nudges->unreadNudges();
 
@@ -28,7 +27,6 @@
     $user = new User();
     $user->setId($_SESSION['id']);
     $token = $user->tokenFromSession();
-
 
     if (empty($_GET["u"])) {
         header("Location: index.php");
@@ -76,7 +74,6 @@
 
 		<!-- profile name and page -->
 		<div class="white__field">
-
 			<form class="form__field form__field--profile" action="" method="POST" enctype="multipart/form-data">
 				<label for="avatar">
 					<?php if (!empty($myData['avatar'])): ?>
@@ -86,7 +83,6 @@
 					<img src="uploads/photolessUser.jpg" alt="profile img" class="profile__avatar form__avatar">
 					<?php endif; ?></label>
 				<input type="file" class="form-control white" name="avatar" id="avatar" accept="image/*">
-
 
 				<div>
 					<h2><?php echo $myData['name'] ?>
@@ -251,18 +247,25 @@
 		<script src="js/fillCrops.js"></script>
 		<script src="js/registerImg.js"></script>
 		<?php if (isset($nudgeCollection)): ?>
-		<<script>
+		<script>
 			const queryString = window.location.search;
 			if (queryString.includes("nid")) {} else {
-			let animation = setInterval(myMethod, 2);
-			topcss = 100
-			opacitycss = 0
+				let animation = setInterval(myMethod, 2);
+				topcss = 100
+				opacitycss = 0
 
-			function myMethod() {
-			if (topcss <= 45) { clearInterval(animation) }
-				document.querySelector('.blur--active').style.opacity=opacitycss
-				document.querySelector('.nudgeList').style.top=topcss + "vh" topcss -=3 opacitycss +=0.1 } } </script>
-				<?php endif; ?>
+				function myMethod() {
+					if (topcss <= 45) {
+						clearInterval(animation)
+					}
+					document.querySelector('.blur--active').style.opacity = opacitycss
+					document.querySelector('.nudgeList').style.top = topcss + "vh"
+					topcss -= 3
+					opacitycss += 0.1
+				}
+			}
+		</script>
+		<?php endif; ?>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ var map = new mapboxgl.Map({
 container: 'mapContainer', // Container id
 style: 'mapbox://styles/timothyk/ck9h30yyg0n471iqwryimh56t',
 center: [4.475269, 51.021694], // Starting position
-zoom: 12 // Starting zoom
+zoom: 13 // Starting zoom
 });
 
 //Init GLOBAL variables
@@ -82,20 +82,11 @@ map.on('draw.update', updateArea);
  
 function updateArea(e) {
 var data = draw.getAll();
-var answer = document.getElementById('calculated-area');
 if (data.features.length > 0) {
 var area = turf.area(data);
 test(data.features[0].geometry.coordinates[0]);
 // restrict to area to 2 decimal points
 var rounded_area = Math.round(area * 100) / 100;
-answer.innerHTML =
-'<p><strong>' +
-rounded_area +
-'</strong></p><p>square meters</p>';
-} else {
-answer.innerHTML = '';
-if (e.type !== 'draw.delete')
-alert('Use the draw tools to draw a polygon!');
 }
 }
 
@@ -319,12 +310,6 @@ map.on('load', function() {
 function isEmpty(value){
     return (value == null || value.length === 0);
 }
-
-function isFileImage(file) {
-    const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
- 
-    return file && acceptedImageTypes.includes(file['type'])
-}
 var poly
 function test(place) {
     console.log(place)
@@ -346,7 +331,6 @@ exits.forEach(element => {
         document.querySelector('.community__popup__confirm').style.display = "none"
     })
 });
-
 
 document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
     let communityName = document.querySelector('#name').value 
@@ -402,10 +386,8 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
 var image
 document.querySelector('#avatar').addEventListener('change', () => {
     const file = document.querySelector('#avatar').files[0]
-
     if(file) {
         const reader = new FileReader()
-
         reader.addEventListener('load', () => {
             if(reader.result.includes('image/gif') || reader.result.includes('image/jpeg') || reader.result.includes('image/png')) {
                 imgError = false
@@ -418,7 +400,6 @@ document.querySelector('#avatar').addEventListener('change', () => {
                 imgUpload = false
             }
         })
-
         reader.readAsDataURL(file)
     }
 })
