@@ -133,19 +133,27 @@
     <?php if (isset($nudgeCollection)): ?>
     <script>
         const queryString = window.location.search;
-        if (queryString.includes("nid")) {} else {
-            let animation = setInterval(myMethod, 2);
-            topcss = 100
-            opacitycss = 0
+        topcss = 100
+        opacitycss = 0
+        if (queryString.includes("nudge")) {
+            if (queryString.includes('nid')) {
+                document.querySelector('.blur--active').style.opacity = 1
+                document.querySelector('.nudgeList').style.top = "46vh"
+            } else {
+                let animation = setInterval(myMethod, 2);
 
-            function myMethod() {
-                if (topcss <= 45) {
-                    clearInterval(animation)
+                function myMethod() {
+                    if (topcss <= 45) {
+                        clearInterval(animation)
+                    }
+                    if (topcss >= 45) {
+                        document.querySelector('.blur--active').style.opacity = opacitycss
+                        document.querySelector('.nudgeList').style.top = topcss + "vh"
+                        topcss -= 3
+                        opacitycss += 0.1
+                        console.log(topcss)
+                    }
                 }
-                document.querySelector('.blur--active').style.opacity = opacitycss
-                document.querySelector('.nudgeList').style.top = topcss + "vh"
-                topcss -= 3
-                opacitycss += 0.1
             }
         }
     </script>
