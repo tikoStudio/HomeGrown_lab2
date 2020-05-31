@@ -686,6 +686,7 @@ div .nudge--name span {
     height: 30vh;
     border-radius: 30px;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 div .nudge--text {

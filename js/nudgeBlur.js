@@ -12,4 +12,7 @@ if(blurred) {
 
 let nudgeItem = document.querySelectorAll('.nudgeItem')
 
-console.log(nudgeItem)
+if(nudgeItem.length == 1) {
+  document.querySelector('.nudgeFolder').style.height = "15vh"
+}
+
