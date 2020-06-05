@@ -18,6 +18,21 @@
             $nudgeCollection = $nudge->showNudges();
         }
     }
+
+    include_once('classes/Community.php');
+    $community = new Community();
+    $test = $community->getAllCommunityData();
+?>
+
+<?php
+foreach ($test as $value) {
+    if (!empty($value["polygon1"])) {
+        ?>
+<script>
+    var <?php echo "item" . $value['id']; ?> = <?php echo $value["polygon1"] ?> ;
+</script> <?php
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

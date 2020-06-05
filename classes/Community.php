@@ -97,6 +97,19 @@
             return $result;
         }
 
+        public function getAllCommunityData()
+        {
+            //db conn
+            $conn = Db::getConnection();
+            //insert query
+            $statement = $conn->prepare("select * from community");
+
+            //return result
+            $statement->execute();
+            $result = $statement->fetchall(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         public function getMyCommunities()
         {
             //db conn
@@ -263,10 +276,9 @@
             // connectie
             $conn = Db::getConnection();
             // query
-            $statement = $conn->prepare("insert into community (userId1, polygon1, crop1, crop2, img, name) values (:userId, :polygon1, :crop1, :crop2, :img, :name)");
+            $statement = $conn->prepare("insert into community (userId1, crop1, crop2, img, name) values (:userId, :crop1, :crop2, :img, :name)");
             // variabelen klaarzetten om te binden
             $userId = $this->getUserId();
-            $polygon1 = $this->getPolygon1();
             $crop1 = $this->getCrop1();
             $crop2 = $this->getCrop2();
             $img = "comingsoon.jpg";
@@ -274,7 +286,6 @@
  
             // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
             $statement->bindParam(":userId", $userId);
-            $statement->bindParam(":polygon1", $polygon1);
             $statement->bindParam(":crop1", $crop1);
             $statement->bindParam(":crop2", $crop2);
             $statement->bindParam(":img", $img);

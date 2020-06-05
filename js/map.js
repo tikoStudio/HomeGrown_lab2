@@ -90,192 +90,23 @@ var rounded_area = Math.round(area * 100) / 100;
 }
 }
 
+let JsonCommunities = {
+    'type': 'geojson',
+    'data': {
+        'type': 'FeatureCollection',
+        'features': [
+        ]
+    }
+}
+
+for (var varName in window) {
+    if (varName.substring(0,4) == 'item') {
+      JsonCommunities.data.features.push(window[varName]) // add js variables that where made from php to the json
+    }
+}
+
 map.on('load', function() {
-    map.addSource('Gary', {
-        'type': 'geojson',
-        'data': {
-            'type': 'FeatureCollection',
-            'features': [
-                {
-                    'type': 'Feature1',
-                    'properties': {
-                        'name': 'De Mechelse kwekers',
-                        'img': 'cucumber.png',
-                        'id': 1
-                    },
-                    'geometry': {
-                        'type': 'Polygon',                        
-                        'coordinates': [
-                            [
-                                [4.465629730950667, 51.02155666327056],
-                                [4.465678064026349, 51.02149399607427],
-                                [4.46576190717883, 51.02151757383976],
-                                [4.46571061490431, 51.021579000049],
-                                [4.465629730950667, 51.02155666327056]
-                            ]
-                        ]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'name': "De Mechelse kwekers",
-                        'img': 'cucumber.png',
-                        'id': 1
-                    },
-                    'geometry': {
-                            'type': 'Polygon',
-                            'coordinates': [
-                                [
-                                    [4.463185663879898, 51.02399895177513],
-                                    [4.463238580872513, 51.024056100622346],
-                                    [4.463324446180991, 51.02408059296431],
-                                    [4.463366380401368, 51.02404919252385],
-                                    [4.46324057774018, 51.023974459390416],
-                                    [4.463185663879898, 51.02399895177513]
-                                ]
-                            ]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'name': "tomaten kwekertjes Be",
-                        'img': 'tomatoes.jpg',
-                        'id': 2
-                    },
-                    'geometry': {
-                            'type': 'Polygon',
-                            'coordinates': [
-                                [
-                                    [4.465804384511387, 51.019479739475344],
-                                    [4.465874223528033, 51.01930389648365],
-                                    [4.465640414646515, 51.01927237944403],
-                                    [4.465564502671725, 51.01945097571988],
-                                    [4.465804384511387, 51.019479739475344]
-                                ]
-                            ]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'name': "oregano boerenbond mechelen",
-                        'img': 'oregano.jpg',
-                        'id': 3
-                    },
-                    'geometry': {
-                            'type': 'Polygon',
-                            'coordinates': [
-                                [
-                                    [4.475469342642128, 51.019343685565474],
-                                    [4.475574771988704, 51.01927038315927],
-                                    [4.475619163293771, 51.01928783612365],
-                                    [4.47584111981331, 51.01914472162153],
-                                    [4.4760519785065185, 51.01928783612365],
-                                    [4.475646907857993, 51.01947283714205],
-                                    [4.475469342642128, 51.019343685565474]
-                                ]
-                            ]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'name': "de tomatenplukkers",
-                        'img': 'tomatoes.jpg',
-                        'id': 4
-                    },
-                    'geometry': {
-                            'type': 'Polygon',
-                            'coordinates': [
-                                [
-                                    [4.672929055175871, 51.06352237952055],
-                                    [4.6721549293971805, 51.06319398690687],
-                                    [4.672038810530097, 51.06262233494817],
-                                    [4.671167919029273, 51.061758762220364],
-                                    [4.670277674383556, 51.06090733671792],
-                                    [4.670045436650611, 51.06026267556442],
-                                    [4.670413146395589, 51.05992209623673],
-                                    [4.670722796707054, 51.059265257600856],
-                                    [4.671342097329955, 51.059338240131865],
-                                    [4.672716170586597, 51.05909496458179],
-                                    [4.674206362710294, 51.05961800543432],
-                                    [4.674903075911658, 51.06045729119822],
-                                    [4.673761240388046, 51.06263449782958],
-                                    [4.6732193523423575, 51.06254935759446],
-                                    [4.672929055175871, 51.06352237952055]
-                                ]
-                            ]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'name': "de groene handjes Be",
-                        'img': 'cucumber.png',
-                        'id': 5
-                    },
-                    'geometry': {
-                            'type': 'Polygon',
-                            'coordinates': [
-                                [
-                                    [4.488747465222275, 51.023776165295686],
-                                    [4.488386746198984, 51.02381398052785],
-                                    [4.488845159958203, 51.02447101526829],
-                                    [4.489048064408848, 51.02443792741096],
-                                    [4.488747465222275, 51.023776165295686]
-                                ]
-                            ]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'name': "yet another farm here",
-                        'img': 'oregano.jpg',
-                        'id': 6
-                    },
-                    'geometry': {
-                            'type': 'Polygon',
-                            'coordinates': [
-                                [
-                                    [4.700483761852382, 50.99487089062558],
-                                    [4.70038403322846, 50.99486847646415],
-                                    [4.700378279653847, 50.99491434550873],
-                                    [4.700294007089212, 50.994908286364904],
-                                    [4.700315103529334, 50.994983125245],
-                                    [4.700476203613391, 50.99498433232273],
-                                    [4.700483761852382, 50.99487089062558]
-                                ]
-                            ]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'name': "the raspberry club van mechelen",
-                        'img': 'raspberry.jpg',
-                        'id': 7
-                    },
-                    'geometry': {
-                            'type': 'Polygon',
-                            'coordinates': [
-                                [
-                                    [4.470409299869829, 51.02395817774939],
-                                    [4.47050105886882, 51.02398342848622],
-                                    [4.470581347994056, 51.02398342848622],
-                                    [4.4706386973687415, 51.02389685447335],
-                                    [4.470208577057491, 51.02374534956144],
-                                    [4.470019324120443, 51.023878818200274],
-                                    [4.470409299869829, 51.02395817774939]
-                                ]
-                            ]
-                    }
-                }
-            ]
-        }
-    });
+    map.addSource('Gary', JsonCommunities);
     
     map.addLayer({
     'id': 'Gary',
@@ -312,7 +143,6 @@ function isEmpty(value){
 }
 var poly
 function test(place) {
-    console.log(place)
     document.querySelector('.blur').style.display = "block"
     document.querySelector('.community__popup').style.display = "flex"
     poly = place
@@ -352,8 +182,6 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
         document.querySelector('.white').innerHTML = "your image must be a jpeg, png or gif"
         document.querySelector('.white').classList.add('red')
     }else {
-        console.log("fetch hier")
-
         //save img to upload folder
 
         //make form
@@ -364,8 +192,6 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
         formData.append('crop2', crop2)
         formData.append('img', image)
         formData.append('polygon1', poly)
-        
-        console.log(image)
 
         //fetch
         fetch('ajax/makeCommunity.php', {

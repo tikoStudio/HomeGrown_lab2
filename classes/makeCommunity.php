@@ -135,7 +135,7 @@
             // connectie
             $conn = Db::getConnection();
             // query
-            $statement = $conn->prepare("insert into communitiesmaking (userId1, polygon1, crop1, crop2, img, name) values (:userId, :polygon1, :crop1, :crop2, :img, :name)");
+            $statement = $conn->prepare("insert into communitiesmaking (userId1, crop1, crop2, img, name) values (:userId, :crop1, :crop2, :img, :name)");
             // variabelen klaarzetten om te binden
             $userId = $this->getUserId();
             $polygon1 = $this->getPolygon1();
@@ -146,7 +146,6 @@
  
             // uitlezen wat er in de variabele zit en die zal op een veilige manier gekleefd worden
             $statement->bindParam(":userId", $userId);
-            $statement->bindParam(":polygon1", $polygon1);
             $statement->bindParam(":crop1", $crop1);
             $statement->bindParam(":crop2", $crop2);
             $statement->bindParam(":img", $img);
