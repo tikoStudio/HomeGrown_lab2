@@ -90,7 +90,7 @@ var rounded_area = Math.round(area * 100) / 100;
 }
 }
 
-let JsonCommunities = {
+let JsonCommunities = { // json for making communities
     'type': 'geojson',
     'data': {
         'type': 'FeatureCollection',
@@ -205,8 +205,7 @@ document.querySelector('.nudge__popup__send').addEventListener('click', (e) => {
             })
             .catch((error) => {
             console.error('Error:', error);
-            });
-        
+            });  
     }
 })
 var image
