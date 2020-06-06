@@ -1,5 +1,4 @@
 <?php
-    include_once(__DIR__ . "../../classes/makeCommunity.php");
     include_once(__DIR__ . "../../classes/Community.php");
     include_once("../functions.php");
 

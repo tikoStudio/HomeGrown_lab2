@@ -293,8 +293,39 @@
  
             // als je geen execute doet dan wordt die query niet uitgevoerd
             $statement->execute();
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-             
-            return $result;
+            
+            $latest_id = $conn->lastInsertId();
+            $betweenStatement = $conn->prepare("select * from community where id = :id");
+            $betweenStatement->bindParam(":id", $latest_id);
+
+            $betweenStatement->execute();
+            $result = $betweenStatement->fetch(PDO::FETCH_ASSOC);
+
+            $statement2 = $conn->prepare("update community set polygon1 = :polygon where id = :id");
+            $statement2->bindParam(":id", $latest_id);
+            $coords = $this->getPolygon1();
+            $polygon = "{
+                'type': 'Feature',
+                'properties': {
+                    'name': '" . $result['name'] . "',
+                    'img': 'comingsoon.jpg',
+                    'id': " . $latest_id . "
+                },
+                'geometry': {
+                        'type': 'Polygon',
+                        'coordinates': [
+                            [
+                                 " . $coords . "
+                            ]
+                        ]
+                }
+            }";
+
+            $statement2->bindParam(":polygon", $polygon);
+
+            $statement2->execute();
+            $result2 = $statement2->fetch(PDO::FETCH_ASSOC);
+
+            return $result2;
         }
     }

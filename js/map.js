@@ -87,7 +87,12 @@ var area = turf.area(data);
 test(data.features[0].geometry.coordinates[0]);
 // restrict to area to 2 decimal points
 var rounded_area = Math.round(area * 100) / 100;
-}
+console.log(rounded_area)
+    if(rounded_area <= 700) {
+        console.log("yes doe test")
+    }else 
+        console.log("noooooooo")
+    }
 }
 
 let JsonCommunities = { // json for making communities
@@ -141,11 +146,15 @@ map.on('load', function() {
 function isEmpty(value){
     return (value == null || value.length === 0);
 }
+var polyV1 = ""
 var poly
 function test(place) {
     document.querySelector('.blur').style.display = "block"
     document.querySelector('.community__popup').style.display = "flex"
-    poly = place
+    place.forEach(element => {
+        polyV1 += `[${element}],`
+    });
+    poly = polyV1.substring(0, polyV1.length - 1);
 }
 
 document.querySelector('.blur').addEventListener('click', (e) => {
