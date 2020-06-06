@@ -1187,7 +1187,7 @@ div .nudge--text {
 }
 
 .noMarge {
-    margin: 0.5em;
+    margin: 0 0.5em;
 }
 
 .form__field__small {
@@ -1205,7 +1205,7 @@ div .nudge--text {
     cursor: pointer;
 }
 
-.community__popup__confirm {
+.community__popup__confirm, .community__popup__deny {
     margin-top: 60%;
     height: 29vh;
 }

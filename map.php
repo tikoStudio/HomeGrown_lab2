@@ -85,8 +85,16 @@ foreach ($test as $value) {
     <div class="community__popup community__popup__confirm">
         <p class="exit__community__popup">X</p>
         <h2>Your community has been created</h2>
-        <h5 class="white noMarge">Please wait 14-24 hours before your community becomes visible on the map. You can
-            review your community in your <a class="createlink" href="allMyCommunities.php">community</a> list.</h5>
+        <h5 class="white noMarge">Please wait 14-24 hours before your community gets a marker on the map. You can
+            review your community in your <a class="createlink" href="allMyCommunities.php">community</a> list and see
+            your community on the <a class="createLink" href="map.php">map</a>.</h5>
+    </div>
+
+    <div class="community__popup community__popup__deny">
+        <p class="exit__community__popup">X</p>
+        <h2>The selected area is too large</h2>
+        <h5 class="white noMarge">Please select a smaller area to make your, it is unlikely you own this amount of land,
+            if this is correct please contact HomeGrown.</h5>
     </div>
 
     <div id="mapContainer" class="mapContainer"></div>

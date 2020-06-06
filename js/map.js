@@ -84,14 +84,14 @@ function updateArea(e) {
 var data = draw.getAll();
 if (data.features.length > 0) {
 var area = turf.area(data);
-test(data.features[0].geometry.coordinates[0]);
 // restrict to area to 2 decimal points
 var rounded_area = Math.round(area * 100) / 100;
 console.log(rounded_area)
     if(rounded_area <= 700) {
-        console.log("yes doe test")
+        test(data.features[0].geometry.coordinates[0]);
     }else 
-        console.log("noooooooo")
+        document.querySelector('.blur').style.display = "block"
+        document.querySelector('.community__popup__deny').style.display = "block"
     }
 }
 
@@ -161,6 +161,8 @@ document.querySelector('.blur').addEventListener('click', (e) => {
     document.querySelector('.blur').style.display = "none"
     document.querySelector('.community__popup').style.display = "none"
     document.querySelector('.community__popup__confirm').style.display = "none"
+    document.querySelector('.community__popup__deny').style.display = "none"
+    
 })
 let exits = document.querySelectorAll('.exit__community__popup')
 exits.forEach(element => {
@@ -168,6 +170,7 @@ exits.forEach(element => {
         document.querySelector('.blur').style.display = "none"
         document.querySelector('.community__popup').style.display = "none"
         document.querySelector('.community__popup__confirm').style.display = "none"
+        document.querySelector('.community__popup__deny').style.display = "none"
     })
 });
 
@@ -236,4 +239,9 @@ document.querySelector('#avatar').addEventListener('change', () => {
         })
         reader.readAsDataURL(file)
     }
+})
+
+document.querySelector('.community__popup__deny').addEventListener('click', () => {
+    document.querySelector('.blur').style.display = "none"
+    document.querySelector('.community__popup__deny').style.display = "none"
 })
