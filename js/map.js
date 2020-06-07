@@ -89,9 +89,10 @@ var rounded_area = Math.round(area * 100) / 100;
 console.log(rounded_area)
     if(rounded_area <= 700) {
         test(data.features[0].geometry.coordinates[0]);
-    }else 
+    }else {
         document.querySelector('.blur').style.display = "block"
         document.querySelector('.community__popup__deny').style.display = "block"
+    }
     }
 }
 
