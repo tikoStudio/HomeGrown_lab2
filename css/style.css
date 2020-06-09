@@ -16,6 +16,12 @@ textarea:focus, input:focus{
     outline: none;
 }
 
+.backImg {
+    position: absolute;
+    margin: 0.5em;
+    top: 0;
+}
+
 /* Change autocomplete styles in WebKit */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

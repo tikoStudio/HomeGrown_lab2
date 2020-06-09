@@ -66,6 +66,9 @@
 </head>
 
 <body>
+    <a
+        href="community.php?com=<?php echo $_GET['com']; ?>">
+        <img src="images/arrow.png" alt="back" class="backImg"></a>
 
     <div class="community__container community__container--top">
         <h1 class="h1--members"><?php echo $cData['name'] ?>
