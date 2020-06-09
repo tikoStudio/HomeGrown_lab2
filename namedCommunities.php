@@ -68,8 +68,22 @@
         <div class="community__data__container community__data__container--all">
             <a href="community.php?com=<?php echo $community['id'] ?>"
                 class="community__data__container__a"></a>
-            <div class="label">
-                <p>Member</p>
+            <div class="label <?php if (empty($community['userId1']) || empty($community['userId2']) || empty($community['userId3']) || empty($community['userId4'])) {
+    echo "label--green";
+} ?>">
+                <p><?php if (empty($community['userId1']) || empty($community['userId2']) || empty($community['userId3']) || empty($community['userId4'])) {
+    if ($community['userId1'] != $_SESSION['id'] && $community['userId2'] != $_SESSION['id'] && $community['userId3'] != $_SESSION['id'] && $community['userId4'] != $_SESSION['id']) {
+        echo "Looking for members";
+    } else {
+        echo "Member";
+    }
+} else {
+    if ($community['userId1'] != $_SESSION['id'] && $community['userId2'] != $_SESSION['id'] && $community['userId3'] != $_SESSION['id'] && $community['userId4'] != $_SESSION['id']) {
+        echo "Currently full";
+    } else {
+        echo "Member";
+    }
+} ?>
             </div>
             <div class="community__img">
                 <img src="images/<?php echo $community['img']; ?>"
