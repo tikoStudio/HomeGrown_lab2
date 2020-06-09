@@ -175,7 +175,6 @@
             if (password_verify($password, $hash)) {
                 return true;
             } else {
-                echo "fail";
                 return false;
             }
         }

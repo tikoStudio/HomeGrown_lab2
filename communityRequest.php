@@ -262,6 +262,11 @@
         }
     </script>
     <?php endif; ?>
+    <?php if ($showRequest):?>
+    <script>
+        document.querySelector('.blur--active').style.opacity = 1
+    </script>
+    <?php endif; ?>
 </body>
 
 </html>

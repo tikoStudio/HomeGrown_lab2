@@ -17,6 +17,5 @@
     document.querySelector('#search').addEventListener('keyup', (e) => {
         let queryparam = document.querySelector('#search').value
         document.querySelector('.headerlink').setAttribute('href', `namedCommunities.php?cn=${queryparam}`)
-        
     })
 </script>
